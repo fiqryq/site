@@ -29,13 +29,13 @@ interface Props {
 
 export default function PostLayout({ frontMatter, authorDetails, children }: Props) {
   const { slug, fileName, date, title, header } = frontMatter
-
+  console.log(header)
   return (
     <SectionContainer>
       <BlogSEO
         url={`${siteMetadata.siteUrl}/blog/${slug}`}
         authorDetails={authorDetails}
-        header={header}
+        images={[header]}
         {...frontMatter}
       />
       <article>
