@@ -29,6 +29,12 @@ const projectsData = [
     imgSrc: '/static/images/github/Pantaucovid-bot.png',
     href: 'https://github.com/fiqryq/Pantaucovid-discord',
   },
+  {
+    title: 'Posiandu',
+    description: `Simple Posiandu app using Codeigniter 4.`,
+    imgSrc: '/static/images/github/posiandu.png',
+    href: 'https://github.com/fiqryq/Posiandu-Codeigniter-4',
+  },
 ]
 
 export default projectsData

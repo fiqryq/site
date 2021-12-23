@@ -14,18 +14,18 @@ interface Props {
 const LayoutWrapper = ({ children }: Props) => {
   return (
     <>
-      <header className="flex items-center w-full justify-between py-5 sticky left-0 right-0 top-0 z-20 bg-white dark:bg-black bg-opacity-30 dark:bg-opacity-30 backdrop-filter backdrop-saturate-150 backdrop-blur-lg firefox:bg-opacity-100 dark:firefox:bg-opacity-100">
-        <div className="flex items-center justify-between w-full max-w-2xl px-4 mx-auto sm:px-6 sm:py-2 xl:max-w-3xl xl:px-0">
+      <header className=" py-5 md:py-10 sticky top-0 z-40  bg-white  dark:bg-black">
+        <div className="flex items-center justify-between max-w-3xl mx-auto ">
           <div>
-            <Link href="/" aria-label="Fiqrychoerudin.dev">
+            <Link href="/" aria-label="Fiqry Blog">
               <div className="flex items-center justify-between">
-                {typeof siteMetadata.headerTitle === 'string' ? (
-                  <div className="hidden h-6 text-2xl font-semibold sm:block">
+                {/* {typeof siteMetadata.headerTitle === 'string' ? (
+                  <div className="hidden text-2xl font-semibold sm:block">
                     {siteMetadata.headerTitle}
                   </div>
                 ) : (
                   siteMetadata.headerTitle
-                )}
+                )} */}
               </div>
             </Link>
           </div>
