@@ -23,7 +23,7 @@ export default function ActivityLayout({ children, frontMatter }: Props) {
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">List my activity.</p>
         </div>
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
-          <div className="pb-8 prose dark:prose-dark max-w-none xl:col-span-2">{children}</div>
+          <div className="pb-8 prose dark:prose-dark max-w-none xl:col-span-3">{children}</div>
         </div>
       </div>
     </>
