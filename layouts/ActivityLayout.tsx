@@ -14,7 +14,7 @@ export default function ActivityLayout({ children, frontMatter }: Props) {
       <PageSEO title={`Activity - ${name}`} description={`Activity - ${name}`} />
       <div className="">
         <div className="pt-6 pb-8 space-y-2 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
             <span role="img" className="mr-3" aria-label="wave">
               📌
             </span>
