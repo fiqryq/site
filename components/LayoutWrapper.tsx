@@ -14,18 +14,18 @@ interface Props {
 const LayoutWrapper = ({ children }: Props) => {
   return (
     <>
-      <header className="py-5 md:py-10 sticky top-0 z-40 bg-white  dark:bg-black">
+      <header className="py-5 md:py-10 sticky top-0 z-40 bg-white dark:bg-black">
         <div className="flex items-center justify-between max-w-3xl mx-auto ">
           <div>
             <Link href="/" aria-label="Fiqry Blog">
               <div className="flex items-center justify-between">
-                {/* {typeof siteMetadata.headerTitle === 'string' ? (
+                {typeof siteMetadata.headerTitle === 'string' ? (
                   <div className="hidden text-2xl font-semibold sm:block">
                     {siteMetadata.headerTitle}
                   </div>
                 ) : (
                   siteMetadata.headerTitle
-                )} */}
+                )}
               </div>
             </Link>
           </div>

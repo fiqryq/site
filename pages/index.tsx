@@ -19,13 +19,10 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
     <>
       <PageSEO title={siteMetadata.author} description={siteMetadata.description} />
       <div className="divide-gray-200 dark:divide-gray-700">
-        <div className="mb-5 py-8 space-y-2 rounded-lg md:space-y-5 bg-gradient-to-r from-cyan-500 to-blue-500 p-5">
+        <div className="mb-5 py-16 space-y-2 rounded-lg md:space-y-5 bg-gradient-to-r from-cyan-500 to-blue-500 p-10">
           <div className="flex flex-col space-y-3">
             <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-white dark:text-white sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
-              {siteMetadata.author}
-              <span role="img" aria-label="wave">
-                👋
-              </span>
+              {`Hi 👋 i'm ${siteMetadata.author}`}
             </h1>
             <p className="text-lg leading-7 text-white dark:text-white">
               {siteMetadata.description}
@@ -45,20 +42,17 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
             return (
               <li key={slug} className="py-3">
                 <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
-                  <article className="bg-gray-200 bg-opacity-20 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 p-5 rounded-lg">
+                  <article className="bg-gray-200 bg-opacity-20 hover:bg-gray-300 hover:bg-opacity-30 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 p-5 rounded-lg">
                     <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
                       <div className="space-y-5 xl:col-span-4">
                         <div className="space-y-3">
-                          <div className="flex flex-wrap mt-3">
+                          <div className="flex flex-wrap">
                             {tags.map((tag) => (
                               <Tag key={tag} text={tag} />
                             ))}
                           </div>
                           <h2 className="text-3xl font-bold leading-8 tracking-tight">
-                            <Link
-                              href={`/blog/${slug}`}
-                              className="text-gray-900 dark:text-gray-100"
-                            >
+                            <Link href={`/blog/${slug}`} className="text-cyan-600">
                               {title}
                             </Link>
                           </h2>

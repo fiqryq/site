@@ -63,24 +63,26 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
             return (
               <li key={slug} className="py-3">
                 <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
-                  <article className="space-y-2 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline bg-gray-200 bg-opacity-20 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 p-5 rounded-lg">
+                  <article className="space-y-2 hover:bg-gray-300 hover:bg-opacity-30 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline bg-gray-200 bg-opacity-20 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 p-5 rounded-lg">
                     <dl>
                       <dt className="sr-only">Published on</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400 pb-1">
-                        <time dateTime={date}>{formatDate(date)}</time>
+                        <time dateTime={date}>
+                          <span role="img" aria-label="wave" className="pr-2">
+                            📅
+                          </span>
+                          {formatDate(date)}
+                        </time>
                       </dd>
                     </dl>
                     <div className="space-y-3 xl:col-span-4">
-                      <div className="flex flex-wrap mt-3">
+                      <div className="flex flex-wrap">
                         {tags.map((tag) => (
                           <Tag key={tag} text={tag} />
                         ))}
                       </div>
                       <h3 className="text-3xl font-bold leading-8 tracking-tight">
-                        <Link
-                          href={`/blog/${slug}`}
-                          className="text-gray-900 dark:text-gray-100 hover:text-cyan-600 "
-                        >
+                        <Link href={`/blog/${slug}`} className="text-cyan-600 ">
                           {title}
                         </Link>
                       </h3>

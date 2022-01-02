@@ -4,6 +4,7 @@ date: '2021-08-01'
 header: '/static/images/ocean.jpeg'
 tags: ['js', 'express']
 draft: false
+author: 'Fiqry choerudin'
 summary: 'Tulisan kali ini akan membahas penggunaan salah satu module dari express js yaitu router , kenapa sih kita harus menggunakan router? dengan menggunakan router kita bisa dengan mudah menghandle request.'
 ---
 

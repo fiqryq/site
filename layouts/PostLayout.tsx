@@ -7,6 +7,7 @@ import Comments from '@/components/comments'
 import { ReactNode } from 'react'
 import { PostFrontMatter } from 'types/PostFrontMatter'
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
+import Image from '../components/Image'
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
 
@@ -24,7 +25,7 @@ interface Props {
 }
 
 export default function PostLayout({ frontMatter, authorDetails, children }: Props) {
-  const { slug, fileName, date, title } = frontMatter
+  const { slug, fileName, date, title, images, author } = frontMatter
   return (
     <>
       <SectionContainer>
@@ -34,17 +35,34 @@ export default function PostLayout({ frontMatter, authorDetails, children }: Pro
           {...frontMatter}
         />
         <article>
-          <header className="py-10 bg-gradient-to-r from-cyan-500 to-blue-500 p-8 mb-4">
-            <div className="space-y-1 text-left">
+          <header className="relative">
+            {images ? (
+              <Image
+                alt={title}
+                src={images[0]}
+                className="object-cover w-full h-full rounded-lg"
+                width={900}
+                height={500}
+              />
+            ) : (
+              <div className="bg-blue-500 w-full h-96 rounded-lg" />
+            )}
+            <div className="space-y-1 text-left absolute bottom-0 left-0 p-6 bg-gradient-to-t from-cyan-500 w-full rounded-b-lg">
               <div>
                 <PageTitle>{title}</PageTitle>
               </div>
               <dl className="space-y-10">
-                <div>
+                <div className="relative">
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-base font-medium leading-6 text-white">
                     <time dateTime={date}>
-                      {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
+                      <span role="img" aria-label="wave" className="pr-2">
+                        📅
+                      </span>
+                      {`Written on ${new Date(date).toLocaleDateString(
+                        siteMetadata.locale,
+                        postDateTemplate
+                      )} by ${author}`}
                     </time>
                   </dd>
                 </div>
@@ -56,7 +74,7 @@ export default function PostLayout({ frontMatter, authorDetails, children }: Pro
             style={{ gridTemplateRows: 'auto 1fr' }}
           >
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-4 xl:row-span-2">
-              <div className="pt-2 pb-8 prose dark:prose-dark max-w-none">{children}</div>
+              <div className="pt-8 pb-8 prose dark:prose-dark max-w-none">{children}</div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
               </div>

@@ -17,7 +17,7 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.mono],
+        sans: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: colors.teal,
@@ -50,6 +50,9 @@ module.exports = {
             },
             'h4,h5,h6': {
               color: theme('colors.gray.900'),
+            },
+            pre: {
+              backgroundColor: theme('colors.gray.800'),
             },
             code: {
               color: theme('colors.cyan.500'),
@@ -115,6 +118,9 @@ module.exports = {
             },
             'h4,h5,h6': {
               color: theme('colors.gray.100'),
+            },
+            pre: {
+              backgroundColor: theme('colors.black'),
             },
             code: {
               backgroundColor: theme('colors.gray.800'),

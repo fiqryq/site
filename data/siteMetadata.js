@@ -3,7 +3,7 @@ const siteMetadata = {
   author: 'Fiqry choerudin',
   headerTitle: '',
   description:
-    'Frontend Developer / Full stuck developer. currently learning everything. love making open source projects on Github.',
+    'You can call me piq , I`m Frontend Developer. currently learning everything. love making open source projects on Github.',
   language: 'en-us',
   siteUrl: 'https://fiqrychoerudin.dev',
   siteRepo: 'https://github.com/fiqryq/Fiqrychoerudin.dev',

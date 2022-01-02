@@ -16,7 +16,9 @@ export default function Projects() {
             </span>
             Projects
           </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">Showcase my project.</p>
+          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+            Showcase of my works on frontend development.
+          </p>
         </div>
         <div className="container py-5">
           <div className="flex flex-wrap -m-4">
@@ -45,7 +47,6 @@ export default function Projects() {
           </div>
           <div className="flex flex-wrap -m-4">
             {githubData.map((d) => {
-              console.log(`ini adalah tag ${typeof d.tag}`)
               return (
                 <Card
                   key={d.title}

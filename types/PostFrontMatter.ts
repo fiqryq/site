@@ -6,6 +6,7 @@ export type PostFrontMatter = {
   draft?: boolean
   summary?: string
   images?: string[]
+  author?: string
   authors?: string[]
   layout?: string
   slug: string
