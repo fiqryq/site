@@ -17,7 +17,7 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', ...defaultTheme.fontFamily.mono],
       },
       colors: {
         primary: colors.teal,
@@ -28,11 +28,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.700'),
             a: {
-              color: theme('colors.pink.500'),
+              color: theme('colors.cyan.500'),
               '&:hover': {
-                color: theme('colors.pink.600'),
+                color: theme('colors.cyan.600'),
               },
-              code: { color: theme('colors.pink.400') },
+              code: { color: theme('colors.cyan.400') },
             },
             h1: {
               fontWeight: '700',
@@ -52,7 +52,7 @@ module.exports = {
               color: theme('colors.gray.900'),
             },
             code: {
-              color: theme('colors.pink.500'),
+              color: theme('colors.cyan.500'),
               backgroundColor: theme('colors.gray.100'),
               paddingLeft: '4px',
               paddingRight: '4px',
@@ -93,11 +93,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.pink.500'),
+              color: theme('colors.cyan.500'),
               '&:hover': {
-                color: theme('colors.pink.400'),
+                color: theme('colors.cyan.400'),
               },
-              code: { color: theme('colors.pink.400') },
+              code: { color: theme('colors.cyan.400') },
             },
             h1: {
               fontWeight: '700',
