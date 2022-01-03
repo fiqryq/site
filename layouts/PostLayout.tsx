@@ -74,7 +74,9 @@ export default function PostLayout({ frontMatter, authorDetails, children }: Pro
             style={{ gridTemplateRows: 'auto 1fr' }}
           >
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-4 xl:row-span-2">
-              <div className="pt-8 pb-8 prose dark:prose-dark max-w-none">{children}</div>
+              <div className="pt-8 pb-8 prose prose-lime prose-xl dark:prose-dark max-w-none">
+                {children}
+              </div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
               </div>

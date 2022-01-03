@@ -61,10 +61,10 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
           {displayPosts.map((frontMatter) => {
             const { slug, date, title, summary, tags } = frontMatter
             return (
-              <li key={slug} className="py-3">
+              <li key={slug} className="py-2">
                 <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
                   <article className="space-y-2 hover:bg-gray-300 hover:bg-opacity-30 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline bg-gray-200 bg-opacity-20 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 p-5 rounded-lg">
-                    <dl>
+                    {/* <dl>
                       <dt className="sr-only">Published on</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400 pb-1">
                         <time dateTime={date}>
@@ -74,7 +74,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                           {formatDate(date)}
                         </time>
                       </dd>
-                    </dl>
+                    </dl> */}
                     <div className="space-y-3 xl:col-span-4">
                       <div className="flex flex-wrap">
                         {tags.map((tag) => (
