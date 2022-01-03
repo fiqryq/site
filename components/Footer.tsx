@@ -1,18 +1,21 @@
 import Link from './Link'
 import siteMetadata from '@/data/siteMetadata'
+import NowPlaying from './NowPlaying'
 
 export default function Footer() {
   return (
     <footer>
-      <div className="flex flex-col items-center mt-16">
-        <div className="flex mb-2 py-5 space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div>{siteMetadata.author}</div>
-          <div>{` • `}</div>
-          <div>{`© ${new Date().getFullYear()}`}</div>
-          <div>{` • `}</div>
+      <ul className="flex flex-col md:flex-row justify-center mb-0 pt-10 space-x-0 md:space-x-2 text-sm text-gray-500 dark:text-gray-400">
+        <li>
           <Link href="/">{siteMetadata.title}</Link>
-        </div>
-      </div>
+        </li>
+        <li>{` • `}</li>
+        <li>{`© ${new Date().getFullYear()}`}</li>
+        <li>{` • `}</li>
+        <li>
+          <NowPlaying />
+        </li>
+      </ul>
     </footer>
   )
 }
