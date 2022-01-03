@@ -19,7 +19,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
     <>
       <PageSEO title={siteMetadata.author} description={siteMetadata.description} />
       <div className="divide-gray-200 dark:divide-gray-700">
-        <div className="mb-5 py-14 space-y-2 rounded-lg md:space-y-5 bg-gradient-to-r from-cyan-500 to-blue-500 p-10">
+        <div className="mb-5 py-12 space-y-2 rounded-lg md:space-y-5 bg-gradient-to-r from-cyan-500 to-blue-500 p-10">
           <div className="flex flex-col space-y-3">
             <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-white dark:text-white sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
               {`Hi 👋 i'm ${siteMetadata.author}`}
@@ -29,7 +29,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
             </p>
             <div className="flex space-x-2">
               <Link href="/blog">
-                <div className="w-28 h-12 rounded-md bg-sky-600 hover:bg-sky-700 shadow-lg shadow-sky-600/50 flex items-center justify-center">
+                <div className="w-28 h-12 rounded-md bg-sky-700 hover:bg-sky-800 shadow-lg shadow-sky-600/50 flex items-center justify-center">
                   <p className="text-white">Read Blog</p>
                 </div>
               </Link>
