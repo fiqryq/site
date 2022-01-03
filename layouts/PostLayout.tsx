@@ -47,7 +47,7 @@ export default function PostLayout({ frontMatter, authorDetails, children }: Pro
             ) : (
               <div className="bg-blue-500 w-full h-96 rounded-lg" />
             )}
-            <div className="space-y-1 text-left absolute bottom-0 left-0 p-6 bg-gradient-to-t from-cyan-500 w-full rounded-b-lg">
+            <div className="space-y-1 text-left absolute bottom-0 left-0 p-6 bg-gradient-to-t from-sky-800 w-full rounded-b-lg">
               <div>
                 <PageTitle>{title}</PageTitle>
               </div>

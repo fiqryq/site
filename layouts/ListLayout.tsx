@@ -25,12 +25,12 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
   return (
     <>
       <div className="">
-        <div className="py-8 rounded-lg space-y-2 md:space-y-5">
+        <div className="pt-8 pb-3 rounded-lg space-y-2 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900  dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
             <span role="img" className="mr-4" aria-label="wave">
-              📝
+              📒
             </span>
-            {title}
+            Blog
           </h1>
           <div className="relative max-w-full">
             <input
@@ -38,10 +38,10 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
               type="text"
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Search articles / snippets / app"
-              className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-md dark:border-gray-900 focus:ring-cyan-500 focus:border-cyan-500 dark:bg-gray-800 dark:text-gray-100"
+              className="block w-full px-4 py-3 text-gray-900 border-0 bg-gray-200 bg-opacity-50 rounded-md dark:border-gray-900 focus:ring-cyan-500 focus:border-cyan-500 dark:bg-gray-800 dark:text-gray-100"
             />
             <svg
-              className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300"
+              className="absolute w-6 h-6 text-gray-400 right-3 top-3 dark:text-gray-300"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"

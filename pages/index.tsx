@@ -27,7 +27,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
             <p className="text-lg leading-7 text-white dark:text-white">
               {siteMetadata.description}
             </p>
-            <div className="flex space-x-2">
+            <div className="flex space-x-2 pt-3">
               <Link href="/blog">
                 <div className="w-28 h-12 rounded-md bg-sky-700 hover:bg-sky-800 shadow-lg shadow-sky-600/50 flex items-center justify-center">
                   <p className="text-white">Read Blog</p>
@@ -43,7 +43,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
         </div>
         <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
           <span className="pr-2" role="img" aria-label="wave">
-            📋
+            📒
           </span>
           Recent Post
         </h1>
