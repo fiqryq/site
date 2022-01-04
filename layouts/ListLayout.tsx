@@ -30,7 +30,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
             <span role="img" className="mr-4" aria-label="wave">
               📒
             </span>
-            Blog
+            {title}
           </h1>
           <div className="relative max-w-full">
             <input
