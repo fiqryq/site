@@ -13,6 +13,10 @@ export default function Footer() {
         <li>{`© ${new Date().getFullYear()}`}</li>
         <li>{` • `}</li>
         <li>
+          <Link href="/activity">Activity</Link>
+        </li>
+        <li>{` • `}</li>
+        <li>
           <NowPlaying />
         </li>
       </ul>

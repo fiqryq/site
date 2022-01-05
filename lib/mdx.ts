@@ -24,7 +24,7 @@ import rehypePrismPlus from 'rehype-prism-plus'
 
 const root = process.cwd()
 
-export function getFiles(type: 'blog' | 'authors' | 'activity') {
+export function getFiles(type: 'blog' | 'authors' | 'activity' | 'snippets') {
   const prefixPaths = path.join(root, 'data', type)
   const files = getAllFilesRecursively(prefixPaths)
   // Only want to return blog/path and ignore root, replace is needed to work on Windows
@@ -42,7 +42,7 @@ export function dateSortDesc(a: string, b: string) {
 }
 
 export async function getFileBySlug<T>(
-  type: 'authors' | 'blog' | 'activity',
+  type: 'authors' | 'blog' | 'activity' | 'snippets',
   slug: string | string[]
 ) {
   const mdxPath = path.join(root, 'data', type, `${slug}.mdx`)

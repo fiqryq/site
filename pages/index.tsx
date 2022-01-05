@@ -5,6 +5,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { PostFrontMatter } from 'types/PostFrontMatter'
+import TopTracks from 'components/TopTrack'
 
 const MAX_DISPLAY = 2
 
@@ -92,6 +93,12 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
           </Link>
         </div>
       )}
+      <div className="py-7">
+        <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
+          My <span className="text-green-500">Spotify</span> Top Song
+        </h1>
+        <TopTracks />
+      </div>
     </>
   )
 }
