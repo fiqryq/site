@@ -3,7 +3,7 @@ title: 'Three things you are greatful for and why?'
 date: '2021-06-24'
 header: '/static/images/avatar.png'
 tags: ['30DayWritingChallenge', 'daily']
-draft: false
+draft: true
 summary: 'ini pertama kalinya gue ikut challenge 30 day writing challenge , gue ikutan challenge ini buat nyari pengalaman baru aja biar ga gitu gitu aja kegiatannya sekali kali nulis , mungkin tulisan tulisan gue nanti bakal banyak salahnya kaya penggunaan kata atau penggunaan tanda baca yang salah mohon di maafin aja lah ya haha..'
 ---
 
