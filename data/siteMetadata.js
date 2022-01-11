@@ -5,6 +5,7 @@ const siteMetadata = {
   description:
     'You can call me piq , I`m Frontend Developer. currently learning everything. love making open source projects on Github.',
   language: 'en-us',
+  theme: 'light',
   siteUrl: 'https://fiqrychoerudin.dev',
   siteRepo: 'https://github.com/fiqryq/Fiqrychoerudin.dev',
   siteLogo: '/public/static/images/avatar.png',
