@@ -6,7 +6,7 @@ import { getAllFilesFrontMatter } from '@/lib/mdx'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { PostFrontMatter } from 'types/PostFrontMatter'
 import TopTracks from 'components/TopTrack'
-import NewsletterForm from '@/components/NewsletterForm'
+import WhatIdo from '@/components/WhatIdo'
 
 const MAX_DISPLAY = 2
 
@@ -56,7 +56,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
             return (
               <li key={slug} className="py-3">
                 <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
-                  <article className="bg-gray-200 bg-opacity-20 hover:bg-gray-300 hover:bg-opacity-30 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 p-5 rounded-lg">
+                  <article className="bg-gray-200 bg-opacity-30 hover:bg-gray-300 hover:bg-opacity-30 dark:bg-gray-800 dark:hover:bg-gray-900 p-5 rounded-lg">
                     <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
                       <div className="space-y-5 xl:col-span-4">
                         <div className="space-y-3">
@@ -94,6 +94,9 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
           </Link>
         </div>
       )}
+      <div className="py-5 space-y-5">
+        <WhatIdo />
+      </div>
       <div className="py-7">
         <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
           <span className="pr-2" role="img" aria-label="wave">

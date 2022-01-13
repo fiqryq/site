@@ -2,7 +2,6 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import { ComponentProps, useState } from 'react'
 import Pagination from '@/components/Pagination'
-import formatDate from '@/lib/utils/formatDate'
 import { PostFrontMatter } from 'types/PostFrontMatter'
 interface Props {
   posts: PostFrontMatter[]
@@ -59,22 +58,11 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
         <ul>
           {!filteredBlogPosts.length && 'No posts found.'}
           {displayPosts.map((frontMatter) => {
-            const { slug, date, title, summary, tags } = frontMatter
+            const { slug, title, summary, tags } = frontMatter
             return (
               <li key={slug} className="py-2">
                 <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
-                  <article className="space-y-2 hover:bg-gray-300 hover:bg-opacity-30 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline bg-gray-200 bg-opacity-20 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 p-5 rounded-lg">
-                    {/* <dl>
-                      <dt className="sr-only">Published on</dt>
-                      <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400 pb-1">
-                        <time dateTime={date}>
-                          <span role="img" aria-label="wave" className="pr-2">
-                            📅
-                          </span>
-                          {formatDate(date)}
-                        </time>
-                      </dd>
-                    </dl> */}
+                  <article className="space-y-2 hover:bg-gray-300 hover:bg-opacity-30 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline bg-gray-200 bg-opacity-20 dark:bg-gray-800 dark:hover:bg-gray-900 p-5 rounded-lg">
                     <div className="space-y-3 xl:col-span-4">
                       <div className="flex flex-wrap">
                         {tags.map((tag) => (
