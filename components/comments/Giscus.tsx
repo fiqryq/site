@@ -3,7 +3,7 @@ import { useTheme } from 'next-themes'
 
 import siteMetadata from '@/data/siteMetadata'
 
-const Giscus = () => {
+const Giscus = ({ mapping }) => {
   const { theme, resolvedTheme } = useTheme()
   const COMMENTS_ID = 'comments-container'
 
