@@ -14,8 +14,8 @@ interface Props {
 const LayoutWrapper = ({ children }: Props) => {
   return (
     <>
-      <header className="py-5 md:py-10 sticky top-0 z-40 bg-white dark:bg-black">
-        <div className="flex items-center justify-between max-w-3xl mx-auto ">
+      <header className="py-5 md:py-10 sticky top-0 z-40 backdrop-blur-sm  bg-white dark:bg-black">
+        <div className="flex items-center justify-between max-w-4xl mx-auto ">
           <div>
             {/* not used */}
             <Link href="/" aria-label="Fiqry Blog">

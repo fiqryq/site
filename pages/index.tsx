@@ -56,7 +56,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
             return (
               <li key={slug} className="py-3">
                 <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
-                  <article className="bg-gray-200 bg-opacity-30 hover:bg-gray-300 hover:bg-opacity-30 dark:bg-gray-800 dark:hover:bg-gray-900 p-5 rounded-lg">
+                  <article className="bg-gray-200 bg-opacity-20 hover:bg-gray-300 hover:bg-opacity-30 dark:bg-gray-900 dark:hover:bg-black p-5 rounded-lg">
                     <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
                       <div className="space-y-5 xl:col-span-4">
                         <div className="space-y-3">
