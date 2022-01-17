@@ -62,7 +62,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
             return (
               <li key={slug} className="py-2">
                 <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
-                  <article className="space-y-2 hover:bg-gray-300 hover:bg-opacity-30 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline bg-gray-200 bg-opacity-20 dark:bg-gray-800 dark:hover:bg-gray-900 p-5 rounded-lg">
+                  <article className="space-y-2 hover:bg-gray-300 hover:bg-opacity-30 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline bg-gray-200 bg-opacity-20 dark:bg-gray-900 dark:hover:bg-black p-5 rounded-lg">
                     <div className="space-y-3 xl:col-span-4">
                       <h3 className="text-3xl font-bold leading-8 tracking-tight">
                         <Link href={`/blog/${slug}`} className="text-cyan-600 ">
