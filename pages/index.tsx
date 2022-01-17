@@ -60,16 +60,16 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
                     <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
                       <div className="space-y-5 xl:col-span-4">
                         <div className="space-y-3">
-                          <div className="flex flex-wrap">
-                            {tags.map((tag) => (
-                              <Tag key={tag} text={tag} />
-                            ))}
-                          </div>
                           <h2 className="text-3xl font-bold leading-8 tracking-tight">
                             <Link href={`/blog/${slug}`} className="text-cyan-600">
                               {title}
                             </Link>
                           </h2>
+                          <div className="flex flex-wrap">
+                            {tags.map((tag) => (
+                              <Tag key={tag} text={tag} />
+                            ))}
+                          </div>
                           <div className="prose text-gray-500 max-w-none dark:text-gray-400">
                             {summary}
                           </div>

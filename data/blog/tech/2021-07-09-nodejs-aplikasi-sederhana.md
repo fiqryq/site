@@ -2,7 +2,7 @@
 title: 'Membuat Aplikasi Sederhana Menggunakan NodeJS'
 date: '2021-07-09'
 header: '/static/images/avatar.png'
-tags: ['js', 'nodejs']
+tags: ['#js', '#nodejs']
 draft: false
 author: 'Fiqry choerudin'
 summary: 'Tulisan kali ini mungkin hanya untuk report progress belajar saya , saya membuat aplikasi sederhana untuk melakukan perhitungan , aplikasi ini dibuat diatas nodejs , di project ini saya hanya menggunakan readline untuk user bisa menginput dan melihat hasil perhitungannya.'

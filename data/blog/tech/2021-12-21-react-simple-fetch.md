@@ -2,7 +2,7 @@
 title: 'Reactjs simple fetch api'
 date: '2021-12-21'
 header: '/static/images/avatar.png'
-tags: ['js', 'react', 'fetch']
+tags: ['#js', '#react', '#fetch']
 draft: false
 author: 'Fiqry choerudin'
 summary: 'Kali ini saya membuat aplikasi sederhana menggunakan Reactjs yaitu membuat aplikasi menampilkan jenis kucing. Disini saya menggunakan tailwindcss untuk styling.'
