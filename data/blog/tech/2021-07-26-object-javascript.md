@@ -2,7 +2,7 @@
 title: 'Object Pada JavaScript'
 date: '2021-07-26'
 header: '/static/images/avatar.png'
-tags: ['js', 'object', 'Array']
+tags: ['#js', '#object', '#Array']
 draft: false
 author: 'Fiqry choerudin'
 summary: 'halo kali ini kita akan bermain dengan object di javascript , sebelum lanjut ke pembahasan mungkin kita harus berkenalan dulu dengan Object , Objek dalam Javascript didefinisikan sebagai mutable properties collection, yang artinya adalah sekumpulan properti yang dapat berubah nilainya.'

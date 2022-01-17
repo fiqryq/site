@@ -2,7 +2,7 @@
 title: 'Operator Ternary Typescript'
 date: '2021-06-24'
 header: '/static/images/avatar.png'
-tags: ['ts']
+tags: ['#ts']
 draft: false
 author: 'Fiqry choerudin'
 summary: 'haloooo, mungkin ini adalah tulisan pertama saya di medium , sebenarnya saya tidak terlalu mahir menulis jadi mungkin tulisan tulisan yang ada di medium saya adalah sebagai rangkuman progres belajar saya saja , mungkin segitu aja intermezzonya jadi langsung saja ke topik utamanaya 👌.'
