@@ -1,25 +1,42 @@
 import Link from './Link'
 import siteMetadata from '@/data/siteMetadata'
 import NowPlaying from './NowPlaying'
+import { AiFillLinkedin } from 'react-icons/ai'
+import { FaTwitter, FaGithub, FaSpotify } from 'react-icons/fa'
 
 export default function Footer() {
   return (
     <footer>
-      <ul className="flex flex-col md:flex-row justify-center mb-0 pt-10 space-x-0 md:space-x-2 text-sm text-gray-500 dark:text-gray-400">
-        <li>
-          <Link href="/">{siteMetadata.title}</Link>
-        </li>
-        <li>{` • `}</li>
-        <li>{`© ${new Date().getFullYear()}`}</li>
-        <li>{` • `}</li>
-        <li>
-          <Link href="/activity">Activity</Link>
-        </li>
-        <li>{` • `}</li>
-        <li>
-          <NowPlaying />
-        </li>
-      </ul>
+      <div className="flex flex-col space-y-6 justify-start py-10 mb-0 space-x-0 text-md text-gray-500 dark:text-gray-400">
+        <NowPlaying />
+        <div className="flex justify-between items-center">
+          <ul className="flex space-x-2">
+            <li>{`© ${new Date().getFullYear()}`}</li>
+            <li>{` • `}</li>
+            <li>
+              <Link href="/">{siteMetadata.title}</Link>
+            </li>
+            <li>{` • `}</li>
+            <li>
+              <Link href="/activity">Activity</Link>
+            </li>
+          </ul>
+          <ul className="flex space-x-5 items-center cursor-pointer">
+            <li>
+              <AiFillLinkedin size={20} />
+            </li>
+            <li>
+              <FaGithub size={20} />
+            </li>
+            <li>
+              <FaTwitter size={20} />
+            </li>
+            <li>
+              <FaSpotify size={20} />
+            </li>
+          </ul>
+        </div>
+      </div>
     </footer>
   )
 }
