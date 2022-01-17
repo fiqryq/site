@@ -23,16 +23,24 @@ export default function Footer() {
           </ul>
           <ul className="flex space-x-5 items-center cursor-pointer">
             <li>
-              <AiFillLinkedin size={20} />
+              <Link href="https://www.linkedin.com/in/fiqrychoerudin/">
+                <AiFillLinkedin size={20} />
+              </Link>
             </li>
             <li>
-              <FaGithub size={20} />
+              <Link href="https://github.com/fiqryq">
+                <FaGithub size={20} />
+              </Link>
             </li>
             <li>
-              <FaTwitter size={20} />
+              <Link href="https://twitter.com/fiqryq_">
+                <FaTwitter size={20} />
+              </Link>
             </li>
             <li>
-              <FaSpotify size={20} />
+              <Link href="https://open.spotify.com/user/fiqrychoerudin?si=8832a12d23984f63">
+                <FaSpotify size={20} />
+              </Link>
             </li>
           </ul>
         </div>
