@@ -2,9 +2,6 @@ export default function WhatIdo() {
   return (
     <>
       <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
-        <span className="pr-2" role="img" aria-label="wave">
-          🗿
-        </span>
         What I Do
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
