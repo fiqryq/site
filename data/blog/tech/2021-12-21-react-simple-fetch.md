@@ -1,5 +1,5 @@
 ---
-title: 'Reactjs simple fetch api'
+title: 'Membuat aplikasi sederhana dengan reactJS'
 date: '2021-12-21'
 header: '/static/images/avatar.png'
 tags: ['#js', '#react', '#fetch']
