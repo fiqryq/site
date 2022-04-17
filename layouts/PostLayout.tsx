@@ -34,7 +34,7 @@ export default function PostLayout({ frontMatter, authorDetails, children }: Pro
           authorDetails={authorDetails}
           {...frontMatter}
         />
-        <article>
+        <article className="pt-10">
           <header className="relative">
             {images ? (
               <Image
