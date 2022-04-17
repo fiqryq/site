@@ -25,7 +25,7 @@ module.exports = {
         '8.5xl': '7rem',
       },
       fontFamily: {
-        sans: ['Karla', ...defaultTheme.fontFamily.sans],
+        sans: ['IBM Plex Sans', ...defaultTheme.fontFamily.sans],
       },
       gradientColorStops: {
         'gradient-1-start': '#F20089',
