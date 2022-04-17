@@ -1,7 +1,7 @@
 const siteMetadata = {
   title: 'Fiqry choerudin',
   author: 'Fiqry choerudin',
-  headerTitle: '',
+  headerTitle: 'Fiqry choerudin',
   description:
     'I`m Frontend Developer. currently learning everything. love making open source projects on Github.',
   language: 'en-us',

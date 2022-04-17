@@ -34,7 +34,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
               type="text"
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Search articles / snippets / app"
-              className="block w-full px-4 py-3 text-gray-900 border-0 bg-gray-200 bg-opacity-50 rounded-md dark:border-gray-900 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-800 dark:text-gray-100"
+              className="block w-full px-4 py-3 text-gray-900 border-0 bg-gray-200 bg-opacity-50 rounded-md dark:border-gray-900 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-gray-100"
             />
             <svg
               className="absolute w-6 h-6 text-gray-400 right-3 top-3 dark:text-gray-300"
@@ -57,12 +57,12 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
           {displayPosts.map((frontMatter) => {
             const { slug, title, summary, tags } = frontMatter
             return (
-              <li key={slug} className="py-2">
+              <li key={slug} className="py-3">
                 <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
-                  <article className="space-y-2 hover:bg-gray-300 hover:bg-opacity-30 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline bg-gray-200 bg-opacity-20 dark:bg-gray-900 dark:hover:bg-black p-5 rounded-lg">
+                  <article className="hover:bg-opacity-30 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
                     <div className="space-y-3 xl:col-span-4">
                       <h3 className="text-2xl font-bold leading-8 tracking-tight">
-                        <Link href={`/blog/${slug}`} className="text-sky-600 ">
+                        <Link href={`/blog/${slug}`} className="text-primary-600 ">
                           {title}
                         </Link>
                       </h3>
