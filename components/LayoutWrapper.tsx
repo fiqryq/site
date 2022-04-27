@@ -6,7 +6,7 @@ import Footer from './Footer'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import { ReactNode } from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface Props {
   children: ReactNode
@@ -14,12 +14,30 @@ interface Props {
 
 const LayoutWrapper = ({ children }: Props) => {
   const [navShow, setNavShow] = useState(false)
+  const [scroll, setScroll] = useState(false)
   const onToggleNav = () => setNavShow((status) => !status)
+
+  const handleScroll = () => {
+    if (scroll !== window.pageYOffset > 0) {
+      setScroll(window.pageYOffset > 0)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  })
 
   return (
     <>
       <MobileNav show={navShow} toggle={onToggleNav} />
-      <header className="overflow-x-hidden backdrop-blur supports-backdrop-blur:bg-white/95 py-5 fixed w-full top-0 z-40 bg-white/50 dark:bg-black/50">
+      <header
+        className={`overflow-x-hidden ${
+          scroll ? 'border-b-[1px] dark:border-gray-900 border-gray-300/50' : ''
+        }  backdrop-blur supports-backdrop-blur:bg-white/95 py-5 fixed w-full top-0 z-40 bg-white/50 dark:bg-black/50`}
+      >
         <div className="mx-auto max-w-3xl xl:max-w-3xl flex items-center justify-between px-3 xl:px-0">
           <div>
             <Link href="/" aria-label="Leo's Blog">
