@@ -3,7 +3,7 @@ import CustomLink from '@/components/CustomLink'
 interface CardProps {
   title: string
   description: string
-  imgSrc: string
+  imgSrc?: string
   href: string
   tags?: string[]
   showLink?: boolean
