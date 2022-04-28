@@ -19,13 +19,6 @@ const Card = ({ title, description, imgSrc, href, tags, showLink = true }: CardP
       showIcon={false}
     >
       <div className="h-full overflow-hidden border-2 border-gray-100 rounded-md dark:border-gray-800 hover:border-primary-600 dark:hover:border-primary-400">
-        <Image
-          alt={title}
-          src={imgSrc}
-          className="object-cover object-center border-b border-solid lg:h-48 md:h-36"
-          width={544}
-          height={306}
-        />
         <div className="p-6">
           <h4 className="mb-3 text-2xl font-bold leading-8 tracking-tight text-black dark:text-white">
             {title}
@@ -53,13 +46,6 @@ const Card = ({ title, description, imgSrc, href, tags, showLink = true }: CardP
   ) : (
     <div className="p-4 md:w-1/2 md max-w-[34rem]">
       <div className="h-full overflow-hidden border-2 border-gray-200 rounded-md dark:border-gray-800 ">
-        <Image
-          alt={title}
-          src={imgSrc}
-          className="object-cover object-center border-b border-solid lg:h-48 md:h-36"
-          width={544}
-          height={306}
-        />
         <div className="p-6">
           <h4 className="mb-3 text-2xl font-bold leading-8 tracking-tight text-black dark:text-white">
             {title}
