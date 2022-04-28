@@ -1,12 +1,9 @@
 import Link from '@/components/Link'
 import { PageSEO } from '@/components/SEO'
-import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { PostFrontMatter } from 'types/PostFrontMatter'
-import TopTracks from 'components/TopTrack'
-import WhatIdo from '@/components/WhatIdo'
 
 const MAX_DISPLAY = 2
 
@@ -40,7 +37,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
         <ul className="sdivide-gray-200">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
-            const { slug, title, summary, tags } = frontMatter
+            const { slug, title, summary } = frontMatter
             return (
               <li key={slug} className="py-2">
                 <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
@@ -51,11 +48,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
                           {title}
                         </Link>
                       </h3>
-                      <div className="flex flex-wrap">
-                        {tags.map((tag) => (
-                          <Tag key={tag} text={tag} />
-                        ))}
-                      </div>
+
                       <div className="prose text-gray-500 max-w-none dark:text-gray-400">
                         {summary}
                       </div>

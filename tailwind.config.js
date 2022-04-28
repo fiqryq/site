@@ -25,7 +25,7 @@ module.exports = {
         '8.5xl': '7rem',
       },
       fontFamily: {
-        sans: ['IBM Plex Sans', ...defaultTheme.fontFamily.sans],
+        sans: ['IBM Plex Sans', ...defaultTheme.fontFamily.mono],
       },
       gradientColorStops: {
         'gradient-1-start': '#F20089',
@@ -37,15 +37,15 @@ module.exports = {
       },
       colors: {
         primary: {
-          100: '#FDD1D9',
-          200: '#FBA4BC',
-          300: '#F575A5',
-          400: '#EB519B',
-          500: '#DE1D8D',
-          600: '#BE1588',
-          700: '#9F0E7F',
-          800: '#800972',
-          900: '#6A0568',
+          100: '#dcfce7',
+          200: '#bbf7d0',
+          300: '#86efac',
+          400: '#4ade80',
+          500: '#22c55e',
+          600: '#16a34a',
+          700: '#15803d',
+          800: '#166534',
+          900: '#14532d',
         },
         success: {
           100: '#E4FCDB',
