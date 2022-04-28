@@ -1,12 +1,9 @@
 import Link from '@/components/Link'
 import { PageSEO } from '@/components/SEO'
-import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { PostFrontMatter } from 'types/PostFrontMatter'
-import TopTracks from 'components/TopTrack'
-import WhatIdo from '@/components/WhatIdo'
 
 const MAX_DISPLAY = 2
 

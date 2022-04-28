@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import CustomLink from '@/components/CustomLink'
 
 interface CardProps {
@@ -10,7 +9,7 @@ interface CardProps {
   showLink?: boolean
 }
 
-const Card = ({ title, description, imgSrc, href, tags, showLink = true }: CardProps) =>
+const Card = ({ title, description, href, tags, showLink = true }: CardProps) =>
   showLink ? (
     <CustomLink
       href={href}
