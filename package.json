@@ -23,5 +23,10 @@
   },
   "devDependencies": {
     "husky": "^8.0.0"
+  },
+  "nextBundleAnalysis": {
+    "budget": 358400,
+    "budgetPercentIncreaseRed": 20,
+    "showDetails": true
   }
 }
