@@ -17,10 +17,12 @@
     "baseUrl": "./",
     "paths": {
       "@/lib/*": ["lib/*"],
+      "@/layouts/*": ["layouts/*"],
       "@/css/*": ["css/*"],
       "@/pages/*": ["pages/*"],
       "@/src/*": ["src/*"],
-      "@/components/*": ["src/components/*"]
+      "@/components/*": ["src/components/*"],
+      "@/constant/*": ["src/constant/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "commitlint.config.js"],

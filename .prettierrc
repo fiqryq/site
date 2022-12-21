@@ -6,5 +6,6 @@
   "quoteProps": "as-needed",
   "bracketSameLine": false,
   "bracketSpacing": true,
-  "tabWidth": 2
+  "tabWidth": 2,
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

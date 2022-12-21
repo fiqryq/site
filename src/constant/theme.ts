@@ -1,4 +1,4 @@
-import { LightIcon, DarkIcon, SystemIcon } from '../components/icons';
+import { LightIcon, DarkIcon, SystemIcon } from '@/components/icons';
 
 export const themes = [
   { name: 'Light', value: 'light', icon: LightIcon },
