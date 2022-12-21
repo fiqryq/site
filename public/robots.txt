@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://nextboilerplate.fiqry.dev/
+
+# Sitemaps
+Sitemap: https://nextboilerplate.fiqry.dev/sitemap.xml
