@@ -1,0 +1,11 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Fiqry choerudin",
+    "home_page_url": "https://fiqry.dev/",
+    "feed_url": "https://fiqry.dev//rss/feed.json",
+    "icon": "https://fiqry.dev//favicon.ico",
+    "author": {
+        "name": "Fiqry choerudin"
+    },
+    "items": []
+}

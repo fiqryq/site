@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const DarkIcon = (props: any) => {
   return (
     <svg aria-hidden="true" viewBox="0 0 16 16" {...props}>
@@ -120,6 +122,14 @@ const ArrowLeftIcon = (props: any) => {
   );
 };
 
+const SocialLink = ({ icon: Icon, link, ...props }: any) => {
+  return (
+    <Link href={link} className="group -m-1 p-1" {...props}>
+      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+    </Link>
+  );
+};
+
 export {
   DarkIcon,
   LightIcon,
@@ -130,5 +140,6 @@ export {
   InstagramIcon,
   ArrowDownIcon,
   BriefcaseIcon,
-  ArrowLeftIcon
+  ArrowLeftIcon,
+  SocialLink
 };

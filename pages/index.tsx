@@ -1,24 +1,51 @@
-import Container from '@/layouts/container';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
 import Card from '@/src/components/card';
-import Footer from '@/src/components/footer';
-import Navigation from '@/components/navigation';
 import Resume from '@/src/components/resume';
-import type { NextPage } from 'next';
-const Home: NextPage = () => {
+import Balancer from 'react-wrap-balancer';
+import { getAllArticles } from '@/lib/getAllArticles';
+import { generateRssFeed } from '@/lib/generateRssFeed';
+
+interface Props {
+  articles?: Array<{
+    author?: string;
+    date?: string;
+    description?: string;
+    slug?: string;
+    title?: string;
+  }>;
+}
+
+const Home = ({ articles }: Props) => {
   return (
     <>
       <Section>
         <Content
-          title="Software designer, founder, and amateur astronaut."
-          description="I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms."
+          title="Basic Frontend Enginner"
+          description="Hi, my name is Fiqry and I am a frontend engineer based in Bandung, Indonesia. I am currently learning everything about software development."
+          withSocialLink
         />
       </Section>
 
+      <Section>
+        <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-3xl">
+          <Balancer>Blog Post</Balancer>
+        </h2>
+      </Section>
+
       <Section className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 pb-10 lg:max-w-none lg:grid-cols-2">
-        <div className="space-y-10 p-2 pt-5">
-          <Card />
+        <div className="space-y-10 pt-8">
+          {articles?.map((items, index) => {
+            return (
+              <Card
+                key={index}
+                title={items.title}
+                description={items.description}
+                date={items.date}
+                link={items.slug}
+              />
+            );
+          })}
         </div>
         <div className="xl:pl-30 space-y-10 lg:pl-16">
           <Resume />
@@ -27,5 +54,19 @@ const Home: NextPage = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  if (process.env.NODE_ENV === 'production') {
+    await generateRssFeed();
+  }
+
+  return {
+    props: {
+      articles: (await getAllArticles())
+        .slice(0, 2)
+        .map(({ component, ...meta }) => meta)
+    }
+  };
+}
 
 export default Home;

@@ -18,7 +18,7 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
         <meta name="description" content={meta.description} />
       </Head>
       <div className="bg-white pb-16 dark:bg-zinc-900">
-        <div className="pt-16 lg:pt-32">
+        <div className="pt-16 lg:pt-20">
           <div className="mx-auto max-w-7xl lg:px-8">
             <div className="relative px-4 sm:px-8 lg:px-12">
               <div className="xl:relative">
@@ -40,8 +40,7 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
                         dateTime={meta.date}
                         className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
                       >
-                        <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
-                        <span className="ml-3">{formatDate(meta.date)}</span>
+                        <span>{formatDate(meta.date)}</span>
                       </time>
                     </header>
                     <Prose className="mt-8">{children}</Prose>

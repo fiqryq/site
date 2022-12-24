@@ -1,42 +1,37 @@
-import { Text } from '@fiqryq/piqui';
+import { formatDate } from '@/lib/formatDate';
 import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
 
-const Card: React.FC = () => {
+interface Props {
+  title?: string;
+  description?: string;
+  date?: string;
+  link?: string;
+}
+
+const Card: React.FC<Props> = ({ title, description, date, link }) => {
   return (
-    <article className="group relative flex flex-col items-start">
-      <Text
-        as="h2"
-        className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100"
-      >
-        <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl" />
-        <Link href="/articles/crafting-a-design-system-for-a-multiplanetary-future">
+    <article className="relative flex flex-col items-start">
+      <h2 className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+        <Link href={`/blog/post/${link}`}>
           <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl" />
           <span className="relative z-10">
-            <Balancer>
-              Crafting a design system for a multiplanetary future
-            </Balancer>
+            <Balancer>{title}</Balancer>
           </span>
         </Link>
-      </Text>
+      </h2>
       <time
+        dateTime={date}
         className="relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500"
-        dateTime="2022-09-05"
       >
-        September 5, 2022
+        {formatDate(date)}
       </time>
-      <Text
-        as="p"
-        className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400"
-      >
-        Most companies try to stay ahead of the curve when it comes to visual
-        design, but for Planetaria we needed to create a brand that would still
-        inspire us 100 years from now when humanity has spread across our entire
-        solar system.
-      </Text>
+      <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+        {description}
+      </p>
       <div
         aria-hidden="true"
-        className="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500"
+        className="relative z-10 mt-4 flex items-center text-sm font-medium text-purple-500"
       >
         Read article
         <svg

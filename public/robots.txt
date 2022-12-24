@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: undefined
+Host: https://fiqry.dev/
 
 # Sitemaps
-Sitemap: undefined/sitemap.xml
+Sitemap: https://fiqry.dev/sitemap.xml

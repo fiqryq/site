@@ -1,3 +1,5 @@
+export const download =
+  'https://github.com/fiqryq/resume/raw/main/resume/resume-24-December-2022.pdf';
 export const resume = [
   {
     company: 'Kitabisa',
@@ -8,6 +10,13 @@ export const resume = [
       label: 'Present',
       dateTime: new Date().getFullYear()
     }
+  },
+  {
+    company: 'Stafbook',
+    title: 'Frontend Engineer - Freelance',
+    logo: 'https://media.licdn.com/dms/image/D560BAQHpFTX4VO20lA/company-logo_100_100/0/1665912246003?e=1680134400&v=beta&t=_UnWXaxSMJTRLtyluOnzV1_2EDKyw8WA92gg_I2XdQA',
+    start: 'Apr 2022',
+    end: 'Aug 2022'
   },
   {
     company: 'Blocknom (YC W22)',

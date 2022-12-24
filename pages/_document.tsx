@@ -40,9 +40,19 @@ const themeScript = `
 
 export default function Document() {
   return (
-    <Html className="antialiased" lang="en">
+    <Html className="h-full antialiased" lang="en">
       <Head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          href={`${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.xml`}
+        />
+        <link
+          rel="alternate"
+          type="application/feed+json"
+          href={`${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.json`}
+        />
       </Head>
       <body className="bg-zinc-50 dark:bg-black">
         <Main />

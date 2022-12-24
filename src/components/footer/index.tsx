@@ -7,6 +7,7 @@ const Footer: React.FC = () => {
         <div className="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
           <Link href="/">Home</Link>
           <Link href="/blog">Blog</Link>
+          <Link href="/project">Project</Link>
           <Link href="/gear">Gear</Link>
         </div>
         <p className="text-sm text-zinc-400 dark:text-zinc-500">

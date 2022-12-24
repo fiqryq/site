@@ -1,9 +1,8 @@
 import Button from '@/components/button';
 import { ArrowDownIcon, BriefcaseIcon } from '@/components/icons';
-import { resume } from '@/constant/resume';
+import { download, resume } from '@/constant/resume';
 import clsx from 'clsx';
 import React from 'react';
-
 interface Props {
   className?: React.ReactNode;
 }
@@ -57,7 +56,7 @@ const Resume: React.FC<Props> = ({ className }) => (
         </li>
       ))}
     </ol>
-    <Button href="#" variant="secondary" className="group mt-6 w-full">
+    <Button href={download} variant="secondary" className="group mt-6 w-full">
       Download CV
       <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
     </Button>
