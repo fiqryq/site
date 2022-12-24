@@ -1,82 +1,82 @@
-import Link from '@/components/Link'
-import { PageSEO } from '@/components/SEO'
-import siteMetadata from '@/data/siteMetadata'
-import { getAllFilesFrontMatter } from '@/lib/mdx'
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { PostFrontMatter } from 'types/PostFrontMatter'
+import Content from '@/layouts/content';
+import Section from '@/layouts/section';
+import Card from '@/components/card';
+import Resume from '@/components/resume';
+import Balancer from 'react-wrap-balancer';
+import { getAllArticles } from '@/lib/getAllArticles';
+import { generateRssFeed } from '@/lib/generateRssFeed';
+import HeadSeo from '@/components/seo';
+import { siteMetadata } from '@/constant/meta-data';
+import Tracks from '@/src/components/top-track';
 
-const MAX_DISPLAY = 2
-
-export const getStaticProps: GetStaticProps<{ posts: PostFrontMatter[] }> = async () => {
-  const posts = await getAllFilesFrontMatter('blog')
-
-  return { props: { posts } }
+interface Props {
+  articles?: Array<{
+    author?: string;
+    date?: string;
+    description?: string;
+    slug?: string;
+    title?: string;
+  }>;
 }
 
-export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+const Home = ({ articles }: Props) => {
   return (
     <>
-      <PageSEO title={siteMetadata.author} description={siteMetadata.description} />
-      <div className="divide-gray-200 dark:divide-gray-700">
-        <div className="py-10 space-y-2 rounded-lg md:space-y-5">
-          <div className="flex flex-col space-y-3">
-            <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-800 dark:text-white sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
-              {`Hi 👋 i'm ${siteMetadata.author}`}
-            </h1>
-            <p className="text-lg leading-7 text-gray-600 dark:text-white">
-              {siteMetadata.description}
-              <span className="font-bold text-primary-600 ml-3 hover:underline hover:underline-offset-3">
-                <Link href="/about">Read About Me &rarr;</Link>
-              </span>
-            </p>
-          </div>
-        </div>
-        <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
-          Latest blog posts
-        </h1>
-        <ul className="sdivide-gray-200">
-          {!posts.length && 'No posts found.'}
-          {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
-            const { slug, title, summary } = frontMatter
-            return (
-              <li key={slug} className="py-2">
-                <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
-                  <article className="space-y-2 hover:bg-opacity-30 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
-                    <div className="space-y-1 xl:col-span-4">
-                      <h3 className="text-2xl font-bold leading-8 tracking-tight">
-                        <Link href={`/blog/${slug}`} className="text-primary-600">
-                          {title}
-                        </Link>
-                      </h3>
+      <HeadSeo
+        title={`Home`}
+        description={`Hi, my name is Fiqry and I am a frontend engineer based in Bandung, Indonesia. I am currently learning everything about software development.`}
+        canonicalUrl={siteMetadata.siteUrl}
+        ogTwitterImage={siteMetadata.siteLogoSquare}
+        ogType={'website'}
+      />
+      <Section>
+        <Content
+          title="Basic Frontend Enginner"
+          description="Hi, my name is Fiqry and I am a frontend engineer based in Bandung, Indonesia. I am currently learning everything about software development."
+          withSocialLink
+        />
+      </Section>
 
-                      <div className="prose text-gray-500 max-w-none dark:text-gray-400">
-                        {summary}
-                      </div>
-                    </div>
-                  </article>
-                </Link>
-              </li>
-            )
+      <Section>
+        <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-3xl">
+          <Balancer>Blog Post</Balancer>
+        </h2>
+      </Section>
+
+      <Section className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 pb-10 lg:max-w-none lg:grid-cols-2">
+        <div className="space-y-10 pt-8">
+          {articles?.map((items, index) => {
+            return (
+              <Card
+                key={index}
+                title={items.title}
+                description={items.description}
+                date={items.date}
+                link={items.slug}
+              />
+            );
           })}
-        </ul>
-      </div>
-      {posts.length > MAX_DISPLAY && (
-        <div className="flex justify-end text-base font-medium leading-6">
-          <Link
-            href="/blog"
-            className="text-primary-600 font-bold hover:text-primary-700 dark:hover:text-primary-700"
-            aria-label="all posts"
-          >
-            Read All Post &rarr;
-          </Link>
         </div>
-      )}
-      {/* <div className="py-7">
-        <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
-          My <span className="text-green-500">Spotify</span> Top Song
-        </h1>
-        <TopTracks />
-      </div> */}
+        <div className="xl:pl-30 space-y-10 lg:pl-16">
+          <Resume />
+        </div>
+      </Section>
     </>
-  )
+  );
+};
+
+export default Home;
+
+export async function getStaticProps() {
+  if (process.env.NODE_ENV === 'production') {
+    await generateRssFeed();
+  }
+
+  return {
+    props: {
+      articles: (await getAllArticles())
+        .slice(0, 2)
+        .map(({ component, ...meta }) => meta)
+    }
+  };
 }

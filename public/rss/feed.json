@@ -1,0 +1,45 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Fiqry choerudin",
+    "home_page_url": "https://fiqry.dev/",
+    "feed_url": "https://fiqry.dev//rss/feed.json",
+    "icon": "https://fiqry.dev//favicon.ico",
+    "author": {
+        "name": "Fiqry choerudin"
+    },
+    "items": [
+        {
+            "id": "https://fiqry.dev//blog/ternary-operation",
+            "content_html": "<p>ini adalah tulisan pertama saya di medium / blog pribadi, sebenarnya saya tidak terlalu mahir menulis jadi mungkin tulisan tulisan yang ada di medium saya adalah sebagai rangkuman progres belajar saya saja , so langsung saja ke topik utamanaya 👌\napa itu operator ternary? singkatnya adalah operator yang melibatkan tiga buah operand.</p>\n<pre class=\"language-ts\"><code class=\"language-ts\">expresi_satu <span class=\"token operator\">?</span> expresi_dua <span class=\"token operator\">:</span> expresi_tiga<span class=\"token punctuation\">;</span>\n</code></pre>\n<p>apabila expresi 1 bernilai benar atau true maka program akan mengeksekusi expresi ke 2 dan apabila expresi 1 bernilai salah atau false maka program akan mengeksekusi expresi ke 3 sebagai contoh di code berikut :</p>\n<pre class=\"language-ts\"><code class=\"language-ts\"><span class=\"token keyword\">let</span> num1<span class=\"token operator\">:</span> <span class=\"token builtin\">number</span> <span class=\"token operator\">=</span> <span class=\"token number\">1</span><span class=\"token punctuation\">;</span>\n<span class=\"token keyword\">let</span> num2<span class=\"token operator\">:</span> <span class=\"token builtin\">number</span> <span class=\"token operator\">=</span> <span class=\"token number\">2</span><span class=\"token punctuation\">;</span>\n\n<span class=\"token keyword\">const</span> a <span class=\"token operator\">=</span> num1 <span class=\"token operator\">&lt;</span> num2 <span class=\"token operator\">?</span> <span class=\"token string\">&#x27;red&#x27;</span> <span class=\"token operator\">:</span> <span class=\"token string\">&#x27;blue&#x27;</span><span class=\"token punctuation\">;</span>\n<span class=\"token doc-comment comment\">/**\n * karena expresi pertama terpenuhi yaitu num1(1) &lt; num2(2) akan bernilai true\n * maka program akan mengeksekusi expresi kedua yaitu menampilkan red\n * */</span>\n<span class=\"token console class-name\">console</span><span class=\"token punctuation\">.</span><span class=\"token method function property-access\">log</span><span class=\"token punctuation\">(</span>a<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n\n<span class=\"token keyword\">const</span> b <span class=\"token operator\">=</span> num1 <span class=\"token operator\">&gt;</span> num2 <span class=\"token operator\">?</span> <span class=\"token string\">&#x27;red&#x27;</span> <span class=\"token operator\">:</span> <span class=\"token string\">&#x27;blue&#x27;</span><span class=\"token punctuation\">;</span>\n<span class=\"token doc-comment comment\">/**\n * karena expresi pertama tidak terpenuhi yaitu num1(1) &gt; num2(2) akan bernilai false\n * maka program akan mengeksekusi expresi ketiga yaitu menampilkan blue\n * */</span>\n<span class=\"token console class-name\">console</span><span class=\"token punctuation\">.</span><span class=\"token method function property-access\">log</span><span class=\"token punctuation\">(</span>b<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</code></pre>\n<p>kalian bisa juga membuat kondisi seperti kode di bawah :</p>\n<pre class=\"language-ts\"><code class=\"language-ts\"><span class=\"token keyword\">let</span> num1<span class=\"token operator\">:</span> <span class=\"token builtin\">number</span> <span class=\"token operator\">=</span> <span class=\"token number\">1</span><span class=\"token punctuation\">;</span>\n<span class=\"token keyword\">let</span> num2<span class=\"token operator\">:</span> <span class=\"token builtin\">number</span> <span class=\"token operator\">=</span> <span class=\"token number\">2</span><span class=\"token punctuation\">;</span>\n\n<span class=\"token keyword\">const</span> a <span class=\"token operator\">=</span> num1 <span class=\"token operator\">&lt;</span> num2 <span class=\"token operator\">?</span> <span class=\"token string\">&#x27;red&#x27;</span> <span class=\"token operator\">:</span> num1 <span class=\"token operator\">&gt;</span> num2 <span class=\"token operator\">?</span> <span class=\"token string\">&#x27;blue&#x27;</span> <span class=\"token operator\">:</span> <span class=\"token string\">&#x27;green&#x27;</span><span class=\"token punctuation\">;</span>\n<span class=\"token doc-comment comment\">/**\n * karena expresi pertama terpenuhi yaitu num1(1) &lt; num2(2) akan bernilai true dan\n * program tidak akan mengeksekusi expresi selanjutnya karena expresi pertama terpenuhi\n * dan akan mencetak red di console. sedangkan jika expresi pertama tidak terpenuhi maka\n * program akan mengeksekusi expresi selanjutnya.\n * */</span>\n<span class=\"token console class-name\">console</span><span class=\"token punctuation\">.</span><span class=\"token method function property-access\">log</span><span class=\"token punctuation\">(</span>a<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</code></pre>\n<p>nah mungkin cukup sekian untuk tulisan pertama saya sampai jumpa di tulisan saya selanjutnya.</p>",
+            "url": "https://fiqry.dev//blog/ternary-operation",
+            "title": "Operator Ternary Typescript",
+            "summary": "ini adalah tulisan pertama saya di medium / blog pribadi. sebenarnya saya tidak terlalu mahir menulis jadi mungkin tulisan tulisan yang ada di medium saya adalah sebagai rangkuman progres belajar saya saja , so langsung saja ke topik utamanaya.",
+            "date_modified": "2021-06-24T00:00:00.000Z",
+            "author": {
+                "name": "Fiqry choerudin"
+            }
+        },
+        {
+            "id": "https://fiqry.dev//blog/nabung",
+            "content_html": "<p>Nabung –\nAplikasi pencatat tabungan adalah aplikasi yang bertujuan untuk membantu Anda dalam mengatur semaua aktivitas keuangan setiap harinya baik aktivitas pengeluaran maupun aktvitas pemasukan secara efisien. Aplikasi ini juga dapat digunakan untuk mendata semua daftar keinginan Anda supaya barang / keinginan yang Anda inginkan bisa tercapai dengan adanya aplikasi ini. Serta dapat membantu dalam memotivasi Anda untuk mencapai sesuatu yang Anda inginkan dengan adanya notifikasi pengingat untuk menabung. Aplikasi ini dibuat simple agar memudahkan user dalam pemakaiannya. Fitur utama:</p>\n<ul>\n<li>\n<p>Fitur Wishlist (Rencana Belanja) adalah fitur yang memudahkan Anda mewujudkan semua keinginan/barang impian yang ingin Anda miliki. Pada fitur ini juga Anda dapat menambahkan list keinginan yang Anda inginkan, harga barang yang Anda inginkan dan berapa hari target Anda ingin membeli barang yang Anda inginkan. Pada fitur ini juga dapat menambah, mengedit serta menghapus list keinginan Anda.</p>\n</li>\n<li>\n<p>Fitur Pemasukkan adalah fitur yang memudahkan Anda untuk mencatat semua uang yang masuk.</p>\n</li>\n<li>\n<p>Fitur Pengeluaran adalah fitur yang mencatat semua pengeluaran keuangan Anda.</p>\n</li>\n<li>\n<p>Fitur Tagihan adalah fitur yang mencatat tagihan Anda serta dilengkapi dengan fitur jatuh tempo.</p>\n</li>\n</ul>\n<h2>Link</h2>\n<ul>\n<li><a href=\"https://play.google.com/store/apps/details?id=org.d3ifcool.nabung\">Playstore</a> sudah di unduh 10K ++ pengguna playstore.</li>\n<li><a href=\"https://github.com/fiqryq/Nabung\">Github</a> source code aplikasi nabung.</li>\n</ul>",
+            "url": "https://fiqry.dev//blog/nabung",
+            "title": "Nabung app - college assignments",
+            "summary": "Nabung – Aplikasi pencatat tabungan adalah aplikasi yang bertujuan untuk membantu Anda dalam mengatur semaua aktivitas keuangan setiap harinya baik aktivitas pengeluaran maupun aktvitas pemasukan secara efisien",
+            "date_modified": "2019-10-10T00:00:00.000Z",
+            "author": {
+                "name": "Fiqry choerudin"
+            }
+        },
+        {
+            "id": "https://fiqry.dev//blog/create-nodejs-simple-app",
+            "content_html": "",
+            "url": "https://fiqry.dev//blog/create-nodejs-simple-app",
+            "title": "Membuat Aplikasi Sederhana Menggunakan NodeJS",
+            "summary": "Tulisan kali ini mungkin hanya untuk report progress belajar saya , saya membuat aplikasi sederhana untuk melakukan perhitungan , aplikasi ini dibuat diatas nodejs , di project ini saya hanya menggunakan readline untuk user bisa menginput dan melihat hasil perhitungannya.",
+            "date_modified": "2019-07-09T00:00:00.000Z",
+            "author": {
+                "name": "Fiqry choerudin"
+            }
+        }
+    ]
+}

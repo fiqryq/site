@@ -1,308 +1,315 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./pages/**/*.tsx', './components/**/*.tsx', './layouts/**/*.tsx', './lib/**/*.ts'],
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './layouts/**/*.{js,ts,jsx,tsx}',
+    './src/**/*.{js,ts,jsx,tsx}'
+  ],
   darkMode: 'class',
   theme: {
-    extend: {
-      spacing: {
-        '9/16': '56.25%',
-        0.75: '0.1875rem',
-        'content-sm': 'calc(100vh - 4.5rem)',
-        content: 'calc(100vh - 4rem)',
-      },
-      lineHeight: {
-        11: '2.75rem',
-        12: '3rem',
-        13: '3.25rem',
-        14: '3.5rem',
-      },
-      letterSpacing: {
-        tightest: '-.075em',
-      },
-      fontSize: {
-        '8.5xl': '7rem',
-      },
-      fontFamily: {
-        sans: ['IBM Plex Sans', ...defaultTheme.fontFamily.mono],
-      },
-      gradientColorStops: {
-        'gradient-1-start': '#F20089',
-        'gradient-1-end': '#D100D1',
-        'gradient-2-start': '#D100D1',
-        'gradient-2-end': '#A100F2',
-        'gradient-3-start': '#A100F2',
-        'gradient-3-end': '#2D00F7',
-      },
-      colors: {
-        primary: {
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#166534',
-          900: '#14532d',
-        },
-        success: {
-          100: '#E4FCDB',
-          200: '#C3FAB9',
-          300: '#99F193',
-          400: '#74E377',
-          500: '#49D159',
-          600: '#35B34F',
-          700: '#249647',
-          800: '#17793D',
-          900: '#0E6437',
-        },
-        info: {
-          100: '#CCFCFF',
-          200: '#99F2FF',
-          300: '#66E2FF',
-          400: '#3FCEFF',
-          500: '#00AEFF',
-          600: '#0087DB',
-          700: '#0065B7',
-          800: '#004793',
-          900: '#00337A',
-        },
-        warning: {
-          100: '#FEF1CF',
-          200: '#FDE09F',
-          300: '#FBC96F',
-          400: '#F8B24B',
-          500: '#F48E11',
-          600: '#D1700C',
-          700: '#AF5508',
-          800: '#8D3D05',
-          900: '#752D03',
-        },
-        danger: {
-          100: '#FFDCD3',
-          200: '#FFB1A8',
-          300: '#FF7D7C',
-          400: '#FF5C6A',
-          500: '#FF264D',
-          600: '#DB1B50',
-          700: '#B7134F',
-          800: '#930C4A',
-          900: '#7A0747',
-        },
-        'spotify-green': '#1DB954',
-        green: colors.emerald,
-        yellow: colors.amber,
-        purple: colors.violet,
-      },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            color: theme('colors.gray.700'),
-            a: {
-              color: theme('colors.primary.500'),
-              '&:hover': {
-                color: theme('colors.primary.600'),
-              },
-              code: { color: theme('colors.primary.400') },
-            },
-            h1: {
-              fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
-              color: theme('colors.gray.900'),
-            },
-            h2: {
-              fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
-              color: theme('colors.gray.900'),
-            },
-            h3: {
-              fontWeight: '600',
-              color: theme('colors.gray.900'),
-            },
-            'h4,h5,h6': {
-              color: theme('colors.gray.900'),
-            },
-            code: {
-              color: theme('colors.green.500'),
-              backgroundColor: theme('colors.gray.100'),
-              paddingLeft: '4px',
-              paddingRight: '4px',
-              paddingTop: '2px',
-              paddingBottom: '2px',
-              borderRadius: '0.25rem',
-            },
-            'code:before': {
-              content: 'none',
-            },
-            'code:after': {
-              content: 'none',
-            },
-            hr: { borderColor: theme('colors.gray.200') },
-            'ol li:before': {
-              fontWeight: '600',
-              color: theme('colors.gray.500'),
-            },
-            'ul li:before': {
-              backgroundColor: theme('colors.gray.500'),
-            },
-            'ul li > :last-child': {
-              margin: 0,
-            },
-            'ul li > :first-child': {
-              margin: 0,
-            },
-            strong: { color: theme('colors.gray.600') },
-            blockquote: {
-              color: theme('colors.gray.900'),
-              borderLeftColor: theme('colors.gray.200'),
-            },
-          },
-        },
-        dark: {
-          css: {
-            color: theme('colors.gray.300'),
-            a: {
-              color: theme('colors.primary.500'),
-              '&:hover': {
-                color: theme('colors.primary.400'),
-              },
-              code: { color: theme('colors.primary.400') },
-            },
-            h1: {
-              fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
-              color: theme('colors.gray.100'),
-            },
-            h2: {
-              fontWeight: '700',
-              letterSpacing: theme('letterSpacing.tight'),
-              color: theme('colors.gray.100'),
-            },
-            h3: {
-              fontWeight: '600',
-              color: theme('colors.gray.100'),
-            },
-            'h4,h5,h6': {
-              color: theme('colors.gray.100'),
-            },
-            code: {
-              backgroundColor: theme('colors.gray.800'),
-            },
-            hr: { borderColor: theme('colors.gray.700') },
-            'ol li:before': {
-              fontWeight: '600',
-              color: theme('colors.gray.400'),
-            },
-            'ul li:before': {
-              backgroundColor: theme('colors.gray.400'),
-            },
-            'ul li > :last-child': {
-              margin: 0,
-            },
-            'ul li > :first-child': {
-              margin: 0,
-            },
-            strong: { color: theme('colors.gray.100') },
-            thead: {
-              color: theme('colors.gray.100'),
-            },
-            tbody: {
-              tr: {
-                borderBottomColor: theme('colors.gray.700'),
-              },
-            },
-            blockquote: {
-              color: theme('colors.gray.100'),
-              borderLeftColor: theme('colors.gray.700'),
-            },
-          },
-        },
-      }),
-      keyframes: {
-        shrink: {
-          '0% , 100%': {
-            height: '0.75rem',
-          },
-          '50%': {
-            height: '0.375rem',
-          },
-        },
-        expand: {
-          '0% , 100%': {
-            height: '0.375rem',
-          },
-          '50%': {
-            height: '0.75rem',
-          },
-        },
-        'gradient-foreground-1': {
-          '0%, 16.667%, 100%': {
-            opacity: 1,
-          },
-          '33.333%, 83.333%': {
-            opacity: 0,
-          },
-        },
-        'gradient-background-1': {
-          '0%, 16.667%, 100%': {
-            opacity: 0,
-          },
-          '25%, 91.667%': {
-            opacity: 1,
-          },
-        },
-        'gradient-foreground-2': {
-          '0%, 100%': {
-            opacity: 0,
-          },
-          '33.333%, 50%': {
-            opacity: 1,
-          },
-          '16.667%, 66.667%': {
-            opacity: 0,
-          },
-        },
-        'gradient-background-2': {
-          '0%, to': {
-            opacity: 1,
-          },
-          '33.333%, 50%': {
-            opacity: 0,
-          },
-          '25%, 58.333%': {
-            opacity: 1,
-          },
-        },
-        'gradient-foreground-3': {
-          '0%, 50%, 100%': {
-            opacity: 0,
-          },
-          '66.667%, 83.333%': {
-            opacity: 1,
-          },
-        },
-        'gradient-background-3': {
-          '0%, 58.333%, 91.667%, 100%': {
-            opacity: 1,
-          },
-          '66.667%, 83.333%': {
-            opacity: 0,
-          },
-        },
-      },
-      animation: {
-        shrink: 'shrink 1.5s infinite',
-        expand: 'expand 1.5s infinite',
-        'gradient-background-1': 'gradient-background-1 8s infinite',
-        'gradient-foreground-1': 'gradient-foreground-1 8s infinite',
-        'gradient-background-2': 'gradient-background-2 8s infinite',
-        'gradient-foreground-2': 'gradient-foreground-2 8s infinite',
-        'gradient-background-3': 'gradient-background-3 8s infinite',
-        'gradient-foreground-3': 'gradient-foreground-3 8s infinite',
-      },
+    fontSize: {
+      xs: ['0.8125rem', { lineHeight: '1.5rem' }],
+      sm: ['0.875rem', { lineHeight: '1.5rem' }],
+      base: ['1rem', { lineHeight: '1.75rem' }],
+      lg: ['1.125rem', { lineHeight: '1.75rem' }],
+      xl: ['1.25rem', { lineHeight: '2rem' }],
+      '2xl': ['1.5rem', { lineHeight: '2rem' }],
+      '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+      '4xl': ['2rem', { lineHeight: '2.5rem' }],
+      '5xl': ['3rem', { lineHeight: '3.5rem' }],
+      '6xl': ['3.75rem', { lineHeight: '1' }],
+      '7xl': ['4.5rem', { lineHeight: '1' }],
+      '8xl': ['6rem', { lineHeight: '1' }],
+      '9xl': ['8rem', { lineHeight: '1' }]
     },
+    extend: {}
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
-}
+  corePlugins: {
+    aspectRatio: false
+  },
+  typography: theme => ({
+    invert: {
+      css: {
+        '--tw-prose-body': 'var(--tw-prose-invert-body)',
+        '--tw-prose-headings': 'var(--tw-prose-invert-headings)',
+        '--tw-prose-links': 'var(--tw-prose-invert-links)',
+        '--tw-prose-links-hover': 'var(--tw-prose-invert-links-hover)',
+        '--tw-prose-underline': 'var(--tw-prose-invert-underline)',
+        '--tw-prose-underline-hover': 'var(--tw-prose-invert-underline-hover)',
+        '--tw-prose-bold': 'var(--tw-prose-invert-bold)',
+        '--tw-prose-counters': 'var(--tw-prose-invert-counters)',
+        '--tw-prose-bullets': 'var(--tw-prose-invert-bullets)',
+        '--tw-prose-hr': 'var(--tw-prose-invert-hr)',
+        '--tw-prose-quote-borders': 'var(--tw-prose-invert-quote-borders)',
+        '--tw-prose-captions': 'var(--tw-prose-invert-captions)',
+        '--tw-prose-code': 'var(--tw-prose-invert-code)',
+        '--tw-prose-code-bg': 'var(--tw-prose-invert-code-bg)',
+        '--tw-prose-pre-code': 'var(--tw-prose-invert-pre-code)',
+        '--tw-prose-pre-bg': 'var(--tw-prose-invert-pre-bg)',
+        '--tw-prose-pre-border': 'var(--tw-prose-invert-pre-border)',
+        '--tw-prose-th-borders': 'var(--tw-prose-invert-th-borders)',
+        '--tw-prose-td-borders': 'var(--tw-prose-invert-td-borders)'
+      }
+    },
+    DEFAULT: {
+      css: {
+        '--tw-prose-body': theme('colors.zinc.600'),
+        '--tw-prose-headings': theme('colors.zinc.900'),
+        '--tw-prose-links': theme('colors.teal.500'),
+        '--tw-prose-links-hover': theme('colors.teal.600'),
+        '--tw-prose-underline': theme('colors.teal.500 / 0.2'),
+        '--tw-prose-underline-hover': theme('colors.teal.500'),
+        '--tw-prose-bold': theme('colors.zinc.900'),
+        '--tw-prose-counters': theme('colors.zinc.900'),
+        '--tw-prose-bullets': theme('colors.zinc.900'),
+        '--tw-prose-hr': theme('colors.zinc.100'),
+        '--tw-prose-quote-borders': theme('colors.zinc.200'),
+        '--tw-prose-captions': theme('colors.zinc.400'),
+        '--tw-prose-code': theme('colors.zinc.700'),
+        '--tw-prose-code-bg': theme('colors.zinc.300 / 0.2'),
+        '--tw-prose-pre-code': theme('colors.zinc.100'),
+        '--tw-prose-pre-bg': theme('colors.zinc.900'),
+        '--tw-prose-pre-border': 'transparent',
+        '--tw-prose-th-borders': theme('colors.zinc.200'),
+        '--tw-prose-td-borders': theme('colors.zinc.100'),
+
+        '--tw-prose-invert-body': theme('colors.zinc.400'),
+        '--tw-prose-invert-headings': theme('colors.zinc.200'),
+        '--tw-prose-invert-links': theme('colors.teal.400'),
+        '--tw-prose-invert-links-hover': theme('colors.teal.400'),
+        '--tw-prose-invert-underline': theme('colors.teal.400 / 0.3'),
+        '--tw-prose-invert-underline-hover': theme('colors.teal.400'),
+        '--tw-prose-invert-bold': theme('colors.zinc.200'),
+        '--tw-prose-invert-counters': theme('colors.zinc.200'),
+        '--tw-prose-invert-bullets': theme('colors.zinc.200'),
+        '--tw-prose-invert-hr': theme('colors.zinc.700 / 0.4'),
+        '--tw-prose-invert-quote-borders': theme('colors.zinc.500'),
+        '--tw-prose-invert-captions': theme('colors.zinc.500'),
+        '--tw-prose-invert-code': theme('colors.zinc.300'),
+        '--tw-prose-invert-code-bg': theme('colors.zinc.200 / 0.05'),
+        '--tw-prose-invert-pre-code': theme('colors.zinc.100'),
+        '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 0.4)',
+        '--tw-prose-invert-pre-border': theme('colors.zinc.200 / 0.1'),
+        '--tw-prose-invert-th-borders': theme('colors.zinc.700'),
+        '--tw-prose-invert-td-borders': theme('colors.zinc.800'),
+
+        // Base
+        color: 'var(--tw-prose-body)',
+        lineHeight: theme('lineHeight.7'),
+        '> *': {
+          marginTop: theme('spacing.10'),
+          marginBottom: theme('spacing.10')
+        },
+        p: {
+          marginTop: theme('spacing.7'),
+          marginBottom: theme('spacing.7')
+        },
+
+        // Headings
+        'h2, h3': {
+          color: 'var(--tw-prose-headings)',
+          fontWeight: theme('fontWeight.semibold')
+        },
+        h2: {
+          fontSize: theme('fontSize.xl')[0],
+          lineHeight: theme('lineHeight.7'),
+          marginTop: theme('spacing.20'),
+          marginBottom: theme('spacing.4')
+        },
+        h3: {
+          fontSize: theme('fontSize.base')[0],
+          lineHeight: theme('lineHeight.7'),
+          marginTop: theme('spacing.16'),
+          marginBottom: theme('spacing.4')
+        },
+        ':is(h2, h3) + *': {
+          marginTop: 0
+        },
+
+        // Images
+        img: {
+          borderRadius: theme('borderRadius.3xl')
+        },
+
+        // Inline elements
+        a: {
+          color: 'var(--tw-prose-links)',
+          fontWeight: theme('fontWeight.semibold'),
+          textDecoration: 'underline',
+          textDecorationColor: 'var(--tw-prose-underline)',
+          transitionProperty: 'color, text-decoration-color',
+          transitionDuration: theme('transitionDuration.150'),
+          transitionTimingFunction: theme('transitionTimingFunction.in-out')
+        },
+        'a:hover': {
+          color: 'var(--tw-prose-links-hover)',
+          textDecorationColor: 'var(--tw-prose-underline-hover)'
+        },
+        strong: {
+          color: 'var(--tw-prose-bold)',
+          fontWeight: theme('fontWeight.semibold')
+        },
+        code: {
+          display: 'inline-block',
+          color: 'var(--tw-prose-code)',
+          fontSize: theme('fontSize.sm')[0],
+          fontWeight: theme('fontWeight.semibold'),
+          backgroundColor: 'var(--tw-prose-code-bg)',
+          borderRadius: theme('borderRadius.lg'),
+          paddingLeft: theme('spacing.1'),
+          paddingRight: theme('spacing.1')
+        },
+        'a code': {
+          color: 'inherit'
+        },
+        ':is(h2, h3) code': {
+          fontWeight: theme('fontWeight.bold')
+        },
+
+        // Quotes
+        blockquote: {
+          paddingLeft: theme('spacing.6'),
+          borderLeftWidth: theme('borderWidth.2'),
+          borderLeftColor: 'var(--tw-prose-quote-borders)',
+          fontStyle: 'italic'
+        },
+
+        // Figures
+        figcaption: {
+          color: 'var(--tw-prose-captions)',
+          fontSize: theme('fontSize.sm')[0],
+          lineHeight: theme('lineHeight.6'),
+          marginTop: theme('spacing.3')
+        },
+        'figcaption > p': {
+          margin: 0
+        },
+
+        // Lists
+        ul: {
+          listStyleType: 'disc'
+        },
+        ol: {
+          listStyleType: 'decimal'
+        },
+        'ul, ol': {
+          paddingLeft: theme('spacing.6')
+        },
+        li: {
+          marginTop: theme('spacing.6'),
+          marginBottom: theme('spacing.6'),
+          paddingLeft: theme('spacing[3.5]')
+        },
+        'li::marker': {
+          fontSize: theme('fontSize.sm')[0],
+          fontWeight: theme('fontWeight.semibold')
+        },
+        'ol > li::marker': {
+          color: 'var(--tw-prose-counters)'
+        },
+        'ul > li::marker': {
+          color: 'var(--tw-prose-bullets)'
+        },
+        'li :is(ol, ul)': {
+          marginTop: theme('spacing.4'),
+          marginBottom: theme('spacing.4')
+        },
+        'li :is(li, p)': {
+          marginTop: theme('spacing.3'),
+          marginBottom: theme('spacing.3')
+        },
+
+        // Code blocks
+        pre: {
+          color: 'var(--tw-prose-pre-code)',
+          fontSize: theme('fontSize.sm')[0],
+          fontWeight: theme('fontWeight.medium'),
+          backgroundColor: 'var(--tw-prose-pre-bg)',
+          borderRadius: theme('borderRadius.3xl'),
+          padding: theme('spacing.8'),
+          overflowX: 'auto',
+          border: '1px solid',
+          borderColor: 'var(--tw-prose-pre-border)'
+        },
+        'pre code': {
+          display: 'inline',
+          color: 'inherit',
+          fontSize: 'inherit',
+          fontWeight: 'inherit',
+          backgroundColor: 'transparent',
+          borderRadius: 0,
+          padding: 0
+        },
+
+        // Horizontal rules
+        hr: {
+          marginTop: theme('spacing.20'),
+          marginBottom: theme('spacing.20'),
+          borderTopWidth: '1px',
+          borderColor: 'var(--tw-prose-hr)',
+          '@screen lg': {
+            marginLeft: `calc(${theme('spacing.12')} * -1)`,
+            marginRight: `calc(${theme('spacing.12')} * -1)`
+          }
+        },
+
+        // Tables
+        table: {
+          width: '100%',
+          tableLayout: 'auto',
+          textAlign: 'left',
+          fontSize: theme('fontSize.sm')[0]
+        },
+        thead: {
+          borderBottomWidth: '1px',
+          borderBottomColor: 'var(--tw-prose-th-borders)'
+        },
+        'thead th': {
+          color: 'var(--tw-prose-headings)',
+          fontWeight: theme('fontWeight.semibold'),
+          verticalAlign: 'bottom',
+          paddingBottom: theme('spacing.2')
+        },
+        'thead th:not(:first-child)': {
+          paddingLeft: theme('spacing.2')
+        },
+        'thead th:not(:last-child)': {
+          paddingRight: theme('spacing.2')
+        },
+        'tbody tr': {
+          borderBottomWidth: '1px',
+          borderBottomColor: 'var(--tw-prose-td-borders)'
+        },
+        'tbody tr:last-child': {
+          borderBottomWidth: 0
+        },
+        'tbody td': {
+          verticalAlign: 'baseline'
+        },
+        tfoot: {
+          borderTopWidth: '1px',
+          borderTopColor: 'var(--tw-prose-th-borders)'
+        },
+        'tfoot td': {
+          verticalAlign: 'top'
+        },
+        ':is(tbody, tfoot) td': {
+          paddingTop: theme('spacing.2'),
+          paddingBottom: theme('spacing.2')
+        },
+        ':is(tbody, tfoot) td:not(:first-child)': {
+          paddingLeft: theme('spacing.2')
+        },
+        ':is(tbody, tfoot) td:not(:last-child)': {
+          paddingRight: theme('spacing.2')
+        }
+      }
+    }
+  }),
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/container-queries')
+  ]
+};

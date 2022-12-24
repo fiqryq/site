@@ -1,0 +1,81 @@
+{
+  "React Functional Components": {
+    "prefix": "rfc",
+    "body": [
+      "",
+      "interface Props {",
+      "",
+      "}",
+      "const ${1:${TM_FILENAME_BASE}}: React.FC<Props> = ({ }) => {",
+      "\treturn <div>$0</div>",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}"
+    ]
+  },
+  "import React": {
+    "prefix": "ir",
+    "body": [
+      "import * as React from 'react';"
+    ]
+  },
+  "React.useState": {
+    "prefix": "us",
+    "body": [
+      "const [${1}, set${1/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}] = React.useState<$3>(${2:initial${1/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}})$0"
+    ]
+  },
+  "React.useEffect": {
+    "prefix": "ufe",
+    "body": [
+      "React.useEffect(() => {",
+      "  $0",
+      "}, []);"
+    ]
+  },
+  "React.useRef": {
+    "prefix": "urf",
+    "body": [
+      "const ${1:someRef} = React.useRef($0)"
+    ]
+  },
+  "Get Static Props": {
+    "prefix": "gsp",
+    "body": [
+      "export const getStaticProps = async (context: GetStaticPropsContext) => {",
+      "  return {",
+      "    props: {}",
+      "  };",
+      "}"
+    ]
+  },
+  "Get Static Paths": {
+    "prefix": "gspa",
+    "body": [
+      "export const getStaticPaths: GetStaticPaths = async () => {",
+      "  return {",
+      "    paths: [",
+      "      { params: { $1 }}",
+      "    ],",
+      "    fallback: ",
+      "  };",
+      "}"
+    ]
+  },
+  "Get Server Side Props": {
+    "prefix": "gssp",
+    "body": [
+      "export const getServerSideProps = async (context: GetServerSidePropsContext) => {",
+      "  return {",
+      "    props: {}",
+      "  };",
+      "}"
+    ]
+  },
+  "loger": {
+    "prefix": "log",
+    "body": [
+      "console.log($0)"
+    ]
+  }
+}
