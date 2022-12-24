@@ -1,10 +1,12 @@
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
-import Card from '@/src/components/card';
-import Resume from '@/src/components/resume';
+import Card from '@/components/card';
+import Resume from '@/components/resume';
 import Balancer from 'react-wrap-balancer';
 import { getAllArticles } from '@/lib/getAllArticles';
 import { generateRssFeed } from '@/lib/generateRssFeed';
+import HeadSeo from '@/components/seo';
+import { siteMetadata } from '@/constant/meta-data';
 
 interface Props {
   articles?: Array<{
@@ -19,6 +21,13 @@ interface Props {
 const Home = ({ articles }: Props) => {
   return (
     <>
+      <HeadSeo
+        title={`Home`}
+        description={`Hi, my name is Fiqry and I am a frontend engineer based in Bandung, Indonesia. I am currently learning everything about software development.`}
+        canonicalUrl={siteMetadata.siteUrl}
+        ogTwitterImage={siteMetadata.siteLogoSquare}
+        ogType={'website'}
+      />
       <Section>
         <Content
           title="Basic Frontend Enginner"

@@ -3,6 +3,8 @@ import Card from '@/components/card';
 import Section from '@/layouts/section';
 import { getAllArticles } from '@/lib/getAllArticles';
 import { generateRssFeed } from '@/lib/generateRssFeed';
+import HeadSeo from '@/components/seo';
+import { siteMetadata } from '@/constant/meta-data';
 
 interface Props {
   articles?: Array<{
@@ -16,26 +18,35 @@ interface Props {
 
 const index: React.FC<Props> = ({ articles }) => {
   return (
-    <Section>
-      <Content
-        title="The Random Ruminations of Fiqry"
-        description="- A blog about the author's thoughts."
-      >
-        <div className="mb-10 space-y-10">
-          {articles?.map((items, index) => {
-            return (
-              <Card
-                key={index}
-                title={items.title}
-                description={items.description}
-                date={items.date}
-                link={items.slug}
-              />
-            );
-          })}
-        </div>
-      </Content>
-    </Section>
+    <>
+      <HeadSeo
+        title={`Blog`}
+        description={`- A blog about the author's thoughts.`}
+        canonicalUrl={siteMetadata.siteUrl}
+        ogTwitterImage={siteMetadata.siteLogoSquare}
+        ogType={'website'}
+      />
+      <Section>
+        <Content
+          title="The Random Ruminations of Fiqry"
+          description="- A blog about the author's thoughts."
+        >
+          <div className="mb-10 space-y-10">
+            {articles?.map((items, index) => {
+              return (
+                <Card
+                  key={index}
+                  title={items.title}
+                  description={items.description}
+                  date={items.date}
+                  link={items.slug}
+                />
+              );
+            })}
+          </div>
+        </Content>
+      </Section>
+    </>
   );
 };
 

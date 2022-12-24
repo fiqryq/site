@@ -42,7 +42,10 @@ export default function Document() {
   return (
     <Html className="h-full antialiased" lang="en">
       <Head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="robots" content="index, follow" />
+        <link rel="icon" type="image/png" href="/public/favicon.ico" />
         <link
           rel="alternate"
           type="application/rss+xml"
@@ -53,6 +56,7 @@ export default function Document() {
           type="application/feed+json"
           href={`${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.json`}
         />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </Head>
       <body className="bg-zinc-50 dark:bg-black">
         <Main />
