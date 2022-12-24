@@ -55,6 +55,8 @@ const Home = ({ articles }: Props) => {
   );
 };
 
+export default Home;
+
 export async function getStaticProps() {
   if (process.env.NODE_ENV === 'production') {
     await generateRssFeed();
@@ -68,5 +70,3 @@ export async function getStaticProps() {
     }
   };
 }
-
-export default Home;

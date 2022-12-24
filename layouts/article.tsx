@@ -1,12 +1,10 @@
 import Head from 'next/head';
 import Prose from '@/layouts/porse';
-import { useRouter } from 'next/router';
+import router from 'next/router';
 import { formatDate } from '@/lib/formatDate';
 import { ArrowLeftIcon } from '@/components/icons';
 
 const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
-  let router = useRouter();
-
   if (isRssFeed) {
     return children;
   }

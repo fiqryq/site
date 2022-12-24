@@ -23,7 +23,7 @@ const Content: React.FC<Props> = ({
   withSocialLink
 }) => {
   return (
-    <div className="sm:mt-26 py-12">
+    <div className="sm:mt-26 pt-12 pb-5">
       <header className="max-w-2xl">
         <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
           <Balancer>{title}</Balancer>
