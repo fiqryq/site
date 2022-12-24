@@ -29,6 +29,7 @@
     "fast-glob": "^3.2.11",
     "feed": "^4.2.2",
     "focus-visible": "^5.2.0",
+    "lottie-react": "^2.3.1",
     "next": "^13.0.0",
     "next-sitemap": "^3.1.43",
     "postcss-focus-visible": "^7.1.0",
