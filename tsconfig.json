@@ -23,9 +23,17 @@
       "@/src/*": ["src/*"],
       "@/components/*": ["src/components/*"],
       "@/constant/*": ["src/constant/*"],
+      "@/types/*": ["src/types/*"],
       "@/images/*": ["src/images/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "commitlint.config.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "commitlint.config.js",
+    "lib/generateRssFeed.js",
+    "lib/generateRssFeed.js"
+  ],
   "exclude": ["node_modules"]
 }

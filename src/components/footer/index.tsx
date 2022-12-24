@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import NowPlaying from '../now-playing';
 
 const Footer: React.FC = () => {
   return (
@@ -9,13 +10,14 @@ const Footer: React.FC = () => {
           <Link href="/gear">Gear</Link>
           <Link href="/gear">Dashboard</Link>
         </div>
-        <p className="text-sm text-zinc-400 dark:text-zinc-500">
+        <NowPlaying />
+        {/* <p className="text-sm text-zinc-400 dark:text-zinc-500">
           &copy; {new Date().getFullYear()}{' '}
           <span className="font-semibold text-zinc-800 dark:text-zinc-100">
             Fiqry choerudin
           </span>
           . All rights reserved.
-        </p>
+        </p> */}
       </div>
     </footer>
   );
