@@ -16,7 +16,7 @@ const Navigation: React.FC = () => {
         <Link href="/">Home</Link>
         <Link href="/blog">Blog</Link>
         <Link href="/project">Project</Link>
-        <Link href="/gear">Gear</Link>
+        <Link href="/about">About</Link>
         <ThemeSelector />
       </div>
     </div>

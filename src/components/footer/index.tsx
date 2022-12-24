@@ -6,9 +6,8 @@ const Footer: React.FC = () => {
       <div className="flex flex-col items-center justify-between gap-6 px-4 sm:flex-row sm:px-8 lg:px-12">
         <div className="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
           <Link href="/">Home</Link>
-          <Link href="/blog">Blog</Link>
-          <Link href="/project">Project</Link>
           <Link href="/gear">Gear</Link>
+          <Link href="/gear">Dashboard</Link>
         </div>
         <p className="text-sm text-zinc-400 dark:text-zinc-500">
           &copy; {new Date().getFullYear()}{' '}

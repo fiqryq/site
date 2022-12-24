@@ -22,7 +22,8 @@
       "@/pages/*": ["pages/*"],
       "@/src/*": ["src/*"],
       "@/components/*": ["src/components/*"],
-      "@/constant/*": ["src/constant/*"]
+      "@/constant/*": ["src/constant/*"],
+      "@/images/*": ["src/images/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "commitlint.config.js"],
