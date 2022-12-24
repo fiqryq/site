@@ -5,13 +5,10 @@ import Card from '@/src/components/card';
 import Footer from '@/src/components/footer';
 import Navigation from '@/components/navigation';
 import Resume from '@/src/components/resume';
-import clsx from 'clsx';
 import type { NextPage } from 'next';
-
 const Home: NextPage = () => {
   return (
-    <Container className="space-y-5">
-      <Navigation />
+    <>
       <Section>
         <Content
           title="Software designer, founder, and amateur astronaut."
@@ -19,18 +16,15 @@ const Home: NextPage = () => {
         />
       </Section>
 
-      <Section className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+      <Section className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 pb-10 lg:max-w-none lg:grid-cols-2">
         <div className="space-y-10 p-2 pt-5">
           <Card />
-          <Card />
-          <Card />
         </div>
-        <div className="space-y-10 lg:pl-16 xl:pl-24">
+        <div className="xl:pl-30 space-y-10 lg:pl-16">
           <Resume />
         </div>
       </Section>
-      <Footer />
-    </Container>
+    </>
   );
 };
 

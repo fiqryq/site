@@ -1,4 +1,5 @@
 import React from 'react';
+import Balancer from 'react-wrap-balancer';
 
 interface Props {
   title?: string;
@@ -7,10 +8,10 @@ interface Props {
 }
 const Content: React.FC<Props> = ({ title, description, children }) => {
   return (
-    <div className="sm:mt-26 mt-16">
+    <div className="sm:mt-26 py-12">
       <header className="max-w-2xl">
         <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-          {title}
+          <Balancer>{title}</Balancer>
         </h1>
         <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
           {description}
