@@ -35,7 +35,7 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
         description={meta.description}
         ogTitle={meta.title}
       />
-      ß
+
       <div className="bg-white pb-16 dark:bg-zinc-900">
         <div className="pt-16 lg:pt-20">
           <div className="mx-auto max-w-7xl lg:px-8">
