@@ -40,12 +40,11 @@ const themeScript = `
 
 export default function Document() {
   return (
-    <Html className="h-full antialiased" lang="en">
+    <Html className="antialiased" lang="en">
       <Head>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="robots" content="index, follow" />
-        <link rel="icon" type="image/png" href="/public/favicon.ico" />
         <link
           rel="alternate"
           type="application/rss+xml"
