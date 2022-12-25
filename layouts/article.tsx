@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Prose from '@/layouts/porse';
 import router from 'next/router';
 import { formatDate } from '@/lib/formatDate';
@@ -11,6 +10,8 @@ import {
   GISCUS_REPOSITORY_ID
 } from '@/constant/giscus';
 import React from 'react';
+import HeadSeo from '@/components/seo';
+import { siteMetadata } from '@/constant/meta-data';
 
 const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
   const [Theme, setTheme] = React.useState<string>('light');
@@ -29,10 +30,14 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
 
   return (
     <>
-      <Head>
-        <title>{`${meta.title} - Fiqry choerudin`}</title>
-        <meta name="description" content={meta.description} />
-      </Head>
+      <HeadSeo
+        title={meta.title}
+        description={meta.description}
+        canonicalUrl={siteMetadata.siteUrl}
+        ogTwitterImage={siteMetadata.siteLogoSquare}
+        ogType={'website'}
+        ogTitle={meta.title}
+      />
       <div className="bg-white pb-16 dark:bg-zinc-900">
         <div className="pt-16 lg:pt-20">
           <div className="mx-auto max-w-7xl lg:px-8">

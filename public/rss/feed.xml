@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Fiqry choerudin</title>
-        <link>https://fiqry.dev/</link>
+        <link>https://fiqry.dev</link>
         <description></description>
-        <lastBuildDate>Sun, 25 Dec 2022 11:44:49 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 25 Dec 2022 15:41:21 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
             <title>Fiqry choerudin</title>
-            <url>https://fiqry.dev//favicon.ico</url>
-            <link>https://fiqry.dev/</link>
+            <url>https://fiqry.dev/favicon.ico</url>
+            <link>https://fiqry.dev</link>
         </image>
         <copyright>All rights reserved 2022</copyright>
         <item>
             <title><![CDATA[Hello world]]></title>
-            <link>https://fiqry.dev//blog/hello-world</link>
-            <guid>https://fiqry.dev//blog/hello-world</guid>
+            <link>https://fiqry.dev/blog/hello-world</link>
+            <guid>https://fiqry.dev/blog/hello-world</guid>
             <pubDate>Sun, 25 Dec 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[helo world from description.]]></description>
             <content:encoded><![CDATA[<h3>This is dummy content , this site under development.</h3>

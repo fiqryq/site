@@ -28,6 +28,7 @@
     "@tailwindcss/typography": "^0.5.7",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.0.0",
+    "@vercel/og": "^0.0.21",
     "clsx": "^1.2.1",
     "fast-glob": "^3.2.11",
     "feed": "^4.2.2",
