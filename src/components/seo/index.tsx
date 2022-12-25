@@ -31,10 +31,7 @@ const HeadSeo: React.FC<Props> = ({
       <meta property="og:type" content={ogType} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta
-        property="og:image"
-        content="https://avatars.githubusercontent.com/u/25787603?v=4"
-      />
+      <meta property="og:image" content="/public/favicon.ico" />
       <meta property="og:url" content={canonicalUrl} />
     </Head>
   );
