@@ -64,8 +64,8 @@ export const timeline = [
     icon: logourl.logoStafbook.link,
     iconBackground: 'bg-white drop-shadow-md',
     jobDescription: [
-      'Improve the Blocknom landing page using Tailwind CSS and Headless UI',
-      'Develop the Blocknom PWA app using Next.js, Redux, and Tailwind CSS.'
+      'Improve the Stafbook landing page using Tailwind CSS and Headless UI',
+      'Develop the Stafbook PWA app using Next.js, Redux, and Tailwind CSS.'
     ]
   },
   {
