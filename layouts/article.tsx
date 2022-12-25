@@ -33,11 +33,9 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
       <HeadSeo
         title={meta.title}
         description={meta.description}
-        canonicalUrl={siteMetadata.siteUrl}
-        ogTwitterImage={siteMetadata.siteLogoSquare}
-        ogType={'website'}
         ogTitle={meta.title}
       />
+      ß
       <div className="bg-white pb-16 dark:bg-zinc-900">
         <div className="pt-16 lg:pt-20">
           <div className="mx-auto max-w-7xl lg:px-8">

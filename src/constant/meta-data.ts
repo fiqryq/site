@@ -6,7 +6,7 @@ export const siteMetadata = {
   siteLogoSquare: '/public/favicon.ico',
   email: 'hi@fiqry.dev',
   twitter: 'https://twitter.com/fiqryq_',
-  twitterHandle: '@fqiryq_',
+  twitterHandle: '@fiqryq_',
   facebook: 'https://www.facebook.com/fiqryq',
   instagram: 'https://www.instagram.com/fiqryq',
   linkedin: 'https://www.linkedin.com/in/fiqrychoerudin'

@@ -22,11 +22,9 @@ const Home = ({ articles }: Props) => {
   return (
     <>
       <HeadSeo
-        title={`Home`}
-        description={`Hi, my name is Fiqry and I am a frontend engineer based in Bandung, Indonesia. I am currently learning everything about software development.`}
-        canonicalUrl={siteMetadata.siteUrl}
-        ogTwitterImage={siteMetadata.siteLogoSquare}
-        ogType={'website'}
+        title="Home"
+        description="Hi, my name is Fiqry and I am a frontend engineer based in Bandung, Indonesia. I am currently learning everything about software development."
+        ogTitle="github.com/fiqryq"
       />
       <Section>
         <Content
