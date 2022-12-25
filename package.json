@@ -1,12 +1,13 @@
 {
   "name": "fiqry.dev",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
+    "release": "standard-version",
     "lint": "next lint --fix --dir pages --dir lib --dir src",
     "prepare": "husky install"
   },
@@ -40,6 +41,7 @@
     "react-dom": "^18.2.0",
     "react-wrap-balancer": "^0.2.3",
     "remark-gfm": "^3.0.1",
+    "standard-version": "^9.5.0",
     "swr": "^2.0.0"
   },
   "devDependencies": {
