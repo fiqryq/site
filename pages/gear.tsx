@@ -8,11 +8,9 @@ const Uses: NextPage = () => {
   return (
     <>
       <HeadSeo
-        title={`Gear`}
-        description={`Here are all the software and hardware that I use on a daily basis.`}
-        canonicalUrl={siteMetadata.siteUrl}
-        ogTwitterImage={siteMetadata.siteLogoSquare}
-        ogType={'website'}
+        title="Gear"
+        description="ere are all the software and hardware that I use on a daily basis."
+        ogTitle="Gear page."
       />
       <Section>
         <Content

@@ -18,11 +18,9 @@ const About: NextPage = () => {
   return (
     <>
       <HeadSeo
-        title={`About`}
-        description={`About Fiqry choerudin.`}
-        canonicalUrl={siteMetadata.siteUrl}
-        ogTwitterImage={siteMetadata.siteLogoSquare}
-        ogType={'website'}
+        title="About"
+        description="About Fiqry choerudin."
+        ogTitle="About page"
       />
       <Section>
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-5 gap-y-20 py-10 lg:max-w-none lg:grid-cols-2">

@@ -20,11 +20,9 @@ const index: React.FC<Props> = ({ articles }) => {
   return (
     <>
       <HeadSeo
-        title={`Blog`}
-        description={`- A blog about the author's thoughts.`}
-        canonicalUrl={siteMetadata.siteUrl}
-        ogTwitterImage={siteMetadata.siteLogoSquare}
-        ogType={'website'}
+        title="Blog"
+        description="- A blog about the author thoughts."
+        ogTitle="Blog page."
       />
       <Section>
         <Content

@@ -11,11 +11,9 @@ const Project: NextPage = () => {
   return (
     <>
       <HeadSeo
-        title={`Project`}
-        description={`In my opinion, a software engineer should leave their mark on the internet in the form of an article or project. Here are some projects that I have worked on as a software developer.`}
-        canonicalUrl={siteMetadata.siteUrl}
-        ogTwitterImage={siteMetadata.siteLogoSquare}
-        ogType={'website'}
+        title="Project"
+        description="In my opinion, a software engineer should leave their mark on the internet in the form of an article or project. Here are some projects that I have worked on as a software developer."
+        ogTitle="Project page."
       />
       <Section>
         <Content
