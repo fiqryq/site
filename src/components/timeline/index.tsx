@@ -4,7 +4,7 @@ import clsx from 'clsx';
 const Timeline = () => {
   return (
     <div className="flow-root">
-      <div role="list" className="-mb-8 px-5 lg:px-0">
+      <ul className="-mb-8 px-5 lg:px-0">
         {timeline.map((items, itemsIdx) => (
           <li key={items.id}>
             <div className="relative pb-8">
@@ -58,7 +58,7 @@ const Timeline = () => {
             </div>
           </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };
