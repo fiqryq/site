@@ -25,6 +25,8 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
     return children;
   }
 
+  const dynamicTerm = `blog discussion - ${meta.title}`;
+
   return (
     <>
       <Head>
@@ -67,7 +69,7 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
                     categoryId={GISCUS_CATEGORY_ID}
                     mapping="specific"
                     strict="1"
-                    term="Welcome to discussion room"
+                    term={dynamicTerm}
                     reactionsEnabled="1"
                     emitMetadata="0"
                     inputPosition="top"
