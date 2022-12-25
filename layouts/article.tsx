@@ -3,12 +3,18 @@ import Prose from '@/layouts/porse';
 import router from 'next/router';
 import { formatDate } from '@/lib/formatDate';
 import { ArrowLeftIcon } from '@/components/icons';
+import Giscus from '@/components/giscus';
+import {
+  GISCUS_CATEGORY,
+  GISCUS_CATEGORY_ID,
+  GISCUS_REPO,
+  GISCUS_REPOSITORY_ID
+} from '@/constant/giscus';
 
 const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
   if (isRssFeed) {
     return children;
   }
-
   return (
     <>
       <Head>
@@ -43,6 +49,21 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
                     </header>
                     <Prose className="mt-8">{children}</Prose>
                   </article>
+                  <div className="mb-5 border-b-[1px] border-zinc-100 pt-5" />
+                  <Giscus
+                    repo={GISCUS_REPO}
+                    repoId={GISCUS_REPOSITORY_ID}
+                    category={GISCUS_CATEGORY}
+                    categoryId={GISCUS_CATEGORY_ID}
+                    mapping="specific"
+                    strict="1"
+                    term="welcome to @fiqryq/fiqry.dev discussion."
+                    reactionsEnabled="1"
+                    emitMetadata="0"
+                    inputPosition="top"
+                    theme="light"
+                    lang="en"
+                  />
                 </div>
               </div>
             </div>

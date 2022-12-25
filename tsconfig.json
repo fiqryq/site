@@ -23,7 +23,7 @@
       "@/src/*": ["src/*"],
       "@/components/*": ["src/components/*"],
       "@/constant/*": ["src/constant/*"],
-      "@/types/*": ["src/types/*"],
+      "@/types/*": ["types/*"],
       "@/images/*": ["src/images/*"]
     }
   },
