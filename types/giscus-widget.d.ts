@@ -5,18 +5,18 @@ interface GiscusWidgetAttributes {
   repoid: string;
   category?: string;
   categoryid?: string;
-  mapping: import('@/types/giscus').Mapping;
+  mapping: import('./giscus').Mapping;
   term?: string;
-  theme?: import('@/types/giscus').Theme;
-  strict?: import('@/types/giscus').BooleanString;
-  reactionsenabled?: import('@/types/giscus').BooleanString;
-  emitmetadata?: import('@/types/giscus').BooleanString;
-  inputposition?: import('@/types/giscus').InputPosition;
-  lang?: import('@/types/giscus').AvailableLanguage;
-  loading?: import('@/types/giscus').Loading;
+  theme?: import('./giscus').Theme;
+  strict?: import('./giscus').BooleanString;
+  reactionsenabled?: import('./giscus').BooleanString;
+  emitmetadata?: import('./giscus').BooleanString;
+  inputposition?: import('./giscus').InputPosition;
+  lang?: import('./giscus').AvailableLanguage;
+  loading?: import('./giscus').Loading;
 }
 
-namespace JSX {
+declare namespace JSX {
   interface IntrinsicElements {
     'giscus-widget': GiscusWidgetAttributes;
   }

@@ -10,11 +10,21 @@ import {
   GISCUS_REPO,
   GISCUS_REPOSITORY_ID
 } from '@/constant/giscus';
+import React from 'react';
 
 const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
+  const [Theme, setTheme] = React.useState<string>('light');
+
+  React.useEffect(() => {
+    const localTheme = localStorage.getItem('theme')?.toString();
+    if (localTheme === 'system') setTheme('light');
+    else setTheme(localTheme || Theme);
+  }, [Theme]);
+
   if (isRssFeed) {
     return children;
   }
+
   return (
     <>
       <Head>
@@ -49,7 +59,7 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
                     </header>
                     <Prose className="mt-8">{children}</Prose>
                   </article>
-                  <div className="mb-5 border-b-[1px] border-zinc-100 pt-5" />
+                  <div className="mb-5 border-b-[1px] border-zinc-100 pt-5 dark:border-zinc-800" />
                   <Giscus
                     repo={GISCUS_REPO}
                     repoId={GISCUS_REPOSITORY_ID}
@@ -57,11 +67,11 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
                     categoryId={GISCUS_CATEGORY_ID}
                     mapping="specific"
                     strict="1"
-                    term="welcome to @fiqryq/fiqry.dev discussion."
+                    term="Welcome to discussion room"
                     reactionsEnabled="1"
                     emitMetadata="0"
                     inputPosition="top"
-                    theme="light"
+                    theme={Theme}
                     lang="en"
                   />
                 </div>
