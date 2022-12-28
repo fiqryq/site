@@ -3,16 +3,18 @@ import HeadSeo from '@/components/seo';
 import Balancer from 'react-wrap-balancer';
 import Link from 'next/link';
 import Timeline from '@/components/timeline';
-import { siteMetadata } from '@/constant/meta-data';
 import type { NextPage } from 'next';
 import {
   TwitterIcon,
   InstagramIcon,
   GitHubIcon,
   LinkedInIcon,
-  BriefcaseIcon
+  BriefcaseIcon,
+  ArrowDownIcon
 } from '@/components/icons';
 import { socialLink } from '@/constant/social-link';
+import Button from '@/components/button';
+import { download } from '@/src/constant/resume';
 
 const About: NextPage = () => {
   return (
@@ -68,6 +70,15 @@ const About: NextPage = () => {
               className="rounded-xl"
               alt="avatar"
             />
+
+            <Button
+              href={download}
+              variant="secondary"
+              className="group mt-2 w-full"
+            >
+              Download CV
+              <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
+            </Button>
 
             <div className="mt-6 flex flex-col gap-6">
               <Link

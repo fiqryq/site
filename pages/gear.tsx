@@ -4,7 +4,7 @@ import HeadSeo from '@/components/seo';
 import { siteMetadata } from '@/constant/meta-data';
 import type { NextPage } from 'next';
 
-const Uses: NextPage = () => {
+const Gear: NextPage = () => {
   return (
     <>
       <HeadSeo
@@ -24,4 +24,4 @@ const Uses: NextPage = () => {
   );
 };
 
-export default Uses;
+export default Gear;

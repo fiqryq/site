@@ -1,13 +1,10 @@
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
 import Card from '@/components/card';
-import Resume from '@/components/resume';
 import Balancer from 'react-wrap-balancer';
+import HeadSeo from '@/components/seo';
 import { getAllArticles } from '@/lib/getAllArticles';
 import { generateRssFeed } from '@/lib/generateRssFeed';
-import HeadSeo from '@/components/seo';
-import { siteMetadata } from '@/constant/meta-data';
-
 interface Props {
   articles?: Array<{
     author?: string;
@@ -23,7 +20,7 @@ const Home = ({ articles }: Props) => {
     <>
       <HeadSeo
         title="Home"
-        description="Hi, my name is Fiqry and I am a frontend engineer based in Bandung, Indonesia. I am currently learning everything about software development."
+        description="Hi, my name is Fiqry and I am a frontend engineer based in Bandung, Indonesia. I am currently learning everything about react ecosystem."
         ogTitle="github.com/fiqryq"
       />
       <Section>
@@ -55,7 +52,7 @@ const Home = ({ articles }: Props) => {
           })}
         </div>
         <div className="xl:pl-30 space-y-10 lg:pl-16">
-          <Resume />
+          {/* fill with content right side here */}
         </div>
       </Section>
     </>
