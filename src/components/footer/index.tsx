@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
         <div className="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
           <Link href="/">Home</Link>
           <Link href="/gear">Gear</Link>
-          <Link href="/https://dashboard.fiqry.dev/share/GKTWkENc/Fiqry.dev">
+          <Link href="https://dashboard.fiqry.dev/share/GKTWkENc/Fiqry.dev">
             Dashboard
           </Link>
         </div>
