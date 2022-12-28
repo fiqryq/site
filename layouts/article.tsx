@@ -11,7 +11,6 @@ import {
 } from '@/constant/giscus';
 import React from 'react';
 import HeadSeo from '@/components/seo';
-import { siteMetadata } from '@/constant/meta-data';
 
 const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
   const [Theme, setTheme] = React.useState<string>('light');
@@ -55,6 +54,9 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
                       <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
                         {meta.title}
                       </h1>
+                      <span className="mt-2 text-sm text-zinc-500 dark:text-zinc-600">
+                        Written on {formatDate(meta.date)} by {meta.author}.
+                      </span>
                       <time
                         dateTime={meta.date}
                         className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
@@ -62,7 +64,7 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
                         <span>{formatDate(meta.date)}</span>
                       </time>
                     </header>
-                    <Prose className="mt-8">{children}</Prose>
+                    <Prose className="mt-7">{children}</Prose>
                   </article>
                   <div className="mb-5 border-b-[1px] border-zinc-100 pt-5 dark:border-zinc-800" />
                   <Giscus
