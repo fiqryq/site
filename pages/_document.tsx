@@ -43,6 +43,12 @@ export default function Document() {
     <Html className="antialiased" lang="en">
       <Head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script
+          async
+          defer
+          data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID}
+          src="https://dashboard.fiqry.dev/umami.js"
+        />
       </Head>
       <body className="bg-zinc-50 dark:bg-black">
         <Main />
