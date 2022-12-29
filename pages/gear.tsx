@@ -1,7 +1,6 @@
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
 import HeadSeo from '@/components/seo';
-import { siteMetadata } from '@/constant/meta-data';
 import type { NextPage } from 'next';
 
 const Gear: NextPage = () => {
