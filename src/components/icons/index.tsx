@@ -142,16 +142,16 @@ const SocialLink = ({ icon: Icon, link, ...props }: any) => {
 };
 
 export {
+  ArrowDownIcon,
+  ArrowLeftIcon,
+  BriefcaseIcon,
   DarkIcon,
-  LightIcon,
-  SystemIcon,
-  TwitterIcon,
-  LinkedInIcon,
   GitHubIcon,
   InstagramIcon,
-  ArrowDownIcon,
-  BriefcaseIcon,
-  ArrowLeftIcon,
+  LightIcon,
+  LinkedInIcon,
+  LinkIcon,
   SocialLink,
-  LinkIcon
+  SystemIcon,
+  TwitterIcon
 };

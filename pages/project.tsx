@@ -1,10 +1,11 @@
-import Content from '@/layouts/content';
-import Section from '@/layouts/section';
 import type { NextPage } from 'next';
 import Link from 'next/link';
-import { projects } from '@/constant/project';
+
 import { LinkIcon } from '@/components/icons';
 import HeadSeo from '@/components/seo';
+import { projects } from '@/constant/project';
+import Content from '@/layouts/content';
+import Section from '@/layouts/section';
 
 const Project: NextPage = () => {
   return (

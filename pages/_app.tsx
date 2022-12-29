@@ -1,5 +1,7 @@
-import type { AppProps } from 'next/app';
 import 'css/tailwind.css';
+
+import type { AppProps } from 'next/app';
+
 import Footer from '@/components/footer';
 import Navigation from '@/components/navigation';
 import Container from '@/layouts/container';

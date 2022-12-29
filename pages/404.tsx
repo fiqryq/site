@@ -1,7 +1,8 @@
-import HeadSeo from '@/components/seo';
 import Link from 'next/link';
-import { forurofour } from '@/constant/404-constant';
+
 import { ArrowLeftIcon } from '@/components/icons';
+import HeadSeo from '@/components/seo';
+import { forurofour } from '@/constant/404-constant';
 
 const ErrorFourOFour = () => {
   return (

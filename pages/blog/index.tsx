@@ -1,9 +1,9 @@
-import Content from '@/layouts/content';
 import Card from '@/components/card';
-import Section from '@/layouts/section';
-import { getAllArticles } from '@/lib/getAllArticles';
-import { generateRssFeed } from '@/lib/generateRssFeed';
 import HeadSeo from '@/components/seo';
+import Content from '@/layouts/content';
+import Section from '@/layouts/section';
+import { generateRssFeed } from '@/lib/generateRssFeed';
+import { getAllArticles } from '@/lib/getAllArticles';
 
 interface Props {
   articles?: Array<{

@@ -1,19 +1,20 @@
-import Section from '@/layouts/section';
-import HeadSeo from '@/components/seo';
-import Balancer from 'react-wrap-balancer';
-import Link from 'next/link';
-import Timeline from '@/components/timeline';
 import type { NextPage } from 'next';
-import {
-  TwitterIcon,
-  InstagramIcon,
-  GitHubIcon,
-  LinkedInIcon,
-  BriefcaseIcon,
-  ArrowDownIcon
-} from '@/components/icons';
-import { socialLink } from '@/constant/social-link';
+import Link from 'next/link';
+import Balancer from 'react-wrap-balancer';
+
 import Button from '@/components/button';
+import {
+  ArrowDownIcon,
+  BriefcaseIcon,
+  GitHubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  TwitterIcon
+} from '@/components/icons';
+import HeadSeo from '@/components/seo';
+import Timeline from '@/components/timeline';
+import { socialLink } from '@/constant/social-link';
+import Section from '@/layouts/section';
 import { download } from '@/src/constant/resume';
 
 const About: NextPage = () => {

@@ -1,6 +1,7 @@
-import { logourl } from '@/constant/logo-url';
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
+
+import { logourl } from '@/constant/logo-url';
 
 export const config = {
   runtime: 'edge'

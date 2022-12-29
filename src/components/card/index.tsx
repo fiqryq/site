@@ -1,6 +1,7 @@
-import { formatDate } from '@/lib/formatDate';
 import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
+
+import { formatDate } from '@/lib/formatDate';
 
 interface Props {
   title?: string;

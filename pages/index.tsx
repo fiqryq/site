@@ -1,10 +1,12 @@
+import Balancer from 'react-wrap-balancer';
+
+import Card from '@/components/card';
+import HeadSeo from '@/components/seo';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
-import Card from '@/components/card';
-import Balancer from 'react-wrap-balancer';
-import HeadSeo from '@/components/seo';
-import { getAllArticles } from '@/lib/getAllArticles';
 import { generateRssFeed } from '@/lib/generateRssFeed';
+import { getAllArticles } from '@/lib/getAllArticles';
+
 interface Props {
   articles?: Array<{
     author?: string;
