@@ -1,5 +1,5 @@
 import Card from '@/components/card';
-import HeadSeo from '@/components/seo';
+import NextSeo from '@/components/seo';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
 import { generateRssFeed } from '@/lib/generateRssFeed';
@@ -18,11 +18,7 @@ interface Props {
 const index: React.FC<Props> = ({ articles }) => {
   return (
     <>
-      <HeadSeo
-        title="Blog"
-        description="- A blog about my thoughts."
-        ogTitle="Blog page."
-      />
+      <NextSeo title="Blog" description="- A blog about my thoughts." />
       <Section>
         <Content
           title="The Random Ruminations of Fiqry"

@@ -1,7 +1,7 @@
 import Balancer from 'react-wrap-balancer';
 
 import Card from '@/components/card';
-import HeadSeo from '@/components/seo';
+import NextSeo from '@/components/seo';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
 import { generateRssFeed } from '@/lib/generateRssFeed';
@@ -20,10 +20,9 @@ interface Props {
 const Home = ({ articles }: Props) => {
   return (
     <>
-      <HeadSeo
+      <NextSeo
         title="Home"
         description="Hi, my name is Fiqry and I am a frontend engineer based in Bandung, Indonesia. I am currently learning everything about react ecosystem."
-        ogTitle="github.com/fiqryq"
       />
       <Section>
         <Content

@@ -1,16 +1,15 @@
 import type { NextPage } from 'next';
 
-import HeadSeo from '@/components/seo';
+import NextSeo from '@/components/seo';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
 
 const Gear: NextPage = () => {
   return (
     <>
-      <HeadSeo
+      <NextSeo
         title="Gear"
         description="ere are all the software and hardware that I use on a daily basis."
-        ogTitle="Gear page."
       />
       <Section>
         <Content

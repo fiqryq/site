@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 
 import { LinkIcon } from '@/components/icons';
-import HeadSeo from '@/components/seo';
+import NextSeo from '@/components/seo';
 import { projects } from '@/constant/project';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
@@ -10,10 +10,9 @@ import Section from '@/layouts/section';
 const Project: NextPage = () => {
   return (
     <>
-      <HeadSeo
+      <NextSeo
         title="Project"
         description="In my opinion, a software engineer should leave their mark on the internet in the form of an article or project. Here are some projects that I have worked on as a software developer."
-        ogTitle="Project page."
       />
       <Section>
         <Content

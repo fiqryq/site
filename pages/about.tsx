@@ -11,20 +11,16 @@ import {
   LinkedInIcon,
   TwitterIcon
 } from '@/components/icons';
-import HeadSeo from '@/components/seo';
+import NextSeo from '@/components/seo';
 import Timeline from '@/components/timeline';
+import { download } from '@/constant/resume';
 import { socialLink } from '@/constant/social-link';
 import Section from '@/layouts/section';
-import { download } from '@/src/constant/resume';
 
 const About: NextPage = () => {
   return (
     <>
-      <HeadSeo
-        title="About"
-        description="About Fiqry choerudin."
-        ogTitle="About page"
-      />
+      <NextSeo title="About" description="About Fiqry choerudin." />
       <Section>
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-5 gap-y-20 py-10 lg:max-w-none lg:grid-cols-2">
           <div className="space-y-5">

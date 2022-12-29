@@ -10,7 +10,7 @@ import {
   GISCUS_REPOSITORY_ID
 } from '@/constant/giscus';
 import React from 'react';
-import HeadSeo from '@/components/seo';
+import NextSeo from '@/src/components/seo';
 
 const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
   const [Theme, setTheme] = React.useState<string>('light');
@@ -29,11 +29,7 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
 
   return (
     <>
-      <HeadSeo
-        title={meta.title}
-        description={meta.description}
-        ogTitle={meta.title}
-      />
+      <NextSeo title={meta.title} description={meta.description} />
 
       <div className="bg-white pb-16 dark:bg-zinc-900">
         <div className="pt-16 lg:pt-20">

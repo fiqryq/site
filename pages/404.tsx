@@ -1,16 +1,15 @@
 import Link from 'next/link';
 
 import { ArrowLeftIcon } from '@/components/icons';
-import HeadSeo from '@/components/seo';
+import NextSeo from '@/components/seo';
 import { forurofour } from '@/constant/404-constant';
 
 const ErrorFourOFour = () => {
   return (
     <>
-      <HeadSeo
+      <NextSeo
         title="Omg this page broken. hehe"
         description="404 page not found"
-        ogTitle="404 page not found"
       />
       <main className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-xl py-16 sm:py-24">
