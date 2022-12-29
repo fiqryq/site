@@ -11,7 +11,7 @@ const Timeline = () => {
             <div className="relative pb-8">
               {itemsIdx !== timeline.length - 1 ? (
                 <span
-                  className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"
+                  className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-zinc-200 dark:bg-zinc-800"
                   aria-hidden="true"
                 />
               ) : null}
@@ -33,17 +33,17 @@ const Timeline = () => {
                 <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
                   <div className="space-y-3">
                     <div>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-zinc-500">
                         {items.content}{' '}
                         <a
                           href={items.href}
-                          className="font-medium text-gray-900"
+                          className="font-medium text-zinc-900 dark:text-zinc-100"
                         >
                           {items.target}
                         </a>
                       </p>
-                      <div className="whitespace-nowrap text-left text-sm text-gray-700">
-                        <time>{items.date}</time>
+                      <div className="whitespace-nowrap text-left text-sm text-zinc-700">
+                        <time className="dark:text-zinc-100">{items.date}</time>
                       </div>
                     </div>
                     <ul className="prose list-disc text-justify text-sm text-zinc-500">

@@ -75,7 +75,7 @@ const About: NextPage = () => {
             <Button
               href={download}
               variant="secondary"
-              className="group mt-2 w-full"
+              className="group mt-4 w-full"
             >
               Download CV
               <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
