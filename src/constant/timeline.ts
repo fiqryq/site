@@ -44,7 +44,7 @@ export const timeline = [
   },
   {
     id: 4,
-    content: 'Freenalce as',
+    content: 'Freelance as',
     target: 'Frontend Enginner at Blocknom (YC W22)',
     href: 'https://www.linkedin.com/company/blocknom/',
     date: 'Feb 2022 - Apr 2022',
@@ -57,7 +57,7 @@ export const timeline = [
   },
   {
     id: 4,
-    content: 'Freenalce as',
+    content: 'Freelance as',
     target: 'Frontend Enginner at Stafbook',
     href: 'https://www.linkedin.com/company/stafbook-com/',
     date: 'May 2022 - Aug 2022',
