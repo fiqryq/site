@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { projects } from '@/constant/project';
 import { LinkIcon } from '@/components/icons';
 import HeadSeo from '@/components/seo';
-import { siteMetadata } from '@/constant/meta-data';
 
 const Project: NextPage = () => {
   return (

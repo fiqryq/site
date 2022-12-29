@@ -4,7 +4,6 @@ import Section from '@/layouts/section';
 import { getAllArticles } from '@/lib/getAllArticles';
 import { generateRssFeed } from '@/lib/generateRssFeed';
 import HeadSeo from '@/components/seo';
-import { siteMetadata } from '@/constant/meta-data';
 
 interface Props {
   articles?: Array<{
