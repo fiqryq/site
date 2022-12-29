@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
-import ThemeSelector from '@/components/theme-selector';
 import Link from 'next/link';
+
+import ThemeSelector from '@/components/theme-selector';
 
 const Navigation: React.FC = () => {
   return (

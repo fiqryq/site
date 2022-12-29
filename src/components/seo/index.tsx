@@ -1,6 +1,8 @@
-import { siteMetadata } from '@/constant/meta-data';
-import { SITE_URL as BASE_URL } from '@/constant/global';
 import Head from 'next/head';
+
+import { SITE_URL as BASE_URL } from '@/constant/global';
+import { siteMetadata } from '@/constant/meta-data';
+
 interface Props {
   title?: string;
   description?: string;

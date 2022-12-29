@@ -1,8 +1,10 @@
+import clsx from 'clsx';
+import React from 'react';
+
 import Button from '@/components/button';
 import { ArrowDownIcon, BriefcaseIcon } from '@/components/icons';
 import { download, resume } from '@/constant/resume';
-import clsx from 'clsx';
-import React from 'react';
+
 interface Props {
   className?: React.ReactNode;
 }

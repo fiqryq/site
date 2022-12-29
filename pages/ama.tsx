@@ -1,15 +1,16 @@
+import type { NextPage } from 'next';
+import React from 'react';
+
+import HeadSeo from '@/components/seo';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
-import HeadSeo from '@/components/seo';
-import type { NextPage } from 'next';
 import Giscus from '@/src/components/giscus';
 import {
-  GISCUS_REPO,
-  GISCUS_REPOSITORY_ID,
   GISCUS_CATEGORY_AMA,
-  GISCUS_CATEGORY_ID_AMA
+  GISCUS_CATEGORY_ID_AMA,
+  GISCUS_REPO,
+  GISCUS_REPOSITORY_ID
 } from '@/src/constant/giscus';
-import React from 'react';
 
 const Ama: NextPage = () => {
   const [Theme, setTheme] = React.useState<string>('light');

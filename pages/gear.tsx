@@ -1,7 +1,8 @@
+import type { NextPage } from 'next';
+
+import HeadSeo from '@/components/seo';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
-import HeadSeo from '@/components/seo';
-import type { NextPage } from 'next';
 
 const Gear: NextPage = () => {
   return (

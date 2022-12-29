@@ -1,5 +1,6 @@
-import { timeline } from '@/constant/timeline';
 import clsx from 'clsx';
+
+import { timeline } from '@/constant/timeline';
 
 const Timeline = () => {
   return (
