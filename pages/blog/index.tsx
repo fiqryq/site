@@ -20,7 +20,7 @@ const index: React.FC<Props> = ({ articles }) => {
     <>
       <HeadSeo
         title="Blog"
-        description="- A blog about the author thoughts."
+        description="- A blog about my thoughts."
         ogTitle="Blog page."
       />
       <Section>
