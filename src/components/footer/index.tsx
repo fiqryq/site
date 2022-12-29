@@ -8,6 +8,9 @@ const Footer: React.FC = () => {
           <Link href="/">Home</Link>
           <Link href="/gear">Gear</Link>
           <Link href="/ama">Ama</Link>
+          <Link href="https://github.com/fiqryq/fiqry.dev/blob/main/CHANGELOG.md">
+            Changelog
+          </Link>
           <Link href="https://dashboard.fiqry.dev/share/GKTWkENc/Fiqry.dev">
             Dashboard
           </Link>
