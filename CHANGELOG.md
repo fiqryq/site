@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/fiqryq/fiqry.dev/compare/v2.4.0...v2.5.0) (2022-12-29)
+
+
+### Features
+
+* add author's on article page ([2fd92fb](https://github.com/fiqryq/fiqry.dev/commit/2fd92fb290c6c4e33b285e6ceb04fe12a50ebb59))
+* add constant ([c101978](https://github.com/fiqryq/fiqry.dev/commit/c101978cc66741a4bc7cb9e216405bc15b351d0a))
+* add dashboard url [#41](https://github.com/fiqryq/fiqry.dev/issues/41) ([faf411e](https://github.com/fiqryq/fiqry.dev/commit/faf411ece71a9e18d6a98684b27cbf477321e6d3))
+* dynamic og image , fix seo [#42](https://github.com/fiqryq/fiqry.dev/issues/42) ([e34828b](https://github.com/fiqryq/fiqry.dev/commit/e34828b7ac0ba6bb5e8431db7b147b2716f0b664))
+
+
+### Bug Fixes
+
+* broken yarn.lock [#83](https://github.com/fiqryq/fiqry.dev/issues/83) ([8e5caca](https://github.com/fiqryq/fiqry.dev/commit/8e5caca66bf1f61194a654d7d24a97cc84972398))
+* **constant:** fix some word [#42](https://github.com/fiqryq/fiqry.dev/issues/42) ([0b86388](https://github.com/fiqryq/fiqry.dev/commit/0b863883bb9531b44944b3b5df28bf18934de470))
+* **link:** fix link to dashboard [#41](https://github.com/fiqryq/fiqry.dev/issues/41) ([5ebb7ba](https://github.com/fiqryq/fiqry.dev/commit/5ebb7ba0eeb064796d45f5361b7f2989bc9ecef3))
+* meta tag , seo components [#86](https://github.com/fiqryq/fiqry.dev/issues/86) ([52ab00a](https://github.com/fiqryq/fiqry.dev/commit/52ab00add6a911839e33c5ac9d88e74d5365930b))
+* **wierd char shit:** delete strange char ([10d91bf](https://github.com/fiqryq/fiqry.dev/commit/10d91bfac696c16d47a99f713eafec82b8d813cb))
+
 ## 2.4.0 (2022-12-25)
 
 
