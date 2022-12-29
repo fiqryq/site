@@ -40,7 +40,7 @@ const Ama: NextPage = () => {
             categoryId={GISCUS_CATEGORY_ID_AMA}
             mapping="specific"
             strict="1"
-            term={'Ask me anything'}
+            term="Ask me anything."
             reactionsEnabled="1"
             emitMetadata="0"
             inputPosition="top"
