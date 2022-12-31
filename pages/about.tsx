@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
 
@@ -62,12 +63,18 @@ const About: NextPage = () => {
             </div>
           </div>
           <div className="lg:col-span-1 lg:px-16">
-            <img
+            <Image
               src="https://avatars.githubusercontent.com/u/25787603?v=4"
               className="rounded-xl"
+              width={700}
+              height={475}
+              sizes="100vw"
+              style={{
+                width: '100%',
+                height: 'auto'
+              }}
               alt="avatar"
             />
-
             <Button
               href={download}
               variant="secondary"

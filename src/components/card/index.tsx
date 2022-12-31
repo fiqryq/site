@@ -1,53 +1,52 @@
-import Link from 'next/link';
-import Balancer from 'react-wrap-balancer';
-
 import { formatDate } from '@/lib/formatDate';
 
 interface Props {
   title?: string;
   description?: string;
+  category?: Array<string>;
+  banner?: string;
   date?: string;
-  link?: string;
+  slug?: string;
 }
 
-const Card: React.FC<Props> = ({ title, description, date, link }) => {
+const Card: React.FC<Props> = ({
+  title,
+  description,
+  banner,
+  category,
+  date,
+  slug
+}) => {
   return (
-    <article className="relative flex flex-col items-start">
-      <h2 className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-        <Link href={`/blog/post/${link}`}>
-          <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl" />
-          <span className="relative z-10">
-            <Balancer>{title}</Balancer>
-          </span>
-        </Link>
-      </h2>
-      <time
-        dateTime={date}
-        className="relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500"
-      >
-        {formatDate(date)}
-      </time>
-      <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        {description}
-      </p>
-      <div
-        aria-hidden="true"
-        className="relative z-10 mt-4 flex items-center text-sm font-medium text-zinc-500"
-      >
-        Read article
-        <svg
-          viewBox="0 0 16 16"
-          fill="none"
-          aria-hidden="true"
-          className="ml-1 h-4 w-4 stroke-current"
-        >
-          <path
-            d="M6.75 5.75 9.25 8l-2.5 2.25"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-        </svg>
+    <article className="flex flex-col overflow-hidden rounded-lg border-[1px] border-zinc-100 dark:border-zinc-800">
+      <div className="relative flex-shrink-0">
+        <img className="h-48 w-full object-cover" src={banner} alt={title} />
+        <div className="absolute bottom-0 grid w-full grid-cols-4 gap-3 px-6 py-3 text-sm font-medium text-zinc-600">
+          {category?.map((cat, idx) => (
+            <div
+              key={idx}
+              className="rounded-md bg-zinc-900 text-center text-xs text-zinc-100"
+            >
+              {' '}
+              {cat}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-1 flex-col justify-between bg-white p-6 dark:bg-zinc-900">
+        <div className="flex-1">
+          <a href={slug} className="mt-1 block">
+            <p className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+              {title}
+            </p>
+            <p className="mt-3 text-sm font-semibold text-zinc-500 dark:text-zinc-100">
+              {formatDate(date)}
+            </p>
+            <p className="mt-1 text-sm text-zinc-500 line-clamp-2 dark:text-zinc-50">
+              {description}
+            </p>
+          </a>
+        </div>
       </div>
     </article>
   );

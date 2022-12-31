@@ -35,8 +35,6 @@
     "fast-glob": "^3.2.11",
     "feed": "^4.2.2",
     "focus-visible": "^5.2.0",
-    "lottie-react": "^2.3.1",
-    "motion": "^10.15.3",
     "next": "^13.0.0",
     "next-seo": "^5.15.0",
     "next-sitemap": "^3.1.43",
@@ -45,8 +43,7 @@
     "react-dom": "^18.2.0",
     "react-wrap-balancer": "^0.2.3",
     "remark-gfm": "^3.0.1",
-    "standard-version": "^9.5.0",
-    "swr": "^2.0.0"
+    "standard-version": "^9.5.0"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.2.0",
@@ -54,6 +51,7 @@
     "@mdx-js/loader": "^2.1.5",
     "@mdx-js/react": "^2.1.5",
     "@next/mdx": "^13.0.2",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",

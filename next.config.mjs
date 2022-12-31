@@ -6,8 +6,13 @@ import rehypePrism from '@mapbox/rehype-prism';
 const nextConfig = {
   pageExtensions: ['tsx', 'mdx', 'jsx'],
   reactStrictMode: true,
-  experimental: {
-    scrollRestoration: true
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**'
+      }
+    ]
   }
 };
 

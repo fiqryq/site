@@ -25,12 +25,9 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
     return children;
   }
 
-  const dynamicTerm = `blog discussion - ${meta.title}`;
-
   return (
     <>
       <NextSeo title={meta.title} description={meta.description} />
-
       <div className="bg-white pb-16 dark:bg-zinc-900">
         <div className="pt-16 lg:pt-20">
           <div className="mx-auto max-w-7xl lg:px-8">
@@ -70,7 +67,7 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
                     categoryId={GISCUS_CATEGORY_ID}
                     mapping="specific"
                     strict="1"
-                    term={dynamicTerm}
+                    term={`blog discussion - ${meta.title}`}
                     reactionsEnabled="1"
                     emitMetadata="0"
                     inputPosition="top"

@@ -22,7 +22,11 @@ module.exports = {
       '8xl': ['6rem', { lineHeight: '1' }],
       '9xl': ['8rem', { lineHeight: '1' }]
     },
-    extend: {}
+    extend: {
+      backgroundImage: {
+        'background-pattern': "url('/public/background/background.svg')"
+      }
+    }
   },
   corePlugins: {
     aspectRatio: false
@@ -310,6 +314,7 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/container-queries')
+    require('@tailwindcss/container-queries'),
+    require('@tailwindcss/line-clamp')
   ]
 };

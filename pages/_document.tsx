@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { Head, Html, Main, NextScript } from 'next/document';
 
 const themeScript = `
@@ -50,7 +51,7 @@ export default function Document() {
           src="https://dashboard.fiqry.dev/umami.js"
         />
       </Head>
-      <body className="bg-zinc-50 dark:bg-black">
+      <body className={clsx('bg-zinc-50 bg-background-pattern dark:bg-black')}>
         <Main />
         <NextScript />
       </body>

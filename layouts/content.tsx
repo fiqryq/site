@@ -6,6 +6,7 @@ import {
   LinkedInIcon
 } from '@/components/icons';
 import { socialLink } from '@/src/constant/social-link';
+import clsx from 'clsx';
 import React from 'react';
 import Balancer from 'react-wrap-balancer';
 
@@ -14,13 +15,15 @@ interface Props {
   description?: string;
   children?: React.ReactNode;
   withSocialLink?: boolean;
+  topSpacer?: string;
 }
 
 const Content: React.FC<Props> = ({
   title,
   description,
   children,
-  withSocialLink
+  withSocialLink,
+  topSpacer = 'mt-16 sm:mt-20'
 }) => {
   return (
     <div className="sm:mt-26 pt-12 pb-5">
@@ -56,7 +59,7 @@ const Content: React.FC<Props> = ({
           </div>
         )}
       </header>
-      <div className="mt-16 sm:mt-20">{children}</div>
+      <div className={clsx(topSpacer)}>{children}</div>
     </div>
   );
 };

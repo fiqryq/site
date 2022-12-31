@@ -1,38 +1,44 @@
-import Card from '@/components/card';
+import React from 'react';
+
 import NextSeo from '@/components/seo';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
 import { generateRssFeed } from '@/lib/generateRssFeed';
 import { getAllArticles } from '@/lib/getAllArticles';
+import Card from '@/src/components/card';
 
 interface Props {
   articles?: Array<{
     author?: string;
     date?: string;
     description?: string;
+    category?: Array<string>;
+    banner?: string;
     slug?: string;
     title?: string;
   }>;
 }
-
 const index: React.FC<Props> = ({ articles }) => {
   return (
     <>
       <NextSeo title="Blog" description="- A blog about my thoughts." />
       <Section>
         <Content
-          title="The Random Ruminations of Fiqry"
-          description="- A blog about the author's thoughts."
+          title="The Random Thoughts of Me"
+          description="- A blog about my thoughts."
+          topSpacer="mt-5"
         >
-          <div className="mb-10 space-y-10">
+          <div className="grid grid-cols-3 gap-3">
             {articles?.map((items, index) => {
               return (
                 <Card
                   key={index}
                   title={items.title}
                   description={items.description}
+                  slug={`/blog/post/${items.slug}`}
+                  category={items.category}
                   date={items.date}
-                  link={items.slug}
+                  banner={items.banner}
                 />
               );
             })}

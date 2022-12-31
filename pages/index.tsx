@@ -1,5 +1,4 @@
-import Balancer from 'react-wrap-balancer';
-
+import Warning from '@/components/alert';
 import Card from '@/components/card';
 import NextSeo from '@/components/seo';
 import Content from '@/layouts/content';
@@ -12,6 +11,8 @@ interface Props {
     author?: string;
     date?: string;
     description?: string;
+    banner?: string;
+    category?: Array<string>;
     slug?: string;
     title?: string;
   }>;
@@ -26,35 +27,34 @@ const Home = ({ articles }: Props) => {
       />
       <Section>
         <Content
-          title="Basic Frontend Enginner"
-          description="Hi, my name is Fiqry and I am a frontend engineer based in Bandung, Indonesia. I am currently learning everything about software development."
+          title="Fiqry choerudin"
+          description="Hi, my name is Fiqry and I am a frontend engineer based in Bandung, Indonesia. I am currently learning everything about engineering especialy frontend development."
           withSocialLink
-        />
+        >
+          <Warning />
+        </Content>
       </Section>
 
       <Section>
         <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-3xl">
-          <Balancer>Blog Post</Balancer>
+          Blog Post
         </h2>
       </Section>
 
-      <Section className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 pb-10 lg:max-w-none lg:grid-cols-2">
-        <div className="space-y-10 pt-8">
-          {articles?.map((items, index) => {
-            return (
-              <Card
-                key={index}
-                title={items.title}
-                description={items.description}
-                date={items.date}
-                link={items.slug}
-              />
-            );
-          })}
-        </div>
-        <div className="xl:pl-30 space-y-10 lg:pl-16">
-          {/* fill with content right side here */}
-        </div>
+      <Section className="mx-auto grid max-w-xl grid-cols-1 gap-5 pt-5 pb-10 lg:max-w-none lg:grid-cols-3">
+        {articles?.map((items, index) => {
+          return (
+            <Card
+              key={index}
+              title={items.title}
+              description={items.description}
+              slug={`/blog/post/${items.slug}`}
+              category={items.category}
+              date={items.date}
+              banner={items.banner}
+            />
+          );
+        })}
       </Section>
     </>
   );
@@ -70,7 +70,7 @@ export async function getStaticProps() {
   return {
     props: {
       articles: (await getAllArticles())
-        .slice(0, 2)
+        .slice(0, 3)
         .map(({ component, ...meta }) => meta)
     }
   };

@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
       <div className="flex flex-col items-center justify-between gap-6 px-4 sm:flex-row sm:px-8 lg:px-12">
         <div className="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
           <Link href="/">Home</Link>
-          <Link href="/gear">Gear</Link>
+          <Link href="/uses">Uses</Link>
           <Link href="/ama">Ama</Link>
           <Link href="https://github.com/fiqryq/fiqry.dev/blob/main/CHANGELOG.md">
             Changelog
