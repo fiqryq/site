@@ -4,7 +4,7 @@
         <title>Fiqry choerudin</title>
         <link>https://fiqry.dev</link>
         <description></description>
-        <lastBuildDate>Sun, 25 Dec 2022 16:18:10 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 31 Dec 2022 19:00:33 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -12,15 +12,33 @@
             <url>https://fiqry.dev/favicon.ico</url>
             <link>https://fiqry.dev</link>
         </image>
-        <copyright>All rights reserved 2022</copyright>
+        <copyright>All rights reserved 2023</copyright>
         <item>
-            <title><![CDATA[Hello world]]></title>
-            <link>https://fiqry.dev/blog/hello-world</link>
-            <guid>https://fiqry.dev/blog/hello-world</guid>
-            <pubDate>Sun, 25 Dec 2022 00:00:00 GMT</pubDate>
-            <description><![CDATA[helo world from description.]]></description>
-            <content:encoded><![CDATA[<h3>This is dummy content , this site under development.</h3>
-<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&#x27;t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn&#x27;t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>]]></content:encoded>
+            <title><![CDATA[Rewind 2021]]></title>
+            <link>https://fiqry.dev/blog/rewind-2021</link>
+            <guid>https://fiqry.dev/blog/rewind-2021</guid>
+            <pubDate>Wed, 28 Dec 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[2022 was a very meaningful year for me because some of my dreams were achieved in 2022 and it was also a very difficult year for me. I will write about it in this writing as a reminder for myself and a personal record for the following year.]]></description>
+            <content:encoded><![CDATA[<p>2022 was a very meaningful year for me because some of my dreams were achieved in 2022 and it was also a very difficult year for me. I will write about it in this writing as a reminder for myself and a personal record for the following year.</p>
+<h3>Starting Learn React ecosystem</h3>
+<img src="https://www.matawebsite.com/images/blog/1575067193.apa_itu_reactjs_dan_mengapa_kita_harus_menggunakan_reactjs.jpg" width="100%"/>
+<p>At the beginning of the year, I tried something new which was learning the ReactJS framework. Why did I choose React? I had a dream of working at a unicorn company in Indonesia and when I participated in a mini bootcamp at the end of 2021, my mentor <a href="https://twitter.com/azharieazharou">Muhammad Azharie</a>, who was working at one of Indonesia&#x27;s unicorn companies which is Tokopedia, he told me that Tokopedia used the ReactJs framework for frontend, At that moment, I thought that the first step for me to be able to work at a big company like Tokopedia was to learn React. I started learning React at the beginning of 2022 and it turned out to be a huge step for my career.</p>
+<h3>I got my first freelance job from learning ReactJS.</h3>
+<p>.....draft</p>]]></content:encoded>
+            <author>hi@fiqry.dev (Fiqry choerudin)</author>
+        </item>
+        <item>
+            <title><![CDATA[Dummy post]]></title>
+            <link>https://fiqry.dev/blog/rewind-2022</link>
+            <guid>https://fiqry.dev/blog/rewind-2022</guid>
+            <pubDate>Wed, 28 Dec 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[2022 was a very meaningful year for me because some of my dreams were achieved in 2022 and it was also a very difficult year for me. I will write about it in this writing as a reminder for myself and a personal record for the following year.]]></description>
+            <content:encoded><![CDATA[<p>2022 was a very meaningful year for me because some of my dreams were achieved in 2022 and it was also a very difficult year for me. I will write about it in this writing as a reminder for myself and a personal record for the following year.</p>
+<h3>Starting Learn React ecosystem</h3>
+<img src="https://www.matawebsite.com/images/blog/1575067193.apa_itu_reactjs_dan_mengapa_kita_harus_menggunakan_reactjs.jpg" width="100%"/>
+<p>At the beginning of the year, I tried something new which was learning the ReactJS framework. Why did I choose React? I had a dream of working at a unicorn company in Indonesia and when I participated in a mini bootcamp at the end of 2021, my mentor <a href="https://twitter.com/azharieazharou">Muhammad Azharie</a>, who was working at one of Indonesia&#x27;s unicorn companies which is Tokopedia, he told me that Tokopedia used the ReactJs framework for frontend, At that moment, I thought that the first step for me to be able to work at a big company like Tokopedia was to learn React. I started learning React at the beginning of 2022 and it turned out to be a huge step for my career.</p>
+<h3>I got my first freelance job from learning ReactJS.</h3>
+<p>.....draft</p>]]></content:encoded>
             <author>hi@fiqry.dev (Fiqry choerudin)</author>
         </item>
     </channel>

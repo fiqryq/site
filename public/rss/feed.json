@@ -9,12 +9,23 @@
     },
     "items": [
         {
-            "id": "https://fiqry.dev/blog/hello-world",
-            "content_html": "<h3>This is dummy content , this site under development.</h3>\n<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&#x27;t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn&#x27;t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>",
-            "url": "https://fiqry.dev/blog/hello-world",
-            "title": "Hello world",
-            "summary": "helo world from description.",
-            "date_modified": "2022-12-25T00:00:00.000Z",
+            "id": "https://fiqry.dev/blog/rewind-2021",
+            "content_html": "<p>2022 was a very meaningful year for me because some of my dreams were achieved in 2022 and it was also a very difficult year for me. I will write about it in this writing as a reminder for myself and a personal record for the following year.</p>\n<h3>Starting Learn React ecosystem</h3>\n<img src=\"https://www.matawebsite.com/images/blog/1575067193.apa_itu_reactjs_dan_mengapa_kita_harus_menggunakan_reactjs.jpg\" width=\"100%\"/>\n<p>At the beginning of the year, I tried something new which was learning the ReactJS framework. Why did I choose React? I had a dream of working at a unicorn company in Indonesia and when I participated in a mini bootcamp at the end of 2021, my mentor <a href=\"https://twitter.com/azharieazharou\">Muhammad Azharie</a>, who was working at one of Indonesia&#x27;s unicorn companies which is Tokopedia, he told me that Tokopedia used the ReactJs framework for frontend, At that moment, I thought that the first step for me to be able to work at a big company like Tokopedia was to learn React. I started learning React at the beginning of 2022 and it turned out to be a huge step for my career.</p>\n<h3>I got my first freelance job from learning ReactJS.</h3>\n<p>.....draft</p>",
+            "url": "https://fiqry.dev/blog/rewind-2021",
+            "title": "Rewind 2021",
+            "summary": "2022 was a very meaningful year for me because some of my dreams were achieved in 2022 and it was also a very difficult year for me. I will write about it in this writing as a reminder for myself and a personal record for the following year.",
+            "date_modified": "2022-12-28T00:00:00.000Z",
+            "author": {
+                "name": "Fiqry choerudin"
+            }
+        },
+        {
+            "id": "https://fiqry.dev/blog/rewind-2022",
+            "content_html": "<p>2022 was a very meaningful year for me because some of my dreams were achieved in 2022 and it was also a very difficult year for me. I will write about it in this writing as a reminder for myself and a personal record for the following year.</p>\n<h3>Starting Learn React ecosystem</h3>\n<img src=\"https://www.matawebsite.com/images/blog/1575067193.apa_itu_reactjs_dan_mengapa_kita_harus_menggunakan_reactjs.jpg\" width=\"100%\"/>\n<p>At the beginning of the year, I tried something new which was learning the ReactJS framework. Why did I choose React? I had a dream of working at a unicorn company in Indonesia and when I participated in a mini bootcamp at the end of 2021, my mentor <a href=\"https://twitter.com/azharieazharou\">Muhammad Azharie</a>, who was working at one of Indonesia&#x27;s unicorn companies which is Tokopedia, he told me that Tokopedia used the ReactJs framework for frontend, At that moment, I thought that the first step for me to be able to work at a big company like Tokopedia was to learn React. I started learning React at the beginning of 2022 and it turned out to be a huge step for my career.</p>\n<h3>I got my first freelance job from learning ReactJS.</h3>\n<p>.....draft</p>",
+            "url": "https://fiqry.dev/blog/rewind-2022",
+            "title": "Dummy post",
+            "summary": "2022 was a very meaningful year for me because some of my dreams were achieved in 2022 and it was also a very difficult year for me. I will write about it in this writing as a reminder for myself and a personal record for the following year.",
+            "date_modified": "2022-12-28T00:00:00.000Z",
             "author": {
                 "name": "Fiqry choerudin"
             }
