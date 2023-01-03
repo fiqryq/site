@@ -18,8 +18,8 @@ const Navigation: React.FC = () => {
       {/* Desktop nav */}
       <div className="flex gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-400">
         <Link href="/">Home</Link>
-        <Link href="/blog">Blog</Link>
-        <Link href="/project">Project</Link>
+        <Link href="/blog">Writing</Link>
+        <Link href="/work">Work</Link>
         <Link href="/about">About</Link>
         <ThemeSelector />
       </div>

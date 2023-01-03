@@ -1,4 +1,5 @@
 import 'css/tailwind.css';
+import 'css/fonts.css';
 
 import type { AppProps } from 'next/app';
 

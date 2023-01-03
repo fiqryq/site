@@ -7,7 +7,7 @@ import { projects } from '@/constant/project';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
 
-const Project: NextPage = () => {
+const Work: NextPage = () => {
   return (
     <>
       <NextSeo
@@ -55,4 +55,4 @@ const Project: NextPage = () => {
   );
 };
 
-export default Project;
+export default Work;

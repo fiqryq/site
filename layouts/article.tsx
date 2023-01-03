@@ -33,7 +33,7 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
           <div className="mx-auto max-w-7xl lg:px-8">
             <div className="relative px-4 sm:px-8 lg:px-12">
               <div className="xl:relative">
-                <div className="mx-auto max-w-2xl">
+                <div className="mx-auto max-w-3xl">
                   <button
                     type="button"
                     onClick={() => router.back()}

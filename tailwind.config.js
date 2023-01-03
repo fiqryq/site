@@ -22,6 +22,21 @@ module.exports = {
       '8xl': ['6rem', { lineHeight: '1' }],
       '9xl': ['8rem', { lineHeight: '1' }]
     },
+    fontFamily: {
+      sans: ['PlusJakartaSans', 'sans-serif'],
+      serif: [
+        'Charter',
+        'ui-serif',
+        'Georgia',
+        'Cambria',
+        'Times New Roman',
+        'Times',
+        'serif'
+      ]
+    },
+    lineHeight: {
+      headers: 1.15
+    },
     extend: {
       backgroundImage: {
         'background-pattern': "url('/public/background/background.svg')"
