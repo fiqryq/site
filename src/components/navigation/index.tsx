@@ -5,7 +5,7 @@ import ThemeSelector from '@/components/theme-selector';
 
 const Navigation: React.FC = () => {
   return (
-    <div className="relative mx-auto flex max-w-7xl flex-row items-center justify-between gap-6 border-b-[1px] border-zinc-100 bg-white p-4 dark:border-zinc-700/40 dark:bg-zinc-900 sm:flex-row sm:px-8 lg:px-12">
+    <div className="relative mx-auto flex max-w-7xl flex-row items-center justify-between gap-6 border-b-[1px] border-zinc-100 bg-white p-4 text-zinc-800 dark:border-zinc-700/40 dark:bg-zinc-900 sm:flex-row sm:px-8 lg:px-12">
       <Link href="/">
         <img
           src="https://avatars.githubusercontent.com/u/25787603?v=4"
