@@ -48,7 +48,8 @@ const ArticleLayout = ({ children, meta, isRssFeed = false }: any) => {
                         {meta.title}
                       </h1>
                       <span className="mt-2 text-base font-medium text-zinc-500 dark:text-zinc-600">
-                        Written on {formatDate(meta.date)} by {meta.author}.
+                        Written on {formatDate(meta.date)} by{' '}
+                        <span className="font-semibold">{meta.author}</span>.
                       </span>
                       <time
                         dateTime={meta.date}
