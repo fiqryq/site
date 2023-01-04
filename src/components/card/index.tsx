@@ -33,7 +33,7 @@ const Card: React.FC<Props> = ({
           {category?.map((cat, idx) => (
             <div
               key={idx}
-              className="cursor-pointer rounded-md bg-pink-400/80 text-center font-serif text-xs text-white"
+              className="cursor-pointer rounded-md bg-zinc-700 text-center font-serif text-xs text-white"
             >
               {' '}
               {cat}
