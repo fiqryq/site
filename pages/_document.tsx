@@ -51,7 +51,7 @@ export default function Document() {
           src="https://dashboard.fiqry.dev/umami.js"
         />
       </Head>
-      <body className={clsx('bg-zinc-50 bg-background-pattern dark:bg-black')}>
+      <body className={clsx('bg-background-pattern dark:bg-zinc-900')}>
         <Main />
         <NextScript />
       </body>

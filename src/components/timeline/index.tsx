@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import Image from 'next/image';
 
 import { timeline } from '@/constant/timeline';
 
@@ -23,17 +24,20 @@ const Timeline = () => {
                       'flex h-7 w-7 items-center justify-center rounded-full ring-8 ring-white'
                     )}
                   >
-                    <img
+                    <Image
                       src={items.icon}
                       className="h-7 w-7 rounded-full text-white"
+                      width={28}
+                      height={28}
                       aria-hidden="true"
+                      alt="icon"
                     />
                   </span>
                 </div>
-                <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5 font-serif">
                   <div className="space-y-3">
                     <div>
-                      <p className="text-sm text-zinc-500">
+                      <p className="text-base text-zinc-500">
                         {items.content}{' '}
                         <a
                           href={items.href}
@@ -48,7 +52,7 @@ const Timeline = () => {
                     </div>
                     <ul className="prose list-disc text-justify text-sm text-zinc-500">
                       {items.jobDescription.map((item, index) => (
-                        <li key={index} className="ml-8">
+                        <li key={index} className="ml-8 text-base">
                           {item}
                         </li>
                       ))}

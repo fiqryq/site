@@ -27,17 +27,17 @@ const About: NextPage = () => {
           <div className="space-y-5">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
               <Balancer>
-                Meet Fiqry Choerudin Bandung's Most Lazy Software Engineer
+                Meet fiqry choerudin frontend engineer with css superpowers
               </Balancer>
             </h1>
-            <p className="prose text-justify text-sm text-zinc-500">
+            <p className="text-justify font-serif text-base text-zinc-600">
               This is the story of my journey to becoming a programmer. I have
               loved technology since I was little, but I didn't study software
               development initially because I was interested in multimedia, such
               as photography, 3D modeling, and drawing. I only started studying
               software development when I entered college.
             </p>
-            <p className="prose text-justify text-sm text-zinc-500">
+            <p className="text-justify font-serif text-base text-zinc-600">
               I began by learning Java and PHP, but at the time, I wasn't sure
               if this field was really for me. However, as I approached
               graduation, I became more interested in software development and
@@ -45,7 +45,7 @@ const About: NextPage = () => {
               first project was to create a web admin tool for managing
               international student permits.
             </p>
-            <p className="prose text-justify text-sm text-zinc-500">
+            <p className="text-justify font-serif text-base text-zinc-600">
               As I gained more experience, I became more passionate about the
               world of software development and started actively using GitHub to
               contribute to open-source projects and create my own open-source
@@ -84,10 +84,10 @@ const About: NextPage = () => {
               <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
             </Button>
 
-            <div className="mt-6 flex flex-col gap-6">
+            <div className="mt-6 flex flex-col gap-6 font-semibold">
               <Link
                 href={socialLink.twitter.link}
-                className="flex cursor-pointer items-center space-x-2"
+                className="group flex cursor-pointer items-center space-x-2"
               >
                 <TwitterIcon className="h-6 w-6 fill-zinc-500 group-hover:fill-zinc-800" />
                 <span className="text-sm font-medium text-zinc-500 group-hover:text-zinc-800">
@@ -96,7 +96,7 @@ const About: NextPage = () => {
               </Link>
               <Link
                 href={socialLink.instagram.link}
-                className="flex cursor-pointer items-center space-x-2"
+                className="group flex cursor-pointer items-center space-x-2"
               >
                 <InstagramIcon className="h-6 w-6 fill-zinc-500 group-hover:fill-zinc-800" />
                 <span className="text-sm font-medium text-zinc-500 group-hover:text-zinc-800">

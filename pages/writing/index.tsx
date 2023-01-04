@@ -24,7 +24,7 @@ const index: React.FC<Props> = ({ articles }) => {
       <NextSeo title="Blog" description="- A blog about my thoughts." />
       <Section>
         <Content
-          title="The Random Thoughts of Me"
+          title="The random thoughts of me"
           description="- A blog about my thoughts."
           topSpacer="mt-5"
         >
