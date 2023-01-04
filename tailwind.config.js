@@ -37,11 +37,7 @@ module.exports = {
     lineHeight: {
       headers: 1.15
     },
-    extend: {
-      backgroundImage: {
-        'background-pattern': "url('/public/background/background.svg')"
-      }
-    }
+    extend: {}
   },
   corePlugins: {
     aspectRatio: false
