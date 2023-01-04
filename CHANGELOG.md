@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/fiqryq/fiqry.dev/compare/v2.5.0...v2.6.0) (2023-01-04)
+
+
+### Features
+
+* add changelog on footer ([5484f4f](https://github.com/fiqryq/fiqry.dev/commit/5484f4f8ef7b5c17118a0ecdff6456cc136879e5))
+* config next , add new page , add layout ([7aff4e0](https://github.com/fiqryq/fiqry.dev/commit/7aff4e0e732ff17d1120b8a208cdaf022dd160b0))
+* generate sitemap , feed.xml ([6ddcf99](https://github.com/fiqryq/fiqry.dev/commit/6ddcf99bfe9f942c3f28e4e5facddc0f81e8a618))
+
+
+### Bug Fixes
+
+* ama page ([89a4c1d](https://github.com/fiqryq/fiqry.dev/commit/89a4c1d5ea31ff82d87a78182096700a7d6cd22e))
+* **constant:** fix typo on timeline ([a36c6fd](https://github.com/fiqryq/fiqry.dev/commit/a36c6fd130006d9a1bfc350cc465438efb6676ce))
+* nav text-color ([12c3406](https://github.com/fiqryq/fiqry.dev/commit/12c34069c217259239d617a2053a95c364d79b4a))
+* **nav:** navigation on mobile [#53](https://github.com/fiqryq/fiqry.dev/issues/53) ([8453245](https://github.com/fiqryq/fiqry.dev/commit/8453245cd46287cca6f59b2ee0a877bc27c6a5d2))
+* **title:** fix title blog pages ([3655ca5](https://github.com/fiqryq/fiqry.dev/commit/3655ca551fc20890f6fe479afbc42352c073b82a))
+* **view:** fix bug view on dark mode on timeline ([0ccb29a](https://github.com/fiqryq/fiqry.dev/commit/0ccb29a917a06a07a4563192c8314c7e802e754e))
+
 ## [2.5.0](https://github.com/fiqryq/fiqry.dev/compare/v2.4.0...v2.5.0) (2022-12-29)
 
 
