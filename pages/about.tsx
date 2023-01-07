@@ -30,14 +30,14 @@ const About: NextPage = () => {
                 Meet fiqry choerudin frontend engineer with css superpowers
               </Balancer>
             </h1>
-            <p className="text-justify font-serif text-base text-zinc-600">
+            <p className="font-serif text-base text-zinc-600">
               This is the story of my journey to becoming a programmer. I have
               loved technology since I was little, but I didn't study software
               development initially because I was interested in multimedia, such
               as photography, 3D modeling, and drawing. I only started studying
               software development when I entered college.
             </p>
-            <p className="text-justify font-serif text-base text-zinc-600">
+            <p className="font-serif text-base text-zinc-600">
               I began by learning Java and PHP, but at the time, I wasn't sure
               if this field was really for me. However, as I approached
               graduation, I became more interested in software development and
@@ -45,13 +45,11 @@ const About: NextPage = () => {
               first project was to create a web admin tool for managing
               international student permits.
             </p>
-            <p className="text-justify font-serif text-base text-zinc-600">
+            <p className="font-serif text-base text-zinc-600">
               As I gained more experience, I became more passionate about the
               world of software development and started actively using GitHub to
               contribute to open-source projects and create my own open-source
-              projects. Eventually, I applied for a job at a big company in
-              Jakarta that works in fundraising and was lucky enough to get the
-              job.
+              projects.
             </p>
 
             <div className="py-5">

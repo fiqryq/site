@@ -1,27 +1,24 @@
-import React, { useState } from 'react';
+import { allDocuments, DocumentTypes } from 'contentlayer/generated';
+import { compareDesc } from 'date-fns';
+import { NextSeo } from 'next-seo';
+import { useState } from 'react';
 
-import Card from '@/components/card';
-import NextSeo from '@/components/seo';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
-import { generateRssFeed } from '@/lib/generateRssFeed';
-import { getAllArticles } from '@/lib/getAllArticles';
+import Card from '@/src/components/card';
+import { ArticleProps } from '@/src/types/article';
 
-interface Props {
-  articles?: Array<{
-    author?: string;
-    date?: string;
-    description?: string;
-    category?: Array<string>;
-    banner?: string;
-    slug?: string;
-    title?: string;
-  }>;
+export async function getStaticProps() {
+  const articles: DocumentTypes[] = allDocuments.sort((a: any, b: any) => {
+    return compareDesc(new Date(a.date), new Date(b.date));
+  });
+  return { props: { articles } };
 }
-const Writing: React.FC<Props> = ({ articles }) => {
+
+const Writing: React.FC = ({ articles }: any) => {
   const [searchValue, setSearchValue] = useState<string>('');
-  const filteredBlogPosts = articles?.filter(post =>
-    post?.title?.toLowerCase().includes(searchValue.toLowerCase())
+  const filteredBlogPosts = articles?.filter((article: { title: string }) =>
+    article?.title?.toLowerCase().includes(searchValue.toLowerCase())
   );
   return (
     <>
@@ -38,7 +35,7 @@ const Writing: React.FC<Props> = ({ articles }) => {
               type="text"
               onChange={e => setSearchValue(e.target.value)}
               placeholder="Search articles"
-              className="block w-full rounded-md border border-zinc-200 bg-white px-4 py-2 text-zinc-900 focus:border-pink-400 focus:ring-pink-400 dark:border-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
+              className="block w-full rounded-md border border-zinc-200 bg-white px-4 py-2 text-zinc-900 focus:border-zinc-400 focus:ring-zinc-400 dark:border-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
             />
             <svg
               className="absolute right-3 top-3 h-5 w-5 text-zinc-400 dark:text-zinc-300"
@@ -61,16 +58,17 @@ const Writing: React.FC<Props> = ({ articles }) => {
             </p>
           )}
           <div className="grid grid-cols-3 gap-3">
-            {filteredBlogPosts?.map((post, index) => {
+            {filteredBlogPosts?.map((article: ArticleProps, index: number) => {
               return (
                 <Card
                   key={index}
-                  title={post.title}
-                  description={post.description}
-                  slug={`/blog/post/${post.slug}`}
-                  category={post.category}
-                  date={post.date}
-                  banner={post.banner}
+                  title={article.title}
+                  description={article.description}
+                  url={article.url}
+                  tag={article.tag}
+                  date={article.date}
+                  readingTime={article.body.raw}
+                  banner={article.banner}
                 />
               );
             })}
@@ -80,17 +78,5 @@ const Writing: React.FC<Props> = ({ articles }) => {
     </>
   );
 };
-
-export async function getStaticProps() {
-  if (process.env.NODE_ENV === 'production') {
-    await generateRssFeed();
-  }
-
-  return {
-    props: {
-      articles: (await getAllArticles()).map(({ component, ...meta }) => meta)
-    }
-  };
-}
 
 export default Writing;

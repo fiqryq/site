@@ -1,8 +1,8 @@
 export const forurofour = [
   {
-    title: 'Blog',
+    title: 'Writing',
     description: 'A blog about my thoughts.',
-    slug: '/blog'
+    slug: '/writing'
   },
   {
     title: 'Project',

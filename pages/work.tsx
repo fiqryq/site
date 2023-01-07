@@ -37,7 +37,7 @@ const Work: NextPage = () => {
                 <h2 className="relative z-10 mt-2 text-base font-semibold text-zinc-800 dark:text-zinc-100">
                   {project.name}
                 </h2>
-                <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                <p className="relative z-10 mt-2 font-serif text-sm text-zinc-600 dark:text-zinc-400">
                   {project.description}
                 </p>
                 <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition dark:text-zinc-200">

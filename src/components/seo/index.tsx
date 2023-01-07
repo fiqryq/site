@@ -25,7 +25,16 @@ const NextSeo: React.FC<Props> = ({ title, description, canonical }) => {
         url: meta.url,
         title: title ?? meta.title,
         description: description ?? meta.description,
-        images: [{ url: `${meta.url}/api/og?title=${title ?? meta.title}` }],
+        images: [
+          {
+            url: `https://dynamic-og-image-generator.vercel.app/api/generate?title=${
+              title ?? meta.title
+            }&author=Fiqry+choerudin&websiteUrl=https%3A%2F%2Ffiqry%2Cdev&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F25787603%3Fv%3D4&theme=nightOwl`,
+            width: 800,
+            height: 600,
+            alt: meta.title
+          }
+        ],
         siteName: meta.siteName
       }}
       twitter={{

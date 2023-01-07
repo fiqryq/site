@@ -4,33 +4,147 @@
         <title>Fiqry choerudin</title>
         <link>https://fiqry.dev</link>
         <description></description>
-        <lastBuildDate>Sat, 31 Dec 2022 19:00:33 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 06 Jan 2023 15:47:54 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
             <title>Fiqry choerudin</title>
-            <url>https://fiqry.dev/favicon.ico</url>
+            <url>https://fiqry.dev/favicon/favicon-32x32.png</url>
             <link>https://fiqry.dev</link>
         </image>
         <copyright>All rights reserved 2023</copyright>
         <item>
-            <title><![CDATA[Rewind 2021]]></title>
-            <link>https://fiqry.dev/blog/rewind-2021</link>
-            <guid>https://fiqry.dev/blog/rewind-2021</guid>
-            <pubDate>Wed, 28 Dec 2022 00:00:00 GMT</pubDate>
-            <description><![CDATA[2022 was a very meaningful year for me because some of my dreams were achieved in 2022 and it was also a very difficult year for me. I will write about it in this writing as a reminder for myself and a personal record for the following year.]]></description>
-            <content:encoded><![CDATA[<p>2022 was a very meaningful year for me because some of my dreams were achieved in 2022 and it was also a very difficult year for me. I will write about it in this writing as a reminder for myself and a personal record for the following year.</p>
-<h3>Starting Learn React ecosystem</h3>
-<img src="https://www.matawebsite.com/images/blog/1575067193.apa_itu_reactjs_dan_mengapa_kita_harus_menggunakan_reactjs.jpg" width="100%"/>
-<p>At the beginning of the year, I tried something new which was learning the ReactJS framework. Why did I choose React? I had a dream of working at a unicorn company in Indonesia and when I participated in a mini bootcamp at the end of 2021, my mentor <a href="https://twitter.com/azharieazharou">Muhammad Azharie</a>, who was working at one of Indonesia&#x27;s unicorn companies which is Tokopedia, he told me that Tokopedia used the ReactJs framework for frontend, At that moment, I thought that the first step for me to be able to work at a big company like Tokopedia was to learn React. I started learning React at the beginning of 2022 and it turned out to be a huge step for my career.</p>
-<h3>I got my first freelance job from learning ReactJS.</h3>
-<p>.....draft</p>]]></content:encoded>
+            <title><![CDATA[Vim]]></title>
+            <link>https://fiqry.dev/writing/post/vim</link>
+            <guid>https://fiqry.dev/writing/post/vim</guid>
+            <pubDate>Wed, 04 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[It's been 3 months since I started using Vim as my secondary IDE. I began learning how to use Vim because I saw my friend using it as his daily IDE and I thought it was so cool.]]></description>
+            <content:encoded><![CDATA[<img src="https://user-images.githubusercontent.com/25787603/210600813-fbcdf812-aa80-401f-8e95-9adc8a382a6e.png" width="100%"/>
+<p>It&#x27;s been 3 months since I started using Vim as my secondary IDE. I began learning how to use Vim because I saw my friend using it as his daily IDE and I thought it was so cool. At the first time I used Vim, I wanted to give up because it was so hard 😂. There were so many key bindings I had to remember and it was hard to configure. After a month of using it, I started enjoying Vim as my IDE because it was getting easier to use and simpler to configure. I use tmux, fish shell, and Neovim as my primary setup for my terminal, and I also started creating aliases for faster workflows.</p>
+<p>Heres how i configure vim for my workflows , i use <a href="https://github.com/craftzdog/dotfiles-public">craftzdog</a> dotfile and started modified for my personal use, here&#x27;s my config :</p>
+<h2>Ingredients</h2>
+<ul>
+<li>vim (NeoVim)</li>
+<li>tmux</li>
+<li>fish</li>
+</ul>
+<h2>Tmux action key</h2>
+<pre class="language-shell"><code class="language-Shell"><span class="token comment"># action key</span>
+unbind C-b
+set-option -g prefix C-t
+set-option -g repeat-time <span class="token number">0</span>
+set-option -g focus-events on
+
+<span class="token comment">#### Key bindings</span>
+
+set-window-option -g mode-keys <span class="token function">vi</span>
+
+<span class="token comment">#bind t send-key C-t</span>
+<span class="token comment"># Reload settings</span>
+<span class="token builtin class-name">bind</span> r source-file ~/.tmux.conf <span class="token punctuation">\</span><span class="token punctuation">;</span> display <span class="token string">&quot;Reloaded!&quot;</span>
+<span class="token comment"># Open current directory</span>
+<span class="token builtin class-name">bind</span> o run-shell <span class="token string">&quot;open #{pane_current_path}&quot;</span>
+<span class="token builtin class-name">bind</span> -r e kill-pane -a
+
+<span class="token comment"># vim-like pane switching</span>
+<span class="token builtin class-name">bind</span> -r k select-pane -U
+<span class="token builtin class-name">bind</span> -r j select-pane -D
+<span class="token builtin class-name">bind</span> -r h select-pane -L
+<span class="token builtin class-name">bind</span> -r l select-pane -R
+
+<span class="token comment"># Moving window</span>
+bind-key -n C-S-Left swap-window -t -1 <span class="token punctuation">\</span><span class="token punctuation">;</span> previous-window
+bind-key -n C-S-Right swap-window -t +1 <span class="token punctuation">\</span><span class="token punctuation">;</span> next-window
+
+<span class="token comment"># Resizing pane</span>
+<span class="token builtin class-name">bind</span> -r C-k resize-pane -U <span class="token number">5</span>
+<span class="token builtin class-name">bind</span> -r C-j resize-pane -D <span class="token number">5</span>
+<span class="token builtin class-name">bind</span> -r C-h resize-pane -L <span class="token number">5</span>
+<span class="token builtin class-name">bind</span> -r C-l resize-pane -R <span class="token number">5</span>
+</code></pre>
+<h2>Shell setup (macOS &amp; Linux)</h2>
+<ul>
+<li><a href="https://fishshell.com/">Fish shell</a>.</li>
+<li><a href="https://github.com/jorgebucaran/fisher">Fisher</a> - Plugin manager.</li>
+<li><a href="https://github.com/IlanCosman/tide">Tide</a> - Shell theme. Use version 5: <code>fisher install ilancosman/tide@v5</code>.</li>
+<li><a href="https://github.com/jethrokuan/z">z for fish</a> - Directory jumping.</li>
+<li><a href="https://the.exa.website/">Exa</a> - <code>ls</code> replacement.</li>
+<li><a href="https://www.npmjs.com/package/trash">Trash</a> - <code>rm</code> replacement.</li>
+</ul>
+<h2>Neovim setup</h2>
+<p>Requires <a href="https://neovim.io/">Neovim</a> (&gt;= 0.8)</p>
+<ul>
+<li><a href="https://github.com/wbthomason/packer.nvim">wbthomason/packer.nvim</a> - A plugin manager for Neovim</li>
+<li><a href="https://github.com/svrana/neosolarized.nvim">svrana/neosolarized.nvim</a> - A truecolor, solarized dark colorscheme</li>
+<li><a href="https://github.com/nvim-lualine/lualine.nvim">nvim-lualine/lualine.nvim</a> - A blazing fast and easy to configure Neovim statusline written in Lua</li>
+<li><a href="https://github.com/onsails/lspkind-nvim">onsails/lspkind-nvim</a> - VSCode-like pictograms</li>
+<li><a href="https://github.com/L3MON4D3/LuaSnip">L3MON4D3/LuaSnip</a> - Snippet Engine for Neovim written in Lua</li>
+<li><a href="https://github.com/hrsh7th/cmp-nvim-lsp">hrsh7th/cmp-nvim-lsp</a> - nvim-cmp source for neovim&#x27;s built-in LSP</li>
+<li><a href="https://github.com/hrsh7th/cmp-buffer">hrsh7th/cmp-buffer</a> - nvim-cmp source for buffer words</li>
+<li><a href="https://github.com/hrsh7th/nvim-cmp">hrsh7th/nvim-cmp</a> - A completion engine plugin for neovim written in Lua</li>
+<li><a href="https://github.com/neovim/nvim-lspconfig">neovim/nvim-lspconfig</a> - A collection of configurations for Neovim&#x27;s built-in LSP</li>
+<li><a href="https://github.com/jose-elias-alvarez/null-ls.nvim">jose-elias-alvarez/null-ls.nvim</a> - Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.</li>
+<li><a href="https://github.com/williamboman/mason.nvim">williamboman/mason.nvim</a> - Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters</li>
+<li><a href="https://github.com/williamboman/mason-lspconfig.nvim">williamboman/mason-lspconfig.nvim</a> - Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim</li>
+<li><a href="https://github.com/glepnir/lspsaga.nvim">glepnir/lspsaga.nvim</a> - A light-weight lsp plugin based on neovim&#x27;s built-in lsp with a highly performant UI</li>
+<li><a href="https://github.com/nvim-treesitter/nvim-treesitter">nvim-treesitter/nvim-treesitter</a> - <a href="https://github.com/tree-sitter/tree-sitter">Treesitter</a> configurations and abstraction layer for Neovim</li>
+<li><a href="https://github.com/kyazdani42/nvim-web-devicons">kyazdani42/nvim-web-devicons</a> - Lua <code>fork</code> of vim-web-devicons for neovim</li>
+<li><a href="https://github.com/nvim-telescope/telescope.nvim">nvim-telescope/telescope.nvim</a> - A highly extendable fuzzy finder over lists</li>
+<li><a href="https://github.com/nvim-telescope/telescope-file-browser.nvim">nvim-telescope/telescope-file-browser.nvim</a> - File Browser extension for telescope.nvim</li>
+<li><a href="https://github.com/windwp/nvim-autopairs">windwp/nvim-autopairs</a> - Autopairs</li>
+<li><a href="https://github.com/windwp/nvim-ts-autotag">windwp/nvim-ts-autotag</a> - Use treesitter to auto close and auto rename html tag</li>
+<li><a href="https://github.com/norcalli/nvim-colorizer.lua">norcalli/nvim-colorizer.lua</a> - A high-performance color highlighter</li>
+<li><a href="https://github.com/akinsho/nvim-bufferline.lua">akinsho/nvim-bufferline.lua</a> - A snazzy bufferline</li>
+<li><a href="https://github.com/lewis6991/gitsigns.nvim">lewis6991/gitsigns.nvim</a> - Git integration for buffers</li>
+<li><a href="https://github.com/dinhhuy258/git.nvim">dinhhuy258/git.nvim</a> - A simple clone of the plugin vim-fugitive</li>
+<li><a href="https://github.com/folke/zen-mode.nvim">folke/zen-mode.nvim</a> - Distraction-free mode</li>
+<li><a href="https://github.com/iamcco/markdown-preview.nvim">iamcco/markdown-preview.nvim</a> - Markdown live preview</li>
+</ul>
+<p>Aliases config :</p>
+<pre class="language-shell"><code class="language-shell"><span class="token comment"># aliases</span>
+<span class="token builtin class-name">alias</span> <span class="token function">ls</span> <span class="token string">&quot;ls -p -G&quot;</span>
+<span class="token builtin class-name">alias</span> la <span class="token string">&quot;ls -A&quot;</span>
+<span class="token builtin class-name">alias</span> ll <span class="token string">&quot;ls -l&quot;</span>
+<span class="token builtin class-name">alias</span> lla <span class="token string">&quot;ll -A&quot;</span>
+<span class="token builtin class-name">alias</span> <span class="token builtin class-name">.</span> <span class="token string">&quot;nvim .&quot;</span>
+
+<span class="token comment"># git aliases</span>
+<span class="token builtin class-name">alias</span> g <span class="token function">git</span>
+<span class="token builtin class-name">alias</span> ga <span class="token string">&quot;git add .&quot;</span>
+<span class="token builtin class-name">alias</span> gcm <span class="token string">&quot;git commit -m&quot;</span>
+<span class="token builtin class-name">alias</span> gpo <span class="token string">&quot;git push origin&quot;</span>
+<span class="token builtin class-name">alias</span> gco <span class="token string">&quot;git checkout&quot;</span>
+<span class="token builtin class-name">alias</span> clone <span class="token string">&quot;git clone&quot;</span>
+
+<span class="token comment"># go alias</span>
+<span class="token builtin class-name">alias</span> gr <span class="token string">&quot;go run&quot;</span>
+<span class="token builtin class-name">alias</span> gb <span class="token string">&quot;go build&quot;</span>
+
+<span class="token comment"># yarn aliases</span>
+<span class="token builtin class-name">alias</span> yd <span class="token string">&quot;yarn run dev&quot;</span>
+<span class="token builtin class-name">alias</span> yi <span class="token string">&quot;yarn install&quot;</span>
+<span class="token builtin class-name">alias</span> yad <span class="token string">&quot;yarn add&quot;</span>
+
+<span class="token comment"># pnpm alias</span>
+<span class="token builtin class-name">alias</span> pi <span class="token string">&quot;pnpm install&quot;</span>
+<span class="token builtin class-name">alias</span> pd <span class="token string">&quot;pnpm run dev&quot;</span>
+<span class="token builtin class-name">alias</span> <span class="token function">ps</span> <span class="token string">&quot;pnpm run start&quot;</span>
+<span class="token builtin class-name">alias</span> pt <span class="token string">&quot;pnpm run test&quot;</span>
+
+<span class="token comment"># vm alias</span>
+<span class="token builtin class-name">alias</span> vm <span class="token string">&quot;ssh vm&quot;</span>
+
+<span class="token comment"># create react app</span>
+<span class="token builtin class-name">alias</span> cra <span class="token string">&quot;npx create-next-app --example https://github.com/fiqryq/next-boilerplate&quot;</span>
+
+<span class="token builtin class-name">alias</span> ide <span class="token string">&quot;tmux split-window -v -p 30&quot;</span>
+</code></pre>]]></content:encoded>
             <author>hi@fiqry.dev (Fiqry choerudin)</author>
         </item>
         <item>
-            <title><![CDATA[Dummy post]]></title>
-            <link>https://fiqry.dev/blog/rewind-2022</link>
-            <guid>https://fiqry.dev/blog/rewind-2022</guid>
+            <title><![CDATA[About 2022]]></title>
+            <link>https://fiqry.dev/writing/post/about-2022</link>
+            <guid>https://fiqry.dev/writing/post/about-2022</guid>
             <pubDate>Wed, 28 Dec 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[2022 was a very meaningful year for me because some of my dreams were achieved in 2022 and it was also a very difficult year for me. I will write about it in this writing as a reminder for myself and a personal record for the following year.]]></description>
             <content:encoded><![CDATA[<p>2022 was a very meaningful year for me because some of my dreams were achieved in 2022 and it was also a very difficult year for me. I will write about it in this writing as a reminder for myself and a personal record for the following year.</p>

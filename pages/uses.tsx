@@ -1,11 +1,12 @@
-import Prose from '@/layouts/porse';
-import React from 'react';
-import NextSeo from '@/src/components/seo';
-import Content from './content';
-import Section from './section';
 import Image from 'next/image';
+import React from 'react';
 
-const Uses = ({ children, meta, isRssFeed = false }: any) => {
+import Content from '@/layouts/content';
+import Prose from '@/layouts/porse';
+import Section from '@/layouts/section';
+import NextSeo from '@/src/components/seo';
+
+const Uses = () => {
   const [Theme, setTheme] = React.useState<string>('light');
 
   React.useEffect(() => {
@@ -14,17 +15,13 @@ const Uses = ({ children, meta, isRssFeed = false }: any) => {
     else setTheme(localTheme || Theme);
   }, [Theme]);
 
-  if (isRssFeed) {
-    return children;
-  }
-
   return (
     <>
-      <NextSeo title={meta.title} description={meta.description} />
+      <NextSeo title="" description="" />
       <Section>
         <Content
-          title={meta.title}
-          description={meta.description}
+          title="Any hardware or software that I use and recommend"
+          description="Here are all the software and hardware that I use on a daily basis."
           topSpacer="mt-10"
         >
           <Image
@@ -38,7 +35,7 @@ const Uses = ({ children, meta, isRssFeed = false }: any) => {
             }}
             alt="banner"
           />
-          <Prose className="mt-7">{children}</Prose>
+          <Prose className="mt-7"></Prose>
         </Content>
       </Section>
     </>

@@ -1,29 +1,25 @@
+import { allDocuments, DocumentTypes } from 'contentlayer/generated';
+import { compareDesc } from 'date-fns';
 import Balancer from 'react-wrap-balancer';
 
-import Card from '@/components/card';
 import NextSeo from '@/components/seo';
 import Section from '@/layouts/section';
-import { generateRssFeed } from '@/lib/generateRssFeed';
-import { getAllArticles } from '@/lib/getAllArticles';
+import Card from '@/src/components/card';
+import { ArticleProps } from '@/types/article';
 
-interface Props {
-  articles?: Array<{
-    author?: string;
-    date?: string;
-    description?: string;
-    banner?: string;
-    category?: Array<string>;
-    slug?: string;
-    title?: string;
-  }>;
+export async function getStaticProps() {
+  const articles: DocumentTypes[] = allDocuments.sort((a: any, b: any) => {
+    return compareDesc(new Date(a.date), new Date(b.date));
+  });
+  return { props: { articles } };
 }
 
-const Home = ({ articles }: Props) => {
+const Home = ({ articles }: any) => {
   return (
     <>
       <NextSeo
         title="Home"
-        description="Hi, my name is Fiqry and I am a frontend engineer based in Bandung, Indonesia. I am currently learning everything about react ecosystem."
+        description="An online portfolio by fiqry choerudin."
       />
       <Section className="relative mb-0 grid grid-cols-1 overflow-hidden rounded-b-3xl pb-6 md:px-12 md:pb-6 lg:mb-0 lg:grid-cols-2 lg:gap-4 lg:overflow-visible lg:pl-12 lg:pr-0">
         <div className="order-2 py-4 lg:order-1 lg:py-32">
@@ -33,7 +29,7 @@ const Home = ({ articles }: Props) => {
           <h1 className="text-primary text-4xl font-bold tracking-tight antialiased dark:text-zinc-100 md:text-5xl lg:leading-headers">
             <Balancer>
               I'm a front-end engineer with{' '}
-              <span className="text-pink-400">css</span> superpowers
+              <span className="text-zinc-500">css</span> superpowers
             </Balancer>
           </h1>
         </div>
@@ -46,15 +42,16 @@ const Home = ({ articles }: Props) => {
         </h2>
       </Section>
       <Section className="mx-auto grid max-w-xl grid-cols-1 gap-5 pt-5 pb-10 lg:max-w-none lg:grid-cols-3">
-        {articles?.map((items, index) => {
+        {articles?.map((items: ArticleProps, index: number) => {
           return (
             <Card
               key={index}
               title={items.title}
               description={items.description}
-              slug={`/writing/post/${items.slug}`}
-              category={items.category}
+              url={items.url}
+              tag={items.tag}
               date={items.date}
+              readingTime={items.body.raw}
               banner={items.banner}
             />
           );
@@ -63,19 +60,5 @@ const Home = ({ articles }: Props) => {
     </>
   );
 };
-
-export async function getStaticProps() {
-  if (process.env.NODE_ENV === 'production') {
-    await generateRssFeed();
-  }
-
-  return {
-    props: {
-      articles: (await getAllArticles())
-        .slice(0, 3)
-        .map(({ component, ...meta }) => meta)
-    }
-  };
-}
 
 export default Home;

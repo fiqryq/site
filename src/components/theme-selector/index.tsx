@@ -10,7 +10,11 @@ interface Props {
 }
 
 const ThemeSelector: React.FC<Props> = ({ className, ...props }) => {
-  const [selectedTheme, setSelectedTheme] = useState<any>();
+  const [selectedTheme, setSelectedTheme] = useState<any>({
+    name: 'Light',
+    value: 'light'
+  });
+
   useEffect(() => {
     if (selectedTheme) {
       document.documentElement.setAttribute('data-theme', selectedTheme.value);

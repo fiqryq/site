@@ -23,8 +23,9 @@
       "@/src/*": ["src/*"],
       "@/components/*": ["src/components/*"],
       "@/constant/*": ["src/constant/*"],
-      "@/types/*": ["types/*"],
-      "@/images/*": ["src/images/*"]
+      "@/types/*": ["src/types/*"],
+      "@/images/*": ["src/images/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },
   "include": [
@@ -33,7 +34,10 @@
     "**/*.tsx",
     "commitlint.config.js",
     "lib/generateRssFeed.js",
-    "lib/generateRssFeed.js"
+    "lib/generateRssFeed.js",
+    "lib/getAllArticles.js",
+    "lib/getAllArticles.js",
+    ".contentlayer/generated"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,8 +1,6 @@
-export function formatDate(dateString: string | undefined) {
-  return new Date(`${dateString}T00:00:00Z`).toLocaleDateString('en-US', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC'
-  });
+import { format, parseISO } from 'date-fns';
+
+export function formatDate(args: string | undefined) {
+  const date = args ?? '';
+  return format(parseISO(date), 'LLLL d, yyyy');
 }
