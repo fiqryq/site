@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/fiqryq/fiqry.dev/compare/v2.6.0...v2.7.0) (2023-01-07)
+
+
+### Features
+
+* **writing:** add search post ([0bd0426](https://github.com/fiqryq/fiqry.dev/commit/0bd04262439c54ce42d597f5b45e75d77bb878df))
+
+
+### Bug Fixes
+
+* about page ([30458b4](https://github.com/fiqryq/fiqry.dev/commit/30458b4ea7f4a519b0dea280fe7287a755e4bc3e))
+* **deps:** update dependency @vercel/og to ^0.0.22 ([da95e12](https://github.com/fiqryq/fiqry.dev/commit/da95e1292aa1384c70ace2832208b80f26234311))
+* **deps:** update dependency react-wrap-balancer to ^0.3.0 ([cb33a40](https://github.com/fiqryq/fiqry.dev/commit/cb33a402b9ad2791af943c36c8b755e07e7f9407))
+
 ## [2.6.0](https://github.com/fiqryq/fiqry.dev/compare/v2.5.0...v2.6.0) (2023-01-04)
 
 
