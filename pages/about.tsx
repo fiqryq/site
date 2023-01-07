@@ -26,18 +26,16 @@ const About: NextPage = () => {
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-5 gap-y-20 py-10 lg:max-w-none lg:grid-cols-2">
           <div className="space-y-5">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              <Balancer>
-                Meet fiqry choerudin frontend engineer with css superpowers
-              </Balancer>
+              <Balancer>Meet Fiqry Choerudin</Balancer>
             </h1>
-            <p className="font-serif text-base text-zinc-600">
+            <p className="font-serif text-base text-zinc-500">
               This is the story of my journey to becoming a programmer. I have
               loved technology since I was little, but I didn't study software
               development initially because I was interested in multimedia, such
               as photography, 3D modeling, and drawing. I only started studying
               software development when I entered college.
             </p>
-            <p className="font-serif text-base text-zinc-600">
+            <p className="font-serif text-base text-zinc-500">
               I began by learning Java and PHP, but at the time, I wasn't sure
               if this field was really for me. However, as I approached
               graduation, I became more interested in software development and
@@ -45,7 +43,7 @@ const About: NextPage = () => {
               first project was to create a web admin tool for managing
               international student permits.
             </p>
-            <p className="font-serif text-base text-zinc-600">
+            <p className="font-serif text-base text-zinc-500">
               As I gained more experience, I became more passionate about the
               world of software development and started actively using GitHub to
               contribute to open-source projects and create my own open-source
@@ -65,14 +63,9 @@ const About: NextPage = () => {
               useSkeleton
               className="rounded-xl"
               src="https://avatars.githubusercontent.com/u/25787603?v=4"
-              width="700"
+              width="452"
               height="475"
               alt="avatar"
-              sizes="100vw"
-              style={{
-                width: '100%',
-                height: 'auto'
-              }}
             />
             <Button
               href={download}
@@ -80,7 +73,7 @@ const About: NextPage = () => {
               className="group mt-4 w-full"
             >
               Download CV
-              <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
+              <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-500 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
             </Button>
 
             <div className="mt-6 flex flex-col gap-6 font-semibold">
