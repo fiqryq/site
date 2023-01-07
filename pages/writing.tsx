@@ -1,11 +1,11 @@
 import { allDocuments, DocumentTypes } from 'contentlayer/generated';
 import { compareDesc } from 'date-fns';
-import { NextSeo } from 'next-seo';
 import { useState } from 'react';
 
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
 import Card from '@/src/components/card';
+import SEO from '@/src/components/seo';
 import { ArticleProps } from '@/src/types/article';
 
 export async function getStaticProps() {
@@ -22,7 +22,7 @@ const Writing: React.FC = ({ articles }: any) => {
   );
   return (
     <>
-      <NextSeo title="Blog" description="- A blog about my thoughts." />
+      <SEO title="Blog" description="- A blog about my thoughts." />
       <Section>
         <Content
           title="The random thoughts of me"

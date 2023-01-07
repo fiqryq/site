@@ -1,7 +1,6 @@
-import { clsx } from 'clsx';
-import Image from 'next/image';
 import Link from 'next/link';
 
+import Image from '@/components/next-image';
 import ThemeSelector from '@/components/theme-selector';
 
 const Navigation: React.FC = () => {
@@ -10,13 +9,12 @@ const Navigation: React.FC = () => {
       <div className="relative z-50 mx-auto flex max-w-7xl flex-row items-center justify-between gap-6  bg-white p-4 text-zinc-800  dark:bg-zinc-900 sm:flex-row sm:px-8 lg:px-12">
         <Link href="/">
           <Image
+            useSkeleton
+            className="h-10 w-10 rounded-full bg-zinc-100 object-cover dark:bg-zinc-800"
             src="https://avatars.githubusercontent.com/u/25787603?v=4"
-            alt="avatar"
-            className={clsx(
-              'h-10 w-10 rounded-full bg-zinc-100 object-cover dark:bg-zinc-800'
-            )}
-            width={100}
-            height={100}
+            width="100"
+            height="100"
+            alt="Icon"
           />
         </Link>
         {/* Desktop nav */}

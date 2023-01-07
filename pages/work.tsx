@@ -2,7 +2,8 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 
 import { LinkIcon } from '@/components/icons';
-import NextSeo from '@/components/seo';
+import Image from '@/components/next-image';
+import SEO from '@/components/seo';
 import { projects } from '@/constant/project';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
@@ -10,7 +11,7 @@ import Section from '@/layouts/section';
 const Work: NextPage = () => {
   return (
     <>
-      <NextSeo
+      <SEO
         title="Project"
         description="In my opinion, a software engineer should leave their mark on the internet in the form of an article or project. Here are some projects that I have worked on as a software developer."
       />
@@ -28,10 +29,13 @@ const Work: NextPage = () => {
                 className="relative cursor-pointer rounded-md border-[1px] border-zinc-100 p-5 dark:border-zinc-800"
               >
                 <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                  <img
-                    src={project.logo}
-                    alt={project.name}
+                  <Image
+                    useSkeleton
                     className="h-8 w-8 rounded-full bg-white"
+                    src={project.logo}
+                    width="32"
+                    height="32"
+                    alt={project.name}
                   />
                 </div>
                 <h2 className="relative z-10 mt-2 text-base font-semibold text-zinc-800 dark:text-zinc-100">

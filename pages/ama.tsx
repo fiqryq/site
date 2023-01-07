@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import React from 'react';
 
 import Giscus from '@/components/giscus';
-import NextSeo from '@/components/seo';
+import SEO from '@/components/seo';
 import {
   GISCUS_CATEGORY_AMA,
   GISCUS_CATEGORY_ID_AMA,
@@ -23,7 +23,7 @@ const Ama: NextPage = () => {
 
   return (
     <>
-      <NextSeo
+      <SEO
         title="AMA (Ask Me Anything)"
         description="you can ask me about anything you want."
       />

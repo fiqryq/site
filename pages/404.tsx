@@ -1,13 +1,13 @@
 import Link from 'next/link';
 
 import { ArrowLeftIcon } from '@/components/icons';
-import NextSeo from '@/components/seo';
+import SEO from '@/components/seo';
 import { forurofour } from '@/constant/404-constant';
 
 const ErrorFourOFour = () => {
   return (
     <>
-      <NextSeo
+      <SEO
         title="Omg this page broken. hehe"
         description="404 page not found"
       />

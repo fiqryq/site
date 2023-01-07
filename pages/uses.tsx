@@ -4,7 +4,7 @@ import React from 'react';
 import Content from '@/layouts/content';
 import Prose from '@/layouts/porse';
 import Section from '@/layouts/section';
-import NextSeo from '@/src/components/seo';
+import SEO from '@/src/components/seo';
 
 const Uses = () => {
   const [Theme, setTheme] = React.useState<string>('light');
@@ -17,7 +17,10 @@ const Uses = () => {
 
   return (
     <>
-      <NextSeo title="" description="" />
+      <SEO
+        title="Any hardware or software that I use and recommend"
+        description="Here are all the software and hardware that I use on a daily basis."
+      />
       <Section>
         <Content
           title="Any hardware or software that I use and recommend"

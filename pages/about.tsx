@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
 
@@ -12,16 +11,17 @@ import {
   LinkedInIcon,
   TwitterIcon
 } from '@/components/icons';
-import NextSeo from '@/components/seo';
+import SEO from '@/components/seo';
 import Timeline from '@/components/timeline';
 import { download } from '@/constant/resume';
 import { socialLink } from '@/constant/social-link';
 import Section from '@/layouts/section';
+import Image from '@/src/components/next-image';
 
 const About: NextPage = () => {
   return (
     <>
-      <NextSeo title="About" description="About Fiqry choerudin." />
+      <SEO title="About" description="About Fiqry choerudin." />
       <Section>
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-5 gap-y-20 py-10 lg:max-w-none lg:grid-cols-2">
           <div className="space-y-5">
@@ -62,16 +62,17 @@ const About: NextPage = () => {
           </div>
           <div className="lg:col-span-1 lg:px-16">
             <Image
-              src="https://avatars.githubusercontent.com/u/25787603?v=4"
+              useSkeleton
               className="rounded-xl"
-              width={700}
-              height={475}
+              src="https://avatars.githubusercontent.com/u/25787603?v=4"
+              width="700"
+              height="475"
+              alt="avatar"
               sizes="100vw"
               style={{
                 width: '100%',
                 height: 'auto'
               }}
-              alt="avatar"
             />
             <Button
               href={download}

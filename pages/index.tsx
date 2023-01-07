@@ -2,7 +2,7 @@ import { allDocuments, DocumentTypes } from 'contentlayer/generated';
 import { compareDesc } from 'date-fns';
 import Balancer from 'react-wrap-balancer';
 
-import NextSeo from '@/components/seo';
+import SEO from '@/components/seo';
 import Section from '@/layouts/section';
 import Card from '@/src/components/card';
 import { ArticleProps } from '@/types/article';
@@ -17,10 +17,7 @@ export async function getStaticProps() {
 const Home = ({ articles }: any) => {
   return (
     <>
-      <NextSeo
-        title="Home"
-        description="An online portfolio by fiqry choerudin."
-      />
+      <SEO title="Home" description="An online portfolio by fiqry choerudin." />
       <Section className="relative mb-0 grid grid-cols-1 overflow-hidden rounded-b-3xl pb-6 md:px-12 md:pb-6 lg:mb-0 lg:grid-cols-2 lg:gap-4 lg:overflow-visible lg:pl-12 lg:pr-0">
         <div className="order-2 py-4 lg:order-1 lg:py-32">
           <span className="mt-4 mb-2 inline-block text-xl text-gray-500 dark:text-zinc-100 md:mb-3 md:text-2xl">
