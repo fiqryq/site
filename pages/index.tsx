@@ -2,9 +2,9 @@ import { allDocuments, DocumentTypes } from 'contentlayer/generated';
 import { compareDesc } from 'date-fns';
 import Balancer from 'react-wrap-balancer';
 
+import Card from '@/components/card';
 import SEO from '@/components/seo';
 import Section from '@/layouts/section';
-import Card from '@/src/components/card';
 import { ArticleProps } from '@/types/article';
 
 export async function getStaticProps() {
