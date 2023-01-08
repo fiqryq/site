@@ -23,8 +23,7 @@ const Footer: React.FC = () => {
           </Link>
         </div>
         <p className="text-sm text-zinc-400 dark:text-zinc-500">
-          {new Date().getFullYear()} &copy; Built with Next.js by Fiqry
-          choerudin
+          {new Date().getFullYear()} &copy; Built with next by Fiqry
         </p>
       </div>
     </footer>

@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
 
@@ -16,7 +17,6 @@ import Timeline from '@/components/timeline';
 import { download } from '@/constant/resume';
 import { socialLink } from '@/constant/social-link';
 import Section from '@/layouts/section';
-import Image from '@/src/components/next-image';
 
 const About: NextPage = () => {
   return (
@@ -60,7 +60,6 @@ const About: NextPage = () => {
           </div>
           <div className="lg:col-span-1 lg:px-16">
             <Image
-              useSkeleton
               className="rounded-xl"
               src="https://avatars.githubusercontent.com/u/25787603?v=4"
               width="452"
