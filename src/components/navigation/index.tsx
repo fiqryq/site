@@ -17,11 +17,9 @@ const Navigation: React.FC = () => {
           />
         </Link>
         {/* Desktop nav */}
-        <div className="flex gap-5 text-sm font-medium text-zinc-600 dark:text-zinc-400">
+        <div className="dark:text-zinc-20 flex gap-5 text-sm font-medium text-zinc-800">
           <Link href="/">Home</Link>
           <Link href="/writing">Writing</Link>
-          <Link href="/work">Work</Link>
-          <Link href="/about">About</Link>
           <ThemeSelector />
         </div>
       </div>

@@ -25,7 +25,7 @@ const Writing: React.FC = ({ articles }: any) => {
       <SEO title="Blog" description="- A blog about my thoughts." />
       <Section>
         <Content
-          title="The random thoughts of me"
+          title="Writing"
           description="- A blog about my thoughts."
           topSpacer="mt-5"
         >
