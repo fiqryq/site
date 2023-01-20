@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 import Giscus from '@/components/giscus';
 import { ArrowLeftIcon } from '@/components/icons';
-import SEO from '@/components/seo';
+import { Meta } from '@/components/meta';
 import {
   GISCUS_CATEGORY,
   GISCUS_CATEGORY_ID,
@@ -36,6 +36,7 @@ export async function getStaticProps({ params }: any) {
 }
 
 const ArticleLayout = ({ article }: any) => {
+  console.log('🚀 ~ file: [slug].tsx:39 ~ ArticleLayout ~ article', article);
   const MDXContent = useMDXComponent(article.body.code);
   const [Theme, setTheme] = useState<string>('light');
 
@@ -47,10 +48,10 @@ const ArticleLayout = ({ article }: any) => {
 
   return (
     <>
-      <SEO
+      <Meta
         title={article.title}
         description={article.description}
-        date={article.date}
+        canonical={article.banner}
       />
       <div className="bg-white pb-16 dark:bg-zinc-900">
         <div className="pt-16 lg:pt-20">

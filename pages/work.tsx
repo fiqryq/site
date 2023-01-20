@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { LinkIcon } from '@/components/icons';
-import SEO from '@/components/seo';
+import { Meta } from '@/components/meta';
 import { projects } from '@/constant/project';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
@@ -11,7 +11,7 @@ import Section from '@/layouts/section';
 const Work: NextPage = () => {
   return (
     <>
-      <SEO
+      <Meta
         title="Project"
         description="In my opinion, a software engineer should leave their mark on the internet in the form of an article or project. Here are some projects that I have worked on as a software developer."
       />

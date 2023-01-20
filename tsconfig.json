@@ -16,15 +16,8 @@
     "incremental": true,
     "baseUrl": "./",
     "paths": {
-      "@/lib/*": ["lib/*"],
-      "@/layouts/*": ["layouts/*"],
-      "@/css/*": ["css/*"],
-      "@/pages/*": ["pages/*"],
-      "@/src/*": ["src/*"],
-      "@/components/*": ["src/components/*"],
-      "@/constant/*": ["src/constant/*"],
-      "@/types/*": ["src/types/*"],
-      "@/images/*": ["src/images/*"],
+      "@/*": ["./src/*"],
+      "@/public/*": ["./public/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },
@@ -33,10 +26,10 @@
     "**/*.ts",
     "**/*.tsx",
     "commitlint.config.js",
-    "lib/generateRssFeed.js",
-    "lib/generateRssFeed.js",
-    "lib/getAllArticles.js",
-    "lib/getAllArticles.js",
+    "src/lib/generateRssFeed.js",
+    "src/lib/generateRssFeed.js",
+    "src/lib/getAllArticles.js",
+    "src/lib/getAllArticles.js",
     ".contentlayer/generated"
   ],
   "exclude": ["node_modules"]
