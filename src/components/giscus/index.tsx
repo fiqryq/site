@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import type { GiscusProps } from '@/src/types/giscus';
+import { GiscusProps } from '@/types/giscus';
 
 const Giscus: React.FC<GiscusProps> = ({
   id,

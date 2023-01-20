@@ -12,7 +12,7 @@ import {
   LinkedInIcon,
   TwitterIcon
 } from '@/components/icons';
-import SEO from '@/components/seo';
+import { Meta } from '@/components/meta';
 import Timeline from '@/components/timeline';
 import { download } from '@/constant/resume';
 import { socialLink } from '@/constant/social-link';
@@ -21,7 +21,7 @@ import Section from '@/layouts/section';
 const About: NextPage = () => {
   return (
     <>
-      <SEO title="About" description="About Fiqry choerudin." />
+      <Meta title="About" description="About Fiqry choerudin." />
       <Section>
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-5 gap-y-20 py-10 lg:max-w-none lg:grid-cols-2">
           <div className="space-y-5">

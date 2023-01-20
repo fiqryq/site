@@ -2,11 +2,11 @@ import { allDocuments, DocumentTypes } from 'contentlayer/generated';
 import { compareDesc } from 'date-fns';
 import { useState } from 'react';
 
+import Card from '@/components/card';
+import { Meta } from '@/components/meta';
 import Content from '@/layouts/content';
 import Section from '@/layouts/section';
-import Card from '@/src/components/card';
-import SEO from '@/src/components/seo';
-import { ArticleProps } from '@/src/types/article';
+import { ArticleProps } from '@/types/article';
 
 export async function getStaticProps() {
   const articles: DocumentTypes[] = allDocuments.sort((a: any, b: any) => {
@@ -22,7 +22,7 @@ const Writing: React.FC = ({ articles }: any) => {
   );
   return (
     <>
-      <SEO title="Blog" description="- A blog about my thoughts." />
+      <Meta title="Blog" description="- A blog about my thoughts." />
       <Section>
         <Content
           title="Writing"

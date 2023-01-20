@@ -1,14 +1,16 @@
-import {
-  SocialLink,
-  TwitterIcon,
-  InstagramIcon,
-  GitHubIcon,
-  LinkedInIcon
-} from '@/components/icons';
-import { socialLink } from '@/src/constant/social-link';
 import clsx from 'clsx';
 import React from 'react';
 import Balancer from 'react-wrap-balancer';
+
+import {
+  GitHubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  SocialLink,
+  TwitterIcon
+} from '@/components/icons';
+import { Meta } from '@/components/meta';
+import { socialLink } from '@/constant/social-link';
 
 interface Props {
   title?: string;
@@ -27,6 +29,7 @@ const Content: React.FC<Props> = ({
 }) => {
   return (
     <div className="sm:mt-26 pt-12 pb-5">
+      <Meta title={title} description={description} />
       <header className="max-w-2xl">
         <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
           <Balancer>{title}</Balancer>
