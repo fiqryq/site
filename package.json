@@ -39,7 +39,7 @@
     "next": "latest",
     "next-contentlayer": "^0.2.9",
     "next-seo": "^5.15.0",
-    "next-sitemap": "^3.1.43",
+    "next-sitemap": "^4.0.0",
     "postcss-focus-visible": "^7.1.0",
     "react": "latest",
     "react-dom": "latest",
