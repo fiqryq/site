@@ -29,7 +29,7 @@
     "@types/mapbox__rehype-prism": "^0.8.0",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.0.0",
-    "@vercel/og": "^0.0.27",
+    "@vercel/og": "^0.4.0",
     "clsx": "^1.2.1",
     "contentlayer": "^0.2.9",
     "date-fns": "^2.29.3",
