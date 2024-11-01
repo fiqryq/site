@@ -1,0 +1,27 @@
+@import "../css/transition.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0e100f;
+  --primary: #fefce1;
+  --font-ppmori-extralight: "PPMori-Extralight";
+  --font-ppmori-extralight-italic: "PPMori-ExtralightItalic";
+  --font-ppmori-regular: "PPMori-Regular";
+  --font-ppmori-regular-italic: "PPMori-RegularItalic";
+  --font-ppmori-semi-bold: "PPMori-SemiBold";
+  --font-ppmori-semi-bold-italic: "PPMori-SemiBoldItalic";
+}
+
+* {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background: var(--background);
+}
