@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import SmoothScroll from "@/components/smooth-scroll";
+import { Providers } from "@/provider/transition-provider";
 
 const ppmoriExtralight = localFont({
   src: "./fonts/PPMori-Extralight.otf",
@@ -61,7 +62,9 @@ export default function RootLayout({
         className={`${ppmoriExtralight.variable} ${ppmoriExtralightItalic.variable} ${ppmoriRegular.variable} ${ppmoriRegularItalic.variable} ${ppmoriSemiBold.variable} ${ppmoriSemiBoldItalic.variable} antialiased `}
       >
         <SmoothScroll>
-          {children}
+          <Providers>
+            {children}
+          </Providers>
         </SmoothScroll>
       </body>
     </html>

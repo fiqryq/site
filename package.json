@@ -11,6 +11,7 @@
   "dependencies": {
     "@studio-freight/react-lenis": "^0.0.47",
     "clsx": "^2.1.1",
+    "delegate-it": "^6.2.1",
     "framer-motion": "^11.11.11",
     "gsap": "^3.12.5",
     "next": "15.0.2",

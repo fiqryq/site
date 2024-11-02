@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import Footer from "./footer";
 import Navigation from "./navigation";
-
+import React from "react";
 export default function PageWrapper({ children }: { children: ReactNode }) {
     return (
         <div>
