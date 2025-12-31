@@ -1,0 +1,44 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+:root {
+  background-color: #fdfdfc;
+}
+
+.container {
+  @apply mx-auto max-w-2xl px-4;
+}
+
+.carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 500px;
+  gap: 1rem;
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+}
+
+.slide {
+  scroll-snap-align: center;
+}
+
+pre.shiki {
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+}
+
+/* Mobile: only top and bottom borders, no side spacing */
+@media (max-width: 640px) {
+  pre.shiki {
+    border-radius: 0;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+}
