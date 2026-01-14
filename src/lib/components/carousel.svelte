@@ -17,17 +17,17 @@
 		<BlossomCarousel class="carousel">
 			{#each works as work}
 				<div class="slide cursor-pointer px-1">
-					<video autoPlay muted loop playsInline class="rounded-xl">
-						<source src={work.cover} type="video/webm" class="rounded-2xl" />
+					<video autoPlay muted loop playsInline preload="auto" class="h-full rounded-xl">
+						<source src={work.cover} type="video/webm" />
 					</video>
 					<div class="mt-4.5 flex flex-col gap-2">
-						<h3 class="font-semibold capitalize">{work.title}</h3>
-						<p class="line-clamp-2 text-balance">{work.description}</p>
+						<h1 class="font-medium text-primary capitalize">{work.title}</h1>
+						<p class="line-clamp-1 text-balance text-muted">{work.description}</p>
 						<a
 							href={work.link}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="inline-flex w-fit items-center gap-2 underline underline-offset-1 hover:italic"
+							class="inline-flex w-fit items-center gap-2 text-muted underline underline-offset-1 hover:italic"
 							aria-label="View {work.title} on GitHub"
 						>
 							<span>{new URL(work.link).hostname + new URL(work.link).pathname}</span>

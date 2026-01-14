@@ -18,11 +18,11 @@ interface Writing {
 	date: string;
 }
 
-const eagerModules = import.meta.glob<PostModule>('/src/content/writings/*.svx', {
+const eagerModules = import.meta.glob<PostModule>('../content/post/*.svx', {
 	eager: true
 });
 
-const lazyModules = import.meta.glob<PostModule>('/src/content/writings/*.svx');
+const lazyModules = import.meta.glob<PostModule>('../content/post/*.svx');
 
 export function getAllWritings(): Writing[] {
 	const writings = Object.entries(eagerModules).map(([path, module]) => {

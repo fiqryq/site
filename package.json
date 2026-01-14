@@ -36,8 +36,10 @@
 		"vitest-browser-svelte": "^2.0.1"
 	},
 	"dependencies": {
+		"@blossom-carousel/core": "^0.2.0",
 		"@blossom-carousel/svelte": "^0.2.0",
 		"@lucide/svelte": "^0.562.0",
+		"@studio-freight/lenis": "^1.0.42",
 		"@sveltejs/adapter-vercel": "^6.2.0",
 		"gsap": "^3.14.2",
 		"shiki": "^3.20.0"

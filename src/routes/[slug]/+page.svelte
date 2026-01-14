@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>{title} - Fiqry Choerudin</title>
+	<title>{title}</title>
 </svelte:head>
 
 <main>

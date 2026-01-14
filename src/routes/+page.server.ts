@@ -1,4 +1,4 @@
-import { getAllWritings } from '$lib/utils/writings';
+import { getAllWritings } from '$lib/markdown/file-handler';
 
 export async function load() {
 	const allWritings = getAllWritings();

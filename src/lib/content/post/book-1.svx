@@ -1,0 +1,306 @@
+---
+title: "How i setup my terminal"
+description: "make your terminal more powerful and reliable."
+---
+
+<script>
+	import Video from '../../components/block/video.svelte';
+</script>
+
+## TL;DR
+
+As software engineers, we should understand what a terminal is. A terminal is a text-based interface for running commands. It is very powerful and can help you do almost anything just by typing a command.
+
+However, the terminal is not always easy to use because there are so many commands and options to learn and remember, and it is completely text-based T.T
+
+Even though the terminal is very powerful, many CLI-based apps are still not very popular. People often prefer to install desktop apps to do things like work with Git, Docker, Postman, etc. But what if you could do all of that using only the terminal?
+
+In this article, I’ll share my terminal development setup for <b>Terminal</b> , <b>IDE</b> , <b>Git</b> , <b>Docker</b> , and <b>Postman</b> etc.
+
+## Terminal 
+For terminal i use  <a href="https://wezterm.org/index.html">wezterm </a> , it is a very lightweight and fast terminal emulator with GPU acceleration and it has a lot of features like split panes, copy and paste, and more.
+i combine this with tmux to create a terminal that is very customizable and fast.
+
+here my <b>wezterm.lua</b> config :
+
+```lua
+local wezterm = require("wezterm")
+
+local config = wezterm.config_builder()
+
+config.colors = {
+	foreground = "#c5c9c7",
+	background = "#14171d",
+	cursor_bg = "#c5c9c7",
+	cursor_border = "#c5c9c7",
+	cursor_fg = "#14171d",
+	selection_bg = "#393B44",
+	selection_fg = "#c5c9c7",
+	ansi = { "#14171d", "#c4746e", "#8a9a7b", "#c4b28a", "#8ba4b0", "#a292a3", "#8ea4a2", "#a4a7a4" },
+	brights = { "#5C6066", "#e46876", "#87a987", "#e6c384", "#7fb4ca", "#938aa9", "#7aa89f", "#c5c9c7" },
+}
+
+config.font_size = 19
+
+config.enable_tab_bar = false
+
+config.window_decorations = "RESIZE"
+config.window_background_opacity = 0.92
+
+config.enable_kitty_graphics = true
+config.macos_window_background_blur = 1001
+config.max_fps = 120
+
+return config
+```
+
+as you can see i disable the default tab bar for my wezterm and it will replace with a custom tab using tmux.
+```lua
+config.enable_tab_bar = false
+```
+
+and this is my <b>tmux.conf</b> config :
+
+```lua
+# Use CTRL-a instead of CTRL-b for leader.
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+## Key bindings
+
+# Reload settings
+bind R source-file $HOME/.config/tmux/tmux.conf \; display "Reloaded!"
+
+# Open current directory
+bind o run-shell "open #{pane_current_path}"
+bind -r e kill-pane -a
+
+# Split panes
+bind s split-window -v -c "#{pane_current_path}"
+bind v split-window -h -c "#{pane_current_path}"
+
+# Smart pane switching with awareness of vim splits
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# Resize panes
+bind -r -T prefix , resize-pane -L 20
+bind -r -T prefix . resize-pane -R 20
+bind -r -T prefix - resize-pane -D 7
+bind -r -T prefix = resize-pane -U 7
+
+# Maximize pane
+bind z resize-pane -Z
+
+# Moving window
+bind H previous-window
+bind L next-window
+
+# Toggle synchronization of keystrokes to all panes in the window
+bind * setw synchronize-panes
+
+# Other keybindings
+bind P set pane-border-status
+bind c kill-pane
+bind x swap-pane -D
+bind S choose-session
+bind K send-keys "clear"\; send-keys "Enter"
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+
+# Close current window
+bind q kill-window
+
+# Rename session last open session
+bind-key r command-prompt -I "#W" "rename-window '%%'"
+
+# Resize with specific percentages
+bind y resize-pane -x "33%"
+bind u resize-pane -x "66%"
+bind f resize-pane -y "100%"
+bind g resize-pane -y "22%"
+bind t resize-pane -y "80%"
+
+# Easier pane selections
+bind -n C-l select-pane -L
+bind -n C-\; select-pane -R
+bind -n C-j select-pane -U
+bind -n C-k select-pane -D
+
+# Move window (tab) position with arrow keys
+bind-key Left swap-window -t -1\; select-window -t -1
+bind-key Right swap-window -t +1\; select-window -t +1
+
+# No delay for escape key press while in nvim
+set -s escape-time 0
+
+# Enable mouse control (clickable windows, panes, resizable panes).
+set -g mouse on
+
+# Allows auto-reading in nvim
+set-option -g focus-events on
+
+# Don't rename windows automatically. Use my beautiful names!
+set-option -g allow-rename off
+
+# Don't do anything when a 'bell' rings
+set -g visual-activity off
+set -g visual-bell off
+set -g visual-silence off
+setw -g monitor-activity off
+set -g bell-action none
+
+# Clock mode
+setw -g clock-mode-colour colour1
+
+# Copy mode
+setw -g mode-style 'fg=colour234 bg=colour240'
+
+# Pane borders
+set -g pane-border-style 'fg=colour236'
+set -g pane-active-border-style 'fg=colour248'
+
+# Statusbar
+set -g status-position top
+set -g status-justify left 
+set -g status-style 'fg=colour255'
+set -g status-left ''
+set -g status-right '#{?window_zoomed_flag,🔍,}'
+set -g status-right-length 50
+set -g status-left-length 10
+
+setw -g window-status-current-style 'fg=colour253 bg=colour236 bold'
+setw -g window-status-current-format ' #W '
+setw -g window-status-style 'fg=colour255 dim'
+setw -g window-status-format ' #W #[fg=colour0] '
+setw -g window-status-bell-style 'fg=colour1 bg=colour1 bold'
+
+# Messages
+set -g message-style 'fg=colour255 bg=colour0 bold'
+
+# Correcting colors for tmux + macOS + Alacritty
+set -g default-terminal "xterm-256color"
+# set -as terminal-features ",xterm-256color:RGB"
+set -ga terminal-overrides ",-256color:Tc"
+
+# Auto-rename window to PWD
+set-option -g status-interval 5
+set-option -g automatic-rename on
+set-option -g automatic-rename-format '#{b:pane_current_path}'
+
+# Set vi key bindings for copy mode
+set-window-option -g mode-keys vi
+bind-key -T copy-mode-vi v send -X begin-selection
+bind-key -T copy-mode-vi V send -X select-line
+set -s copy-command 'pbcopy'
+bind-key -T copy-mode-vi y send -X copy-pipe-no-clear 'pbcopy'
+bind-key -T copy-mode-vi Enter send -X copy-pipe-and-cancel 'pbcopy'
+bind-key -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel 'pbcopy'
+
+bind-key -T copy-mode-vi h send-keys -X cursor-left
+bind-key -T copy-mode-vi j send-keys -X cursor-down
+bind-key -T copy-mode-vi k send-keys -X cursor-up
+bind-key -T copy-mode-vi l send-keys -X cursor-right
+
+# window
+set -g base-index 1 # start indexing windows at 1 
+set -g pane-base-index 1
+set -g renumber-windows on # renumber all windows when a window is closed
+set -g detach-on-destroy off # don't exit from tmux when closing a session
+set-option -s set-clipboard on # Enable system clipboard integration
+set-option -g history-limit 200000 # Increase scrollback buffer size
+
+# Title Bar
+set -g set-titles on
+set -g set-titles-string "#T"
+```
+
+## Neovim 
+I use AstoNvim for my default ide its very lightwight and fast. i try to other nvim such as <b>LazyVim</b> and <b>NvChad</b> 
+but i prefer using AstroNvim because is easy to setup and have a lot of plugins on astrocommunity.
+
+For my astronvim i use default config and i only add some plugins for support my workflows such as lsp and ai autocomplete.
+
+for lsp i use default lsp config from astronvim and i only add some config for autoformatter and linter like this on <b>astrolsp.lua</b> :
+
+```lua
+------some boring config------
+    formatting = {
+      format_on_save = {
+        enabled = true,
+        allow_filetypes = {
+          "typescript",
+          "typescriptreact",
+          "css",
+          "svelte",
+          "graphql",
+          "html",
+          "vue",
+          "astro",
+          "markdown",
+          "markdown_inline",
+          "mdx",
+          "json",
+          "yaml",
+          "yml",
+          "toml",
+          "prisma",
+          "sql",
+          "lua",
+        },
+        ignore_filetypes = {
+          -- "python",
+        },
+      },
+    }
+------ some boring config------
+```
+
+And for Autocomplete i prefer using <a href="https://supermaven.com/">Supermaven</a> this plugin is very powerful and pretty fast for autocomplete.
+i only use free version of this plugins and i never reach the limit of free version so it is very good for me because i should not pay for this plugins , but maybe in
+the future i will use paid version of this plugins <i> (hehe) . btw here my config for <b>supermaven.lua</b> :
+
+```lua
+return {
+  "supermaven-inc/supermaven-nvim",
+  event = "InsertEnter",
+  cmd = { "SupermavenUseFree", "SupermavenUsePro" },
+  opts = {
+    keymaps = {
+      accept_suggestion = nil,
+    },
+  },
+  specs = {
+    {
+      "AstroNvim/astrocore",
+      opts = {
+        options = {
+          g = {
+            ai_accept = function()
+              local suggestion = require "supermaven-nvim.completion_preview"
+              if suggestion.has_suggestion() then
+                vim.schedule(function() suggestion.on_accept_suggestion() end)
+                return true
+              end
+            end,
+          },
+        },
+      },
+    },
+  },
+}
+```
+
+all my plugin on astronvim i install using lazy for package manager or you can also install via astrocommunity plugins by visiting <a href="https://github.com/AstroNvim/astrocommunity">astrocommunity</a>
+and you can install it like this on <b>astrocommunity.lua</b> file :
+
+```lua
+---@type LazySpec
+return {
+  "AstroNvim/astrocommunity",
+  { import = "astrocommunity.pack.lua" },
+  --- plugins goes here ---
+}
+```

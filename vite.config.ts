@@ -6,7 +6,7 @@ import { sveltekit } from '@sveltejs/kit/vite';
 export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
 	server: {
-		allowedHosts: ['wheels-stud-charging-novelty.trycloudflare.com']
+		allowedHosts: ['item-sunshine-psi-epic.trycloudflare.com']
 	},
 	test: {
 		expect: { requireAssertions: true },

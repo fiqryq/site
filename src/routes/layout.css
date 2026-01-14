@@ -1,44 +1,137 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+@import './typography.css';
+
+/* Font Faces */
+@font-face {
+	font-family: 'Inter';
+	src:
+		url('../lib/assets/fonts/InterVariable.woff2') format('woff2-variations'),
+		url('../lib/assets/fonts/InterVariable-Italic.woff2') format('woff2-variations');
+	font-weight: 100 900;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'IBM Plex Mono';
+	src: url('../lib/assets/fonts/IBMPlexMono-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'IBM Plex Mono';
+	src: url('../lib/assets/fonts/IBMPlexMono-Italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'IBM Plex Mono';
+	src: url('../lib/assets/fonts/IBMPlexMono-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'IBM Plex Mono';
+	src: url('../lib/assets/fonts/IBMPlexMono-MediumItalic.woff2') format('woff2');
+	font-weight: 500;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'IBM Plex Mono';
+	src: url('../lib/assets/fonts/IBMPlexMono-SemiBold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'IBM Plex Mono';
+	src: url('../lib/assets/fonts/IBMPlexMono-SemiBoldItalic.woff2') format('woff2');
+	font-weight: 600;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Source Sans Pro';
+	src: url('../lib/assets/fonts/SourceSansPro-Regular.ttf.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Ubuntu Mono';
+	src: url('../lib/assets/fonts/Ubuntu-Mono-bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
 
 :root {
-  background-color: #fdfdfc;
+	--font-inter: 'Inter', system-ui;
+	--font-plex-mono: 'IBM Plex Mono', monospace;
+	--font-source-sans-pro: 'Source Sans Pro', system-ui;
+	--font-ubuntu-mono: 'Ubuntu Mono', monospace;
+}
+
+@theme inline {
+	--color-primary: #21201c;
+	--color-muted: #63635e;
+	--font-sans: var(--font-inter), system-ui;
+	--font-source: var(--font-source-sans-pro), system-ui;
+	--font-sans--font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+	--font-mono: var(--font-plex-mono), monospace;
+	--font-mono--font-feature-settings: 'ss02', 'zero';
+	--font-ubuntu-mono: var(--font-ubuntu-mono);
+}
+
+:root {
+	background-color: #fdfdfc;
 }
 
 .container {
-  @apply mx-auto max-w-2xl px-4;
+	@apply mx-auto max-w-2xl px-4;
 }
 
 .carousel {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 500px;
-  gap: 1rem;
-  scroll-snap-type: x mandatory;
-  scroll-snap-stop: always;
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 500px;
+	gap: 1rem;
+	scroll-snap-type: x mandatory;
+	scroll-snap-stop: always;
 }
 
 .slide {
-  scroll-snap-align: center;
+	scroll-snap-align: center;
 }
 
 pre.shiki {
-  border-radius: 0.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  overflow-x: auto;
-  border: 1px solid #e5e7eb;
+	border-radius: 0.5rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	overflow-x: auto;
+	border: 1px solid #e5e7eb;
 }
 
 /* Mobile: only top and bottom borders, no side spacing */
 @media (max-width: 640px) {
-  pre.shiki {
-    border-radius: 0;
-    margin-left: -1rem;
-    margin-right: -1rem;
-    border-left: none;
-    border-right: none;
-    border-top: 1px solid #e5e7eb;
-    border-bottom: 1px solid #e5e7eb;
-  }
+	pre.shiki {
+		border-radius: 0;
+		margin-left: -1rem;
+		margin-right: -1rem;
+		border-left: none;
+		border-right: none;
+		border-top: 1px solid #e5e7eb;
+		border-bottom: 1px solid #e5e7eb;
+	}
 }

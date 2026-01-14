@@ -1,5 +1,5 @@
-import { getWritingBySlug } from '$lib/utils/writings';
-import type { RouteParams } from './$types';
+import { getWritingBySlug } from '$lib/markdown/file-handler';
+import type { RouteParams } from '../writings/[slug]/$types';
 
 export async function load({ params }: { params: RouteParams }) {
 	const slug = params.slug;
