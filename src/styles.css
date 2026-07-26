@@ -1,0 +1,199 @@
+
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Geist Sans";
+  src: url("/fonts/geist-sans/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/geist-mono/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Pixel Square";
+  src: url("/fonts/geist-pixel/GeistPixel-Square.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Pixel Grid";
+  src: url("/fonts/geist-pixel/GeistPixel-Grid.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Pixel Circle";
+  src: url("/fonts/geist-pixel/GeistPixel-Circle.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Pixel Triangle";
+  src: url("/fonts/geist-pixel/GeistPixel-Triangle.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Pixel Line";
+  src: url("/fonts/geist-pixel/GeistPixel-Line.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme static {
+  --font-sans: "Geist Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", "Roboto Mono", "Menlo", "Monaco", "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace;
+  --font-pixel-square: "Geist Pixel Square", monospace;
+  --font-pixel-grid: "Geist Pixel Grid", monospace;
+  --font-pixel-circle: "Geist Pixel Circle", monospace;
+  --font-pixel-triangle: "Geist Pixel Triangle", monospace;
+  --font-pixel-line: "Geist Pixel Line", monospace;
+
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+  --color-muted: #6b6b6b;
+  --color-border: #e4e4e4;
+  --color-surface: #f0f0f0;
+  --color-accent: oklch(0.5058 0.2886 264.84);
+  --color-accent-foreground: #ffffff;
+
+  --radius: 0px;
+}
+
+@utility bg-dot-grid {
+  background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+@utility divider-dotted {
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-border) 0 2px,
+    transparent 2px 8px
+  );
+}
+
+@utility fig-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+@utility leader-dots {
+  flex: 1 1 auto;
+  min-width: 1rem;
+  margin-bottom: 0.35em;
+  border-bottom: 1px dotted var(--color-border);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+.prose-writing {
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: var(--color-foreground);
+}
+
+.prose-writing > * + * {
+  margin-top: 1.5rem;
+}
+
+.prose-writing p {
+  text-align: justify;
+  hyphens: manual;
+}
+
+.prose-writing h2 {
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  line-height: 1.5625;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--color-foreground);
+  margin-top: 5rem;
+}
+
+.prose-writing h3 {
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  line-height: 1.5625;
+  font-weight: 600;
+  color: var(--color-foreground);
+  margin-top: 4rem;
+}
+
+.prose-writing a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-writing ul,
+.prose-writing ol {
+  padding-left: 1.25rem;
+}
+
+.prose-writing li + li {
+  margin-top: 0.5rem;
+}
+
+.prose-writing :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background-color: var(--color-surface);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+}
+
+.prose-writing pre {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+}
+
+.prose-writing pre code {
+  background: none;
+  padding: 0;
+}
+

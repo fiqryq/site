@@ -1,0 +1,118 @@
+---
+title: "How i run ai coding agents from the terminal"
+description: "my ai-era workflow, still just a terminal — nix, tmux, and two plugins i wrote myself."
+words: 1030
+---
+
+## The short version
+
+Everyone's editor is turning into an AI agent client now, but mine didn't need to — because my terminal already was one.
+
+Everything i do lives inside tmux: the editor, multiple AI coding agents running in parallel across different projects, and whatever dev server/port i'm currently debugging. The whole machine is provisioned declaratively with Nix so i can nuke my laptop and be back to a working setup in one command. And two problems annoyed me enough that i wrote my own tmux plugins to fix them: juggling multiple agent sessions without losing track of which one needs me, and finding (and killing) whatever process is squatting on a port.
+
+## The machine is declarative
+
+Before any of this, the actual machine has to exist. I stopped hand-editing `.zshrc` and `.gitconfig` a while ago — everything is managed with <a href="https://github.com/nix-community/home-manager">Nix Home Manager</a> from a single dotfiles repo.
+
+The structure is just profiles built out of composable modules:
+
+```
+dot-config/
+├── flake.nix           # entry point — defines all profiles
+├── config/              # app configs (symlinked into ~/.config/)
+│   ├── nvim/            # LazyVim
+│   ├── ghostty/
+│   ├── tmux/
+│   └── wezterm/
+├── profiles/
+│   ├── personal.nix     # core + shell + git + fnm + php + nginx + extras + ssh
+│   ├── work.nix         # core + shell + git + fnm + nginx + devops + ssh
+│   └── minimal.nix      # core + shell + git only
+└── modules/
+    ├── core.nix         # always-on: tmux, lazygit, bat, eza, fzf, ripgrep, zoxide, starship, direnv
+    ├── nvim.nix
+    ├── shell.nix
+    ├── git.nix          # + 1Password SSH signing
+    ├── extras.nix       # ollama, lazydocker, lazysql, cloudflared
+    └── ssh.nix          # 1Password agent, ~/.ssh/config.local include
+```
+
+Switching my whole setup — every module, every package version — is one command:
+
+```bash
+hms personal   # core + shell + git + node + php + nginx + extras + ssh
+```
+
+Secrets never touch the repo. Anything sensitive goes in `~/.env.local` (git-ignored, seeded from a template on a fresh machine) or gets pulled live through the 1Password CLI:
+
+```bash
+# ~/.env.local
+export GITHUB_TOKEN=$(op read "op://Personal/GitHub Token/credential")
+```
+
+I care about this part more than people expect from a "terminal setup" post, because everything downstream — the agents, the plugins — only feels reliable because the environment they run in is reproducible.
+
+## The terminal and editor
+
+Daily driver is <b>Ghostty</b>, kanso-ink theme, Berkeley Mono, with a cursor-smear shader because i like the way it looks when it moves:
+
+```
+theme = "kanso-ink"
+font-family = "Berkeley Mono Variable"
+font-size = 14
+cursor-style = block
+custom-shader = shaders/cursor_smear.glsl
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+```
+
+wezterm's config is still in the repo and still works, i just don't reach for it day to day anymore.
+
+Editor is Neovim on <b>LazyVim</b> (moved off AstroNvim at some point — LazyVim's defaults fit how i work better). Autocomplete is <a href="https://supermaven.com/">Supermaven</a>, free tier, never hit the limit.
+
+None of that is the interesting part though. tmux is where the AI-era workflow actually lives.
+
+## Running multiple ai agents without losing my mind
+
+Before i fixed this, running Claude Code, OpenCode, and Codex side by side meant a pile of ad hoc tmux panes with no naming convention. I'd lose track of which pane belonged to which project, and had no way to tell "still thinking" apart from "finished twenty minutes ago and is waiting on me" without clicking into each one.
+
+So i wrote <a href="https://github.com/fiqryq/opentmux">opentmux</a> — a tmux plugin whose whole job is running AI coding agents as first-class tmux sessions instead of stray panes.
+
+```
+# ~/.config/tmux/tmux.conf
+set -g @plugin 'https://github.com/fiqryq/opentmux'
+```
+
+- `prefix + y` launches an agent for the current directory. The session name is derived from a hash of the directory, so re-launching in the same project reuses the same session instead of spawning a duplicate.
+- `prefix + u` opens a searchable picker across every active agent session, with a live preview and a status indicator — working, waiting, or idle — so waiting agents surface to the top instead of getting buried.
+- When the agent process exits, its session cleans itself up. No dead sessions to prune later.
+
+It works with Claude Code, Cline, Codex, OpenCode, and CommandCode — whichever agent i point it at for that project.
+
+## Finding (and killing) whatever's squatting on a port
+
+The other recurring annoyance: agents spin up dev servers, and dev servers leave orphaned processes sitting on ports i've long forgotten about. `lsof` every time gets old fast.
+
+I wrote <a href="https://github.com/fiqryq/port">tmux-port</a> for this — an fzf-driven popup over every listening TCP port on the machine.
+
+```
+# port — t is already taken above (resize-pane 80%), so p ("port")
+set -g @port_bind 'p'
+bind-key p run-shell ~/.tmux/plugins/port/scripts/popup.sh
+```
+
+`prefix + p` shows every listening port with its PID and command. From there:
+
+- `ctrl-x` — kill the selected process
+- `ctrl-t` — spin up a Cloudflare Quick Tunnel for it
+- `ctrl-y` — copy the tunnel URL to clipboard
+- `ctrl-r` — refresh the list
+
+The tunnel part turned out to be the part i use most — when an agent finishes something and i want to show someone the result without actually deploying it anywhere, `ctrl-t` and it's already a shareable link.
+
+## Everything else glued together
+
+The rest is what you'd expect running underneath all of it: lazygit, bat, eza, fzf, ripgrep, zoxide, starship, and direnv, all always-on through `core.nix` so they're identical on every machine i touch.
+
+For agent-specific setup, <a href="https://opencode.ai">OpenCode</a> gets a folder of skills scoped to what i actually work on — Cloudflare Workers, wrangler, durable objects — instead of relying on whatever it guesses from context. And <a href="https://commandcode.ai">CommandCode</a> keeps a running "taste" file that's continuously updated from how i actually write code, so agent output drifts less over time instead of more.
+
+None of this replaced typing code by hand because I got lazy. It's because once agents started doing more of the typing, the terminal orchestrating them needed more attention, not less — and it turned out tmux was already the right tool for that job. It just needed two plugins that didn't exist yet.

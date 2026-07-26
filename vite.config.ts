@@ -1,44 +1,34 @@
-import { defineConfig } from 'vitest/config';
-import { playwright } from '@vitest/browser-playwright';
-import tailwindcss from '@tailwindcss/vite';
-import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite'
+import { devtools } from '@tanstack/devtools-vite'
 
-export default defineConfig({
-	plugins: [tailwindcss(), sveltekit()],
-	server: {
-		allowedHosts: ['item-sunshine-psi-epic.trycloudflare.com']
-	},
-	test: {
-		expect: { requireAssertions: true },
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 
-		projects: [
-			{
-				extends: './vite.config.ts',
+import mdx from '@mdx-js/rollup'
+import viteReact from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import { cloudflare } from '@cloudflare/vite-plugin'
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import rehypeSlug from 'rehype-slug'
 
-				test: {
-					name: 'client',
+import remarkToc from './src/mdx/remark-toc'
 
-					browser: {
-						enabled: true,
-						provider: playwright(),
-						instances: [{ browser: 'chromium', headless: true }]
-					},
+const config = defineConfig({
+  resolve: { tsconfigPaths: true },
+  plugins: [
+    devtools(),
+    cloudflare({ viteEnvironment: { name: 'ssr' } }),
+    tailwindcss(),
+    {
+      enforce: 'pre',
+      ...mdx({
+        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkToc],
+        rehypePlugins: [rehypeSlug],
+      }),
+    },
+    tanstackStart(),
+    viteReact({ include: /\.(mdx|js|jsx|ts|tsx)$/ }),
+  ],
+})
 
-					include: ['src/**/*.svelte.{test,spec}.{js,ts}'],
-					exclude: ['src/lib/server/**']
-				}
-			},
-
-			{
-				extends: './vite.config.ts',
-
-				test: {
-					name: 'server',
-					environment: 'node',
-					include: ['src/**/*.{test,spec}.{js,ts}'],
-					exclude: ['src/**/*.svelte.{test,spec}.{js,ts}']
-				}
-			}
-		]
-	}
-});
+export default config
