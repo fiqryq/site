@@ -11,6 +11,7 @@ import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import rehypeSlug from 'rehype-slug'
 
+import rehypeLumis from './src/mdx/rehype-lumis'
 import remarkToc from './src/mdx/remark-toc'
 
 const config = defineConfig({
@@ -23,7 +24,7 @@ const config = defineConfig({
       enforce: 'pre',
       ...mdx({
         remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkToc],
-        rehypePlugins: [rehypeSlug],
+        rehypePlugins: [rehypeSlug, rehypeLumis],
       }),
     },
     tanstackStart(),

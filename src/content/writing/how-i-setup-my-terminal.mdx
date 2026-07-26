@@ -56,7 +56,7 @@ I care about this part more than people expect from a "terminal setup" post, bec
 
 Daily driver is <b>Ghostty</b>, kanso-ink theme, Berkeley Mono, with a cursor-smear shader because i like the way it looks when it moves:
 
-```
+```ini
 theme = "kanso-ink"
 font-family = "Berkeley Mono Variable"
 font-size = 14
@@ -77,7 +77,7 @@ Before i fixed this, running Claude Code, OpenCode, and Codex side by side meant
 
 So i wrote <a href="https://github.com/fiqryq/opentmux">opentmux</a> — a tmux plugin whose whole job is running AI coding agents as first-class tmux sessions instead of stray panes.
 
-```
+```bash
 # ~/.config/tmux/tmux.conf
 set -g @plugin 'https://github.com/fiqryq/opentmux'
 ```
@@ -94,7 +94,7 @@ The other recurring annoyance: agents spin up dev servers, and dev servers leave
 
 I wrote <a href="https://github.com/fiqryq/port">tmux-port</a> for this — an fzf-driven popup over every listening TCP port on the machine.
 
-```
+```bash
 # port — t is already taken above (resize-pane 80%), so p ("port")
 set -g @port_bind 'p'
 bind-key p run-shell ~/.tmux/plugins/port/scripts/popup.sh

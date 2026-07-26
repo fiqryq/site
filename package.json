@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.26.0",
+    "@lumis-sh/lumis": "^0.6.1",
+    "@lumis-sh/themes": "^0.2.2",
     "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "latest",
@@ -31,6 +33,7 @@
     "estree-util-value-to-estree": "^3.5.0",
     "geist": "^1.7.2",
     "github-slugger": "^2.0.0",
+    "hast-util-from-html-isomorphic": "^2.0.0",
     "lucide-react": "^0.545.0",
     "mdast-util-to-string": "^4.0.0",
     "react": "^19.2.0",
