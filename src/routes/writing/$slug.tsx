@@ -1,7 +1,7 @@
 import { Link, createFileRoute, notFound } from '@tanstack/react-router'
 import { cn } from 'cnfast'
 import { Array as Arr, Effect, Either, Option } from 'effect'
-import { AlignLeft, BookOpen, Check, ChevronLeft, Copy, FileText, Link2 } from 'lucide-react'
+import { AlignLeft, Check, ChevronLeft, Copy, FileText, Link2 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
 import {
@@ -127,34 +127,9 @@ function WritingPage() {
   const index = writings.findIndex((w) => w.slug === writing.slug) + 1
 
   return (
-    <div className="mx-auto flex max-w-screen-2xl">
-      <aside className="sticky top-0 hidden h-screen w-56 shrink-0 overflow-y-auto border-r border-border px-4 py-6 lg:block">
-        <div className="flex items-center gap-2 px-2 text-[13px] font-medium text-foreground">
-          <BookOpen className="size-3.5" />
-          Writing
-        </div>
-        <ul className="mt-2 space-y-0.5">
-          {writings.map((w) => (
-            <li key={w.slug}>
-              <Link
-                to="/writing/$slug"
-                params={{ slug: w.slug }}
-                className={cn(
-                  'block truncate rounded-md px-2 py-1.5 text-[13px] transition-colors',
-                  w.slug === writing.slug
-                    ? 'bg-surface text-foreground'
-                    : 'text-muted hover:text-foreground',
-                )}
-              >
-                {w.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </aside>
-
-      <main className="min-w-0 flex-1 px-6 pt-8 pb-24 sm:px-10">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-2">
+    <div className="mx-auto max-w-screen-2xl">
+      <main className="px-6 pt-8 pb-24 sm:px-10">
+        <div className="mx-auto flex max-w-2xl items-center justify-between gap-2">
           <Link to="/" className={toolbarButton}>
             <ChevronLeft className="size-3.5" />
             Back
@@ -229,7 +204,7 @@ function WritingPage() {
         </article>
       </main>
 
-      <aside className="sticky top-0 hidden h-screen w-64 shrink-0 overflow-y-auto py-8 pr-6 xl:block">
+      <aside className="fixed top-0 right-0 hidden max-h-screen w-64 overflow-y-auto py-8 pr-6 xl:block">
         <div className="flex items-center gap-2 text-xs text-muted">
           <AlignLeft className="size-3.5" />
           On this page
