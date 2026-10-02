@@ -20,14 +20,9 @@
   --shadow-border-hover:
     0 0 0 1px rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08), 0 2px 4px 0 rgb(0 0 0 / 0.06);
   --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --gutter: 1.5rem;
-  --page-max: 96rem;
-}
-
-@media (min-width: 640px) {
-  :root {
-    --gutter: 3rem;
-  }
+  /* One reading column for every page: 644px of content + 24px side padding. */
+  --column-max: 43.25rem;
+  --column-padding: 1.5rem;
 }
 
 *,
@@ -96,9 +91,9 @@ ol[role="list"] {
 
 .container {
   width: 100%;
-  max-width: var(--page-max);
+  max-width: var(--column-max);
   margin-inline: auto;
-  padding-inline: var(--gutter);
+  padding-inline: var(--column-padding);
 }
 
 /* Small uppercase mono label used across the site. */

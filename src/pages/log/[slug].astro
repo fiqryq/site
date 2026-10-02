@@ -35,7 +35,7 @@ const { Content, headings } = await render(entry)
 ---
 
 <BaseLayout title={`${title} — Fiqry Choerudin`} description={description} type="article">
-  <div class="page">
+  <div class="container page">
     <PostToolbar />
 
     <article id="top">
@@ -74,11 +74,8 @@ const { Content, headings } = await render(entry)
 </BaseLayout>
 
 <style>
-  /* Reading column: 644px of text inside 24px side padding. */
   .page {
-    max-width: 43.25rem;
-    margin-inline: auto;
-    padding: 3rem 1.5rem;
+    padding-block: 3rem;
   }
 
   @media (min-width: 640px) {
