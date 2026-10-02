@@ -25,11 +25,11 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.local(),
-      name: 'Geist',
+      name: 'Inter',
       cssVariable: '--font-sans',
       fallbacks: ['ui-sans-serif', 'system-ui', 'sans-serif'],
       options: {
-        variants: [{ src: ['./src/assets/fonts/geist-variable.woff2'], weight: '100 900' }],
+        variants: [{ src: ['./src/assets/fonts/inter-variable.woff2'], weight: '100 900' }],
       },
     },
     {

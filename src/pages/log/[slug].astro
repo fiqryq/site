@@ -74,13 +74,21 @@ const { Content, headings } = await render(entry)
 </BaseLayout>
 
 <style>
+  /* Reading column: 644px of text inside 24px side padding. */
   .page {
-    padding: 2rem var(--gutter) 6rem;
+    max-width: 43.25rem;
+    margin-inline: auto;
+    padding: 3rem 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .page {
+      padding-block: 6rem;
+    }
   }
 
   article {
-    max-width: 34rem;
-    margin: 4rem auto 0;
+    margin-top: 6rem;
     scroll-margin-top: 2rem;
   }
 
@@ -117,11 +125,11 @@ const { Content, headings } = await render(entry)
   }
 
   h1 {
-    margin-block: 1.25rem 1rem;
-    font-size: 1.25rem;
-    font-weight: 500;
-    line-height: 1.4;
-    letter-spacing: -0.025em;
+    margin-block: 1.25rem;
+    font-size: 1rem;
+    font-weight: 550;
+    line-height: 1.625;
+    color: var(--color-heading);
     text-wrap: balance;
   }
 
@@ -130,9 +138,9 @@ const { Content, headings } = await render(entry)
     justify-content: space-between;
     gap: 1rem;
     margin-top: 4rem;
-    padding-top: 1.5rem;
-    font-size: 0.8125rem;
-    border-top: 1px solid var(--color-border);
+    padding-top: 3rem;
+    font-size: 0.875rem;
+    border-top: 1px solid var(--color-surface);
   }
 
   .pager a {

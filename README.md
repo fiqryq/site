@@ -8,7 +8,7 @@ Personal site and writing for Fiqry Choerudin.
 - **Plain CSS**: global design tokens are in `src/styles/global.css`, and each component has its own scoped `<style>`.
 - **Content collections**: log entries are Markdown files in `src/content/log/`, validated by the schema in `src/content.config.ts`.
 - **Shiki**: Astro's built-in syntax highlighting. Custom transformers live in `src/lib/shiki-transformers.ts`.
-- **Astro Fonts API**: self-hosted fonts in `src/assets/fonts/`, configured in `astro.config.ts`.
+- **Astro Fonts API**: self-hosted fonts in `src/assets/fonts/` (Inter, Geist Mono, Geist Pixel, Newsreader), configured in `astro.config.ts`.
 - **Biome**: linting and formatting.
 - **Cloudflare Workers**: deployment as static assets, via `wrangler`.
 
