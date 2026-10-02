@@ -1,0 +1,146 @@
+---
+import { render } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
+
+import Icon from '@/components/Icon.astro'
+import PostToolbar from '@/components/PostToolbar.astro'
+import Prose from '@/components/Prose.astro'
+import TableOfContents from '@/components/TableOfContents.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { formatWords, getWritings, type Writing } from '@/lib/writing'
+
+export const getStaticPaths = (async () => {
+  const writings = await getWritings()
+  return writings.map((writing, i) => ({
+    params: { slug: writing.id },
+    props: {
+      writing,
+      number: i + 1,
+      prev: writings[i - 1],
+      next: writings[i + 1],
+    },
+  }))
+}) satisfies GetStaticPaths
+
+interface Props {
+  writing: Writing
+  number: number
+  prev: Writing | undefined
+  next: Writing | undefined
+}
+
+const { writing, number, prev, next } = Astro.props
+const { title, description, words } = writing.data
+const { Content, headings } = await render(writing)
+---
+
+<BaseLayout title={`${title} — Fiqry Choerudin`} description={description} type="article">
+  <div class="page">
+    <PostToolbar />
+
+    <article id="top">
+      <div class="chips">
+        <span class="chip">
+          Writing
+          <span class="badge">{number}</span>
+        </span>
+        <span class="chip">
+          <Icon name="file-text" size={12} class="muted" />
+          {formatWords(words)}
+        </span>
+      </div>
+
+      <div data-article>
+        <h1>{title}</h1>
+
+        <Prose>
+          <p>{description}</p>
+          <Content />
+        </Prose>
+      </div>
+
+      {
+        (prev || next) && (
+          <nav class="pager" aria-label="More writing">
+            {prev ? <a href={`/writing/${prev.id}`}>← {prev.data.title}</a> : <span />}
+            {next ? <a href={`/writing/${next.id}`}>{next.data.title} →</a> : <span />}
+          </nav>
+        )
+      }
+    </article>
+  </div>
+
+  <TableOfContents title={title} headings={headings} />
+</BaseLayout>
+
+<style>
+  .page {
+    padding: 2rem var(--gutter) 6rem;
+  }
+
+  article {
+    max-width: 34rem;
+    margin: 4rem auto 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    font-size: 0.75rem;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    box-shadow: var(--shadow-xs);
+  }
+
+  .badge {
+    padding-inline: 0.375rem;
+    font-size: 0.6875rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    border-radius: 999px;
+  }
+
+  .chip :global(.muted) {
+    color: var(--color-muted);
+  }
+
+  h1 {
+    margin-block: 1.25rem 1rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    font-size: 0.8125rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .pager a {
+    color: var(--color-muted);
+    transition: color 150ms;
+  }
+
+  .pager a:hover {
+    color: var(--color-foreground);
+  }
+</style>

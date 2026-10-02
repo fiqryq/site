@@ -1,0 +1,148 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { formatWords, getWritings } from '@/lib/writing'
+
+const writings = await getWritings()
+const pad = (n: number) => n.toString().padStart(2, '0')
+---
+
+<BaseLayout>
+  <section class="container intro">
+    <h1>Fiqry Choerudin</h1>
+    <p class="label role">Frontend Engineer</p>
+    <p class="bio">
+      Software Engineer based in Indonesia, currently at Kitabisa. I mainly work with React and
+      enjoy building web applications. I spend my free time experimenting with side projects on
+      GitHub and fine-tuning my Neovim setup.
+    </p>
+    <div class="divider-dotted"></div>
+  </section>
+
+  <section class="container writings" aria-labelledby="writings-heading">
+    <div class="writings-header">
+      <div>
+        <span class="label">v1.0</span>
+        <h2 id="writings-heading">writings.</h2>
+      </div>
+      <span class="leader-dots" aria-hidden="true"></span>
+      <span class="label count">{`${pad(writings.length)} ${writings.length === 1 ? 'post' : 'posts'}`}</span>
+    </div>
+
+    <ol role="list">
+      {
+        writings.map((writing, i) => (
+          <li>
+            <span class="label">{pad(i + 1)}</span>
+            <a href={`/writing/${writing.id}`}>{writing.data.title}</a>
+            <span class="leader-dots" aria-hidden="true" />
+            <span class="label">{formatWords(writing.data.words)}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    padding-block: 4rem;
+  }
+
+  h1 {
+    font-family: var(--font-pixel);
+    font-size: 2.25rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.025em;
+    color: var(--color-accent);
+  }
+
+  .role {
+    margin-block: 0.75rem 1rem;
+  }
+
+  .bio {
+    max-width: 42rem;
+    font-family: var(--font-serif);
+    line-height: 2;
+    letter-spacing: 0.025em;
+  }
+
+  .intro .divider-dotted {
+    margin-top: 2rem;
+  }
+
+  .writings {
+    padding-bottom: 4rem;
+  }
+
+  .writings-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+
+  .writings-header .label {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .writings-header .leader-dots {
+    display: none;
+  }
+
+  .count {
+    margin-left: auto;
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+
+  ol {
+    display: grid;
+    gap: 0.5rem 2rem;
+    margin-top: 2rem;
+  }
+
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-block: 0.75rem;
+  }
+
+  li a {
+    font-family: var(--font-serif);
+    font-size: 0.875rem;
+    transition: color 150ms;
+  }
+
+  li a:hover {
+    color: var(--color-accent);
+  }
+
+  li .label {
+    white-space: nowrap;
+  }
+
+  @media (min-width: 640px) {
+    h1 {
+      font-size: 3rem;
+    }
+
+    .writings-header .leader-dots {
+      display: block;
+    }
+
+    ol {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    li a {
+      white-space: nowrap;
+    }
+  }
+</style>

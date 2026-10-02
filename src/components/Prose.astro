@@ -1,0 +1,131 @@
+---
+// Typography for rendered Markdown. Markdown output isn't scoped, so every
+// rule targets descendants with :global().
+---
+
+<div class="prose"><slot /></div>
+
+<style>
+  .prose {
+    counter-reset: figure;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--color-body);
+  }
+
+  .prose > :global(* + *) {
+    margin-top: 1rem;
+  }
+
+  .prose :global(p) {
+    text-wrap: pretty;
+  }
+
+  .prose :global(h2),
+  .prose :global(h3) {
+    line-height: 1.5;
+    font-weight: 500;
+    color: var(--color-foreground);
+    scroll-margin-top: 2rem;
+  }
+
+  .prose :global(h2) {
+    margin-top: 3rem;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .prose :global(h3) {
+    margin-top: 2rem;
+    font-size: 0.9375rem;
+  }
+
+  .prose :global(:is(h2, h3) + *) {
+    margin-top: 0.5rem;
+  }
+
+  .prose :global(a) {
+    color: var(--color-foreground);
+    text-decoration: underline;
+    text-decoration-color: var(--color-border);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 150ms;
+  }
+
+  .prose :global(a:hover) {
+    text-decoration-color: currentColor;
+  }
+
+  .prose :global(:is(b, strong)) {
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+
+  .prose :global(:is(ul, ol)) {
+    padding-left: 1.25rem;
+  }
+
+  .prose :global(li::marker) {
+    color: var(--color-subtle);
+  }
+
+  .prose :global(li + li) {
+    margin-top: 0.375rem;
+  }
+
+  .prose :global(blockquote) {
+    padding-left: 1rem;
+    border-left: 2px solid var(--color-border);
+  }
+
+  .prose :global(:not(pre) > code) {
+    padding: 0.1em 0.35em;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-foreground);
+    background-color: #f5f5f5;
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+  }
+
+  .prose :global(pre) {
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: #24292e;
+    background-color: var(--color-code);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  /* Captioned code blocks render as numbered figures (see src/lib/shiki-transformers.ts). */
+  .prose :global(figure) {
+    counter-increment: figure;
+    margin-block: 1.5rem;
+  }
+
+  .prose :global(figure > pre) {
+    margin: 0;
+  }
+
+  .prose :global(figcaption) {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-top: 0.625rem;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--color-muted);
+  }
+
+  .prose :global(figcaption::before) {
+    content: "Fig. " counter(figure);
+    flex: none;
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+</style>
