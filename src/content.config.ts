@@ -14,16 +14,23 @@ const log = defineCollection({
   }),
 })
 
-// Projects listed on the home page, in `order`.
-const projects = defineCollection({
-  loader: file('./src/content/projects.json'),
-  schema: z.object({
-    name: z.string(),
-    description: z.string(),
-    icon: z.enum(iconNames),
-    url: z.url(),
-    order: z.number().int(),
-  }),
+// Link rows on the home page (projects, agent skills), shown in `order`.
+const showcaseSchema = z.object({
+  name: z.string(),
+  description: z.string(),
+  icon: z.enum(iconNames),
+  url: z.url(),
+  order: z.number().int(),
 })
 
-export const collections = { log, projects }
+const projects = defineCollection({
+  loader: file('./src/content/projects.json'),
+  schema: showcaseSchema,
+})
+
+const skills = defineCollection({
+  loader: file('./src/content/skills.json'),
+  schema: showcaseSchema,
+})
+
+export const collections = { log, projects, skills }
