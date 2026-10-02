@@ -1,5 +1,3 @@
-# fiqry.dev
-
 Personal site of Fiqry Choerudin, built with [Astro](https://astro.build) and plain CSS.
 
 ## Develop
