@@ -43,7 +43,10 @@ const items = [
     width: 16rem;
     max-height: 100dvh;
     overflow-y: auto;
-    padding: 2rem 1.5rem 2rem 0;
+    /* Line up with the page header: same top offset as the toolbar row. */
+    padding: 6rem 1.5rem 2rem 0;
+    /* Icon (14px) + gap (8px): item text starts where the heading text does. */
+    --indent: 1.375rem;
   }
 
   @media (min-width: 1280px) {
@@ -52,10 +55,12 @@ const items = [
     }
   }
 
+  /* Same height as the toolbar buttons, so both rows share a centre line. */
   .heading {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    height: 2rem;
     font-size: 0.75rem;
     color: var(--color-muted);
   }
@@ -64,13 +69,14 @@ const items = [
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 0.625rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 
+  /* Marker sits in a fixed slot, so text never shifts when it grows. */
   a {
-    display: flex;
+    display: grid;
+    grid-template-columns: var(--indent) minmax(0, 1fr);
     align-items: center;
-    gap: 0.75rem;
     font-size: 0.75rem;
     color: var(--color-muted);
     transition: color 150ms;
@@ -82,8 +88,7 @@ const items = [
   }
 
   .marker {
-    flex: none;
-    width: 0.75rem;
+    width: 0.5rem;
     height: 1px;
     background-color: var(--color-border);
     transition:
@@ -92,12 +97,11 @@ const items = [
   }
 
   a[aria-current] .marker {
-    width: 1.75rem;
+    width: 1rem;
     background-color: var(--color-foreground);
   }
 
   .text {
-    min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

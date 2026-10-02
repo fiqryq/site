@@ -102,6 +102,7 @@ ol[role="list"] {
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
   color: var(--color-muted);
 }
 
@@ -141,7 +142,7 @@ a.label:hover {
 @media (prefers-reduced-motion: no-preference) {
   .animate-enter {
     animation: enter 800ms var(--ease-out) both;
-    animation-delay: calc(100ms * var(--stagger, 0));
+    animation-delay: calc(var(--delay, 100ms) * var(--stagger, 0));
   }
 
   @keyframes enter {
