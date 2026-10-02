@@ -1,4 +1,5 @@
 ---
+import Icon from '@/components/Icon.astro'
 import LinkRow from '@/components/LinkRow.astro'
 import SectionHeading from '@/components/SectionHeading.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
@@ -10,7 +11,7 @@ const [projects, entries] = await Promise.all([getProjects(), getLogEntries()])
 const nameWords = ['Fiqry', 'Choerudin']
 // Staggered entrance: the name word by word, then each block in reading order.
 const introStart = nameWords.length
-const projectsStart = introStart + 2
+const projectsStart = introStart + 3
 const logStart = projectsStart + projects.length + 1
 ---
 
@@ -34,6 +35,20 @@ const logStart = projectsStart + projects.length + 1
         I build web products at Kitabisa, based in Indonesia. I mainly work with React and enjoy
         building web applications. I spend my free time experimenting with side projects on
         GitHub and fine-tuning my Neovim setup.
+      </p>
+      <p class="contact animate-enter" style={`--stagger: ${introStart + 2}`}>
+        You can reach me at{' '}
+        <a href="https://x.com/0xfiqry" target="_blank" rel="noreferrer">
+          @0xfiqry<span class="visually-hidden"> (opens in a new tab)</span>
+        </a>{' '}
+        and via{' '}
+        <a href="mailto:fiqrychoerudin48@gmail.com">
+          <Icon name="mail" class="inline-icon" />email
+        </a>{' '}
+        or see my code on{' '}
+        <a href="https://github.com/fiqryq" target="_blank" rel="noreferrer">
+          <Icon name="github" class="inline-icon" />GitHub<span class="visually-hidden"> (opens in a new tab)</span>
+        </a>.
       </p>
     </header>
 
@@ -109,6 +124,32 @@ const logStart = projectsStart + projects.length + 1
     margin-top: 1.25rem;
     color: var(--color-body);
     text-wrap: pretty;
+  }
+
+  .contact {
+    margin-top: 1.625rem;
+    color: var(--color-body);
+    text-wrap: pretty;
+  }
+
+  /* Same subtle underline as article links. */
+  .contact a {
+    color: var(--color-heading);
+    text-decoration: underline;
+    text-decoration-color: var(--color-underline);
+    text-underline-offset: 3px;
+    white-space: nowrap; /* keep each icon on the same line as its word */
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .contact a:hover {
+    text-decoration-color: var(--color-underline-hover);
+  }
+
+  .contact :global(.inline-icon) {
+    display: inline;
+    margin-right: 0.25rem;
+    vertical-align: -0.125em;
   }
 
   section {
