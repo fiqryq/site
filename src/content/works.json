@@ -1,23 +1,16 @@
 [
   {
-    "id": "opentmux",
-    "name": "opentmux",
-    "description": "Runs AI coding agents as tmux sessions.",
-    "url": "https://github.com/fiqryq/opentmux",
-    "order": 1
-  },
-  {
-    "id": "tmux-port",
-    "name": "tmux-port",
-    "description": "Find, kill, or tunnel any listening port.",
-    "url": "https://github.com/fiqryq/port",
-    "order": 2
-  },
-  {
     "id": "peel",
     "name": "Peel",
     "description": "An iOS journal for your specialty coffee bags.",
     "url": "https://apps.apple.com/us/app/peel-coffee-bag-journal/id6812295976",
-    "order": 3
+    "order": 1
+  },
+  {
+    "id": "seo-debugger",
+    "name": "SEO Debugger",
+    "description": "Preview search and social cards and audit on-page SEO, even on localhost.",
+    "url": "https://chromewebstore.google.com/detail/seo-debugger/iejcjgjdacdkbahdicdcnimdcmkdaikj",
+    "order": 2
   }
 ]
