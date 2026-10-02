@@ -7,31 +7,31 @@ import PostToolbar from '@/components/PostToolbar.astro'
 import Prose from '@/components/Prose.astro'
 import TableOfContents from '@/components/TableOfContents.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import { formatWords, getWritings, type Writing } from '@/lib/writing'
+import { formatWordCount, getLogEntries, getLogEntryUrl, type LogEntry } from '@/lib/log'
 
 export const getStaticPaths = (async () => {
-  const writings = await getWritings()
-  return writings.map((writing, i) => ({
-    params: { slug: writing.id },
+  const entries = await getLogEntries()
+  return entries.map((entry, i) => ({
+    params: { slug: entry.id },
     props: {
-      writing,
+      entry,
       number: i + 1,
-      prev: writings[i - 1],
-      next: writings[i + 1],
+      prev: entries[i - 1],
+      next: entries[i + 1],
     },
   }))
 }) satisfies GetStaticPaths
 
 interface Props {
-  writing: Writing
+  entry: LogEntry
   number: number
-  prev: Writing | undefined
-  next: Writing | undefined
+  prev: LogEntry | undefined
+  next: LogEntry | undefined
 }
 
-const { writing, number, prev, next } = Astro.props
-const { title, description, words } = writing.data
-const { Content, headings } = await render(writing)
+const { entry, number, prev, next } = Astro.props
+const { title, description, wordCount } = entry.data
+const { Content, headings } = await render(entry)
 ---
 
 <BaseLayout title={`${title} — Fiqry Choerudin`} description={description} type="article">
@@ -41,12 +41,12 @@ const { Content, headings } = await render(writing)
     <article id="top">
       <div class="chips">
         <span class="chip">
-          Writing
+          Log
           <span class="badge">{number}</span>
         </span>
         <span class="chip">
           <Icon name="file-text" size={12} class="muted" />
-          {formatWords(words)}
+          {formatWordCount(wordCount)}
         </span>
       </div>
 
@@ -61,9 +61,9 @@ const { Content, headings } = await render(writing)
 
       {
         (prev || next) && (
-          <nav class="pager" aria-label="More writing">
-            {prev ? <a href={`/writing/${prev.id}`}>← {prev.data.title}</a> : <span />}
-            {next ? <a href={`/writing/${next.id}`}>{next.data.title} →</a> : <span />}
+          <nav class="pager" aria-label="More from the log">
+            {prev ? <a href={getLogEntryUrl(prev)}>← {prev.data.title}</a> : <span />}
+            {next ? <a href={getLogEntryUrl(next)}>{next.data.title} →</a> : <span />}
           </nav>
         )
       }

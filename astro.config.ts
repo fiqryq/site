@@ -8,6 +8,10 @@ export default defineConfig({
   build: {
     format: 'file',
   },
+  // Keep in sync with public/_redirects (used by Cloudflare for real 301s).
+  redirects: {
+    '/writing/how-i-setup-my-terminal': '/log/ai-coding-agents-from-the-terminal',
+  },
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'hover',
@@ -25,7 +29,7 @@ export default defineConfig({
       cssVariable: '--font-sans',
       fallbacks: ['ui-sans-serif', 'system-ui', 'sans-serif'],
       options: {
-        variants: [{ src: ['./src/assets/fonts/Geist-Variable.woff2'], weight: '100 900' }],
+        variants: [{ src: ['./src/assets/fonts/geist-variable.woff2'], weight: '100 900' }],
       },
     },
     {
@@ -34,7 +38,7 @@ export default defineConfig({
       cssVariable: '--font-mono',
       fallbacks: ['ui-monospace', 'monospace'],
       options: {
-        variants: [{ src: ['./src/assets/fonts/GeistMono-Variable.woff2'], weight: '100 900' }],
+        variants: [{ src: ['./src/assets/fonts/geist-mono-variable.woff2'], weight: '100 900' }],
       },
     },
     {
@@ -43,7 +47,7 @@ export default defineConfig({
       cssVariable: '--font-pixel',
       fallbacks: ['monospace'],
       options: {
-        variants: [{ src: ['./src/assets/fonts/GeistPixel-Square.woff2'], weight: 500 }],
+        variants: [{ src: ['./src/assets/fonts/geist-pixel-square.woff2'], weight: 500 }],
       },
     },
     {
@@ -54,12 +58,12 @@ export default defineConfig({
       options: {
         variants: [
           {
-            src: ['./src/assets/fonts/Newsreader-Variable.woff2'],
+            src: ['./src/assets/fonts/newsreader-variable.woff2'],
             weight: '200 800',
             style: 'normal',
           },
           {
-            src: ['./src/assets/fonts/Newsreader-Italic-Variable.woff2'],
+            src: ['./src/assets/fonts/newsreader-italic-variable.woff2'],
             weight: '200 800',
             style: 'italic',
           },

@@ -2,13 +2,14 @@ import { defineCollection } from 'astro:content'
 import { glob } from 'astro/loaders'
 import { z } from 'astro/zod'
 
-const writing = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/writing' }),
+const log = defineCollection({
+  // Files are named log-001.md, log-002.md, …; the URL comes from the `slug` field.
+  loader: glob({ pattern: 'log-*.md', base: './src/content/log' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    words: z.number().int().positive(),
+    wordCount: z.number().int().positive(),
   }),
 })
 
-export const collections = { writing }
+export const collections = { log }

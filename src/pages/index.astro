@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import { formatWords, getWritings } from '@/lib/writing'
+import { formatWordCount, getLogEntries, getLogEntryUrl } from '@/lib/log'
 
-const writings = await getWritings()
+const entries = await getLogEntries()
 const pad = (n: number) => n.toString().padStart(2, '0')
 ---
 
@@ -18,24 +18,24 @@ const pad = (n: number) => n.toString().padStart(2, '0')
     <div class="divider-dotted"></div>
   </section>
 
-  <section class="container writings" aria-labelledby="writings-heading">
-    <div class="writings-header">
+  <section class="container log" aria-labelledby="log-heading">
+    <div class="log-header">
       <div>
         <span class="label">v1.0</span>
-        <h2 id="writings-heading">writings.</h2>
+        <h2 id="log-heading">log.</h2>
       </div>
       <span class="leader-dots" aria-hidden="true"></span>
-      <span class="label count">{`${pad(writings.length)} ${writings.length === 1 ? 'post' : 'posts'}`}</span>
+      <span class="label count">{`${pad(entries.length)} ${entries.length === 1 ? 'entry' : 'entries'}`}</span>
     </div>
 
     <ol role="list">
       {
-        writings.map((writing, i) => (
+        entries.map((entry, i) => (
           <li>
             <span class="label">{pad(i + 1)}</span>
-            <a href={`/writing/${writing.id}`}>{writing.data.title}</a>
+            <a href={getLogEntryUrl(entry)}>{entry.data.title}</a>
             <span class="leader-dots" aria-hidden="true" />
-            <span class="label">{formatWords(writing.data.words)}</span>
+            <span class="label">{formatWordCount(entry.data.wordCount)}</span>
           </li>
         ))
       }
@@ -72,22 +72,22 @@ const pad = (n: number) => n.toString().padStart(2, '0')
     margin-top: 2rem;
   }
 
-  .writings {
+  .log {
     padding-bottom: 4rem;
   }
 
-  .writings-header {
+  .log-header {
     display: flex;
     align-items: flex-end;
     gap: 1rem;
   }
 
-  .writings-header .label {
+  .log-header .label {
     display: block;
     white-space: nowrap;
   }
 
-  .writings-header .leader-dots {
+  .log-header .leader-dots {
     display: none;
   }
 
@@ -133,7 +133,7 @@ const pad = (n: number) => n.toString().padStart(2, '0')
       font-size: 3rem;
     }
 
-    .writings-header .leader-dots {
+    .log-header .leader-dots {
       display: block;
     }
 

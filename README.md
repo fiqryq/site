@@ -6,7 +6,7 @@ Personal site and writing for Fiqry Choerudin.
 
 - **[Astro](https://astro.build)**: a static site with no UI framework. Pages and components are `.astro` files.
 - **Plain CSS**: global design tokens are in `src/styles/global.css`, and each component has its own scoped `<style>`.
-- **Content collections**: posts are Markdown files in `src/content/writing/`, validated by the schema in `src/content.config.ts`.
+- **Content collections**: log entries are Markdown files in `src/content/log/`, validated by the schema in `src/content.config.ts`.
 - **Shiki**: Astro's built-in syntax highlighting. Custom transformers live in `src/lib/shiki-transformers.ts`.
 - **Astro Fonts API**: self-hosted fonts in `src/assets/fonts/`, configured in `astro.config.ts`.
 - **Biome**: linting and formatting.
@@ -30,15 +30,16 @@ bun run dev
 | `bun run lint` / `format` | Biome lint / format |
 | `bun run deploy` | Build and deploy to Cloudflare Workers |
 
-## Writing a post
+## Writing a log entry
 
-Add a Markdown file to `src/content/writing/`. The file name becomes the URL (`/writing/<file-name>`).
+Add the next numbered file to `src/content/log/`: `log-001.md`, `log-002.md`, … Entries are listed in file order. The `slug` sets the URL (`/log/<slug>`).
 
 ```md
 ---
-title: "Post title"
+slug: short-readable-url
+title: "Entry title"
 description: "One-line summary shown under the title."
-words: 1030
+wordCount: 1030
 ---
 
 ## A section
@@ -54,20 +55,32 @@ hms personal
 ```
 ````
 
+## Naming conventions
+
+| What | Convention | Example |
+|---|---|---|
+| Components and layouts | PascalCase | `TableOfContents.astro` |
+| Pages, routes, lib modules | kebab-case | `sitemap.xml.ts`, `shiki-transformers.ts` |
+| Log entries | `log-NNN.md` | `log-001.md` |
+| Assets (fonts, images) | kebab-case | `geist-mono-variable.woff2` |
+| CSS custom properties | `--group-name` | `--color-muted`, `--font-serif` |
+
+Old URLs are redirected in both `public/_redirects` (Cloudflare, real 301s) and `redirects` in `astro.config.ts` (dev/preview). Keep them in sync.
+
 ## Structure
 
 ```
 src/
 ├── pages/                  # routes
 │   ├── index.astro          # homepage
-│   ├── writing/[slug].astro # blog post page
+│   ├── log/[slug].astro     # log entry page
 │   ├── 404.astro
 │   └── sitemap.xml.ts       # generated sitemap
 ├── layouts/BaseLayout.astro # <head>, SEO meta, fonts, footer
 ├── components/             # toolbar, table of contents, prose styles, icons
-├── content/writing/        # blog posts (.md)
+├── content/log/            # log entries (log-001.md, log-002.md, …)
 ├── content.config.ts       # content collection schema
-├── lib/                    # post helpers, Shiki transformers
+├── lib/                    # log helpers, Shiki transformers
 ├── assets/fonts/           # self-hosted fonts (served via the Fonts API)
 └── styles/global.css       # design tokens + base styles
 ```

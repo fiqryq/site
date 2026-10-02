@@ -1,10 +1,10 @@
 import type { APIRoute } from 'astro'
 
-import { getWritings } from '@/lib/writing'
+import { getLogEntries, getLogEntryUrl } from '@/lib/log'
 
 export const GET: APIRoute = async ({ site }) => {
-  const writings = await getWritings()
-  const paths = ['/', ...writings.map((writing) => `/writing/${writing.id}`)]
+  const entries = await getLogEntries()
+  const paths = ['/', ...entries.map(getLogEntryUrl)]
 
   const urls = paths
     .map((path) => `  <url>\n    <loc>${new URL(path, site)}</loc>\n  </url>`)
