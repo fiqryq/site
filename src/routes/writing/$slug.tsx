@@ -112,7 +112,7 @@ function WritingPage() {
 
   return (
     <div className="relative mx-auto max-w-screen-2xl px-6 sm:px-12">
-      <aside className="absolute inset-y-0 left-0 hidden w-56 xl:block">
+      <aside className="absolute inset-y-0 left-0 hidden w-56">
         <div className="sticky top-0">
           <span className="fig-label py-4 block text-accent">Content</span>
           <ul className="space-y-4">
@@ -153,16 +153,16 @@ function WritingPage() {
       </aside>
 
       <div className="mx-auto max-w-4xl">
-        <div className="sticky top-0 z-10 mx-auto flex max-w-2xl items-center gap-2 bg-background py-4">
+        <div className="sticky top-0 z-10 mx-auto hidden max-w-2xl items-center gap-2 bg-background py-4">
           <Link to="/" className="fig-label hover:text-accent">
             ‹
           </Link>
           <span className="fig-label truncate">writings / {writing.title}</span>
         </div>
 
-        <div className="divider-dotted mx-auto my-8 max-w-2xl" />
+        <div className="divider-dotted mx-auto my-8 hidden max-w-2xl" />
 
-        <header className="pt-8 text-center sm:pt-16">
+        <header className="pt-16 text-center sm:pt-28">
           <p className="fig-label">Fiqry Choerudin · {writing.words}</p>
           <h1 className="mx-auto mt-6 max-w-3xl text-balance font-serif text-4xl leading-[1.1] tracking-tight text-foreground sm:text-6xl">
             {writing.title}
