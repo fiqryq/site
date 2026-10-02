@@ -3,8 +3,8 @@ node_modules
 .DS_Store
 dist
 *.local
-.env
 .wrangler
 todos.json
 .commandcode
 .claude
+config.bat
