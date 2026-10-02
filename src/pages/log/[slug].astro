@@ -39,7 +39,7 @@ const { Content, headings } = await render(entry)
     <PostToolbar />
 
     <article id="top">
-      <div class="chips">
+      <div class="chips animate-enter" style="--stagger: 1">
         <span class="chip">
           Log
           <span class="badge">{number}</span>
@@ -51,9 +51,9 @@ const { Content, headings } = await render(entry)
       </div>
 
       <div data-article>
-        <h1>{title}</h1>
+        <h1 class="animate-enter" style="--stagger: 2">{title}</h1>
 
-        <Prose>
+        <Prose class="animate-enter" style="--stagger: 3">
           <p>{description}</p>
           <Content />
         </Prose>
@@ -105,10 +105,9 @@ const { Content, headings } = await render(entry)
     gap: 0.375rem;
     padding: 0.25rem 0.625rem;
     font-size: 0.75rem;
-    background: var(--color-background);
-    border: 1px solid var(--color-border);
+    background: #fff;
     border-radius: 999px;
-    box-shadow: var(--shadow-xs);
+    box-shadow: var(--shadow-border);
   }
 
   .badge {

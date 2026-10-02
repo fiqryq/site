@@ -14,6 +14,12 @@
   --color-accent: oklch(0.5058 0.2886 264.84);
 
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  /* Soft edge used instead of borders on raised surfaces. */
+  --shadow-border:
+    0 0 0 1px rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06), 0 2px 4px 0 rgb(0 0 0 / 0.04);
+  --shadow-border-hover:
+    0 0 0 1px rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08), 0 2px 4px 0 rgb(0 0 0 / 0.06);
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --gutter: 1.5rem;
   --page-max: 96rem;
 }
@@ -131,4 +137,23 @@ a.label:hover {
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+/*
+ * Staggered entrance: set --stagger (1, 2, 3…) on each block so they rise in
+ * one after another. Skipped entirely for people who prefer reduced motion.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-enter {
+    animation: enter 800ms var(--ease-out) both;
+    animation-delay: calc(100ms * var(--stagger, 0));
+  }
+
+  @keyframes enter {
+    from {
+      opacity: 0;
+      filter: blur(8px);
+      transform: translateY(8px);
+    }
+  }
 }

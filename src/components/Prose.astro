@@ -1,9 +1,14 @@
 ---
 // Typography for rendered Markdown. Markdown output isn't scoped, so every
 // rule targets descendants with :global().
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = HTMLAttributes<'div'>
+
+const { class: className, ...attrs } = Astro.props
 ---
 
-<div class="prose"><slot /></div>
+<div class:list={['prose', className]} {...attrs}><slot /></div>
 
 <style>
   .prose {
@@ -36,6 +41,7 @@
     align-items: center;
     gap: 0.75rem;
     margin-top: 5rem;
+    text-wrap: balance;
   }
 
   .prose :global(h2::after) {
@@ -47,6 +53,7 @@
 
   .prose :global(h3) {
     margin-top: 3rem;
+    text-wrap: balance;
   }
 
   .prose :global(h2 + *) {
@@ -129,8 +136,15 @@
     line-height: 1.6;
     color: #24292e;
     background-color: var(--color-code);
-    border: 1px solid var(--color-line);
     border-radius: 0.75rem;
+    box-shadow: var(--shadow-border);
+  }
+
+  /* A faint inset outline gives images a consistent edge on any background. */
+  .prose :global(img) {
+    border-radius: 0.75rem;
+    outline: 1px solid rgb(0 0 0 / 0.1);
+    outline-offset: -1px;
   }
 
   /* Media and code blocks get extra breathing room. */
@@ -163,6 +177,7 @@
 
   .prose :global(figcaption::before) {
     content: "Fig. " counter(figure);
+    font-variant-numeric: tabular-nums;
     flex: none;
     font-weight: 550;
     color: var(--color-heading);

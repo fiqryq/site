@@ -8,9 +8,9 @@ const pad = (n: number) => n.toString().padStart(2, '0')
 
 <BaseLayout>
   <section class="container intro">
-    <h1>Fiqry Choerudin</h1>
-    <p class="label role">Frontend Engineer</p>
-    <p class="bio">
+    <h1 class="animate-enter" style="--stagger: 1">Fiqry Choerudin</h1>
+    <p class="label role animate-enter" style="--stagger: 2">Frontend Engineer</p>
+    <p class="bio animate-enter" style="--stagger: 3">
       Software Engineer based in Indonesia, currently at Kitabisa. I mainly work with React and
       enjoy building web applications. I spend my free time experimenting with side projects on
       GitHub and fine-tuning my Neovim setup.
@@ -18,7 +18,7 @@ const pad = (n: number) => n.toString().padStart(2, '0')
     <div class="divider-dotted"></div>
   </section>
 
-  <section class="container log" aria-labelledby="log-heading">
+  <section class="container log animate-enter" style="--stagger: 4" aria-labelledby="log-heading">
     <div class="log-header">
       <div>
         <span class="label">v1.0</span>
@@ -63,6 +63,7 @@ const pad = (n: number) => n.toString().padStart(2, '0')
 
   .bio {
     max-width: 42rem;
+    text-wrap: pretty;
     font-family: var(--font-serif);
     line-height: 2;
     letter-spacing: 0.025em;
