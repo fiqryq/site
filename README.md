@@ -55,16 +55,15 @@ hms personal
 ```
 ````
 
-## Adding a project or agent skill
+## Adding a work or skill
 
-Projects and skills on the home page come from `src/content/projects.json` and `src/content/skills.json` (same fields; `icon` is optional, and skills leave it out). Add an object with a unique `id` and the next `order`. `icon` must be a name from `src/lib/icons.ts`:
+Works and skills on the home page come from `src/content/works.json` and `src/content/skills.json` (same fields). Add an object with a unique `id` and the next `order`:
 
 ```json
 {
   "id": "my-project",
   "name": "my-project",
   "description": "One short line about what it does.",
-  "icon": "terminal",
   "url": "https://github.com/fiqryq/my-project",
   "order": 3
 }
@@ -94,7 +93,7 @@ src/
 ├── layouts/BaseLayout.astro # <head>, SEO meta, fonts, footer
 ├── components/             # toolbar, table of contents, prose styles, icons
 ├── content/log/            # log entries (log-001.md, log-002.md, …)
-├── content/projects.json   # projects listed on the home page
+├── content/works.json      # works listed on the home page
 ├── content/skills.json     # skills listed on the home page
 ├── content.config.ts       # content collection schema
 ├── lib/                    # log helpers, Shiki transformers

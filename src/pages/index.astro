@@ -6,8 +6,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import { formatWordCount, getLogEntries, getLogEntryNumber, getLogEntryUrl } from '@/lib/log'
 import { getShowcase } from '@/lib/showcase'
 
-const [projects, skills, entries] = await Promise.all([
-  getShowcase('projects'),
+const [works, skills, entries] = await Promise.all([
+  getShowcase('works'),
   getShowcase('skills'),
   getLogEntries(),
 ])
@@ -15,12 +15,12 @@ const [projects, skills, entries] = await Promise.all([
 const nameWords = ['Fiqry', 'Choerudin']
 // Staggered entrance: the name word by word, then each block in reading order.
 const introStart = nameWords.length
-const projectsStart = introStart + 3
-const skillsStart = projectsStart + projects.length + 1
+const worksStart = introStart + 3
+const skillsStart = worksStart + works.length + 1
 const logStart = skillsStart + skills.length + 1
 
 const showcases = [
-  { id: 'projects', title: 'projects.', items: projects, start: projectsStart },
+  { id: 'works', title: '/works', items: works, start: worksStart },
   { id: 'skills', title: '/skills', items: skills, start: skillsStart },
 ]
 ---
@@ -79,7 +79,6 @@ const showcases = [
                   href={item.data.url}
                   title={item.data.name}
                   description={item.data.description}
-                  icon={item.data.icon}
                   external
                 />
               </li>
@@ -91,7 +90,7 @@ const showcases = [
 
     <section aria-labelledby="log-heading">
       <SectionHeading id="log-heading" class="animate-enter" style={`--stagger: ${logStart}`}>
-        log.
+        /log
       </SectionHeading>
       <ol role="list" class="rows">
         {

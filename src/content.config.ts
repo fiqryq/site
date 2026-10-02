@@ -2,8 +2,6 @@ import { defineCollection } from 'astro:content'
 import { file, glob } from 'astro/loaders'
 import { z } from 'astro/zod'
 
-import { iconNames } from './lib/icons'
-
 const log = defineCollection({
   // Files are named log-001.md, log-002.md, …; the URL comes from the `slug` field.
   loader: glob({ pattern: 'log-*.md', base: './src/content/log' }),
@@ -14,18 +12,16 @@ const log = defineCollection({
   }),
 })
 
-// Link rows on the home page (projects, skills), shown in `order`.
+// Link rows on the home page (works, skills), shown in `order`.
 const showcaseSchema = z.object({
   name: z.string(),
   description: z.string(),
-  // Optional: rows without an icon render as plain text.
-  icon: z.enum(iconNames).optional(),
   url: z.url(),
   order: z.number().int(),
 })
 
-const projects = defineCollection({
-  loader: file('./src/content/projects.json'),
+const works = defineCollection({
+  loader: file('./src/content/works.json'),
   schema: showcaseSchema,
 })
 
@@ -34,4 +30,4 @@ const skills = defineCollection({
   schema: showcaseSchema,
 })
 
-export const collections = { log, projects, skills }
+export const collections = { log, works, skills }

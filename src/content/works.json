@@ -3,7 +3,6 @@
     "id": "opentmux",
     "name": "opentmux",
     "description": "Runs AI coding agents as tmux sessions.",
-    "icon": "terminal",
     "url": "https://github.com/fiqryq/opentmux",
     "order": 1
   },
@@ -11,7 +10,6 @@
     "id": "tmux-port",
     "name": "tmux-port",
     "description": "Find, kill, or tunnel any listening port.",
-    "icon": "plug",
     "url": "https://github.com/fiqryq/port",
     "order": 2
   },
@@ -19,7 +17,6 @@
     "id": "peel",
     "name": "Peel",
     "description": "An iOS journal for your specialty coffee bags.",
-    "icon": "coffee",
     "url": "https://apps.apple.com/us/app/peel-coffee-bag-journal/id6812295976",
     "order": 3
   }

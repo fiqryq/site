@@ -1,7 +1,7 @@
 import { type CollectionEntry, getCollection } from 'astro:content'
 
 /** Collections rendered as link rows on the home page. */
-export type ShowcaseCollection = 'projects' | 'skills'
+export type ShowcaseCollection = 'works' | 'skills'
 
 export type ShowcaseItem = CollectionEntry<ShowcaseCollection>
 
