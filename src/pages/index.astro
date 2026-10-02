@@ -32,30 +32,34 @@ const showcases = [
 <BaseLayout>
   <div class="container page">
     <header>
-      <div class="avatar animate-enter" style="--stagger: 0">
-        <Image
-          src={avatar}
-          alt="Fiqry Choerudin"
-          width={48}
-          height={48}
-          densities={[1, 2]}
-          quality={90}
-          loading="eager"
-        />
+      <div class="identity">
+        <div class="avatar animate-enter" style="--stagger: 0">
+          <Image
+            src={avatar}
+            alt="Fiqry Choerudin"
+            width={48}
+            height={48}
+            densities={[1, 2]}
+            quality={90}
+            loading="eager"
+          />
+        </div>
+        <div>
+          <h1>
+            {
+              nameWords.map((word, i) => (
+                <>
+                  {i > 0 && ' '}
+                  <span class="word animate-enter" style={`--stagger: ${nameStart + i}; --delay: 80ms`}>
+                    {word}
+                  </span>
+                </>
+              ))
+            }
+          </h1>
+          <p class="role animate-enter" style={`--stagger: ${introStart}`}>Software Engineer</p>
+        </div>
       </div>
-      <h1>
-        {
-          nameWords.map((word, i) => (
-            <>
-              {i > 0 && ' '}
-              <span class="word animate-enter" style={`--stagger: ${nameStart + i}; --delay: 80ms`}>
-                {word}
-              </span>
-            </>
-          ))
-        }
-      </h1>
-      <p class="role animate-enter" style={`--stagger: ${introStart}`}>Software Engineer</p>
       <p class="bio animate-enter" style={`--stagger: ${introStart + 1}`}>
         I build web products at Kitabisa, based in Indonesia. I mainly work with React and enjoy
         building web applications. I spend my free time experimenting with side projects on
@@ -132,9 +136,16 @@ const showcases = [
   }
 
   /* Concentric-friendly rounded square with a faint inset outline. */
+  /* Photo on the left, name and role stacked beside it. */
+  .identity {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
   .avatar {
+    flex: none;
     width: 3rem;
-    margin-bottom: 1.25rem;
   }
 
   .avatar :global(img) {
