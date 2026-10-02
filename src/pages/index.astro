@@ -3,7 +3,7 @@ import Icon from '@/components/Icon.astro'
 import LinkRow from '@/components/LinkRow.astro'
 import SectionHeading from '@/components/SectionHeading.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import { formatWordCount, getLogEntries, getLogEntryUrl } from '@/lib/log'
+import { formatWordCount, getLogEntries, getLogEntryNumber, getLogEntryUrl } from '@/lib/log'
 import { getProjects } from '@/lib/projects'
 
 const [projects, entries] = await Promise.all([getProjects(), getLogEntries()])
@@ -88,7 +88,9 @@ const logStart = projectsStart + projects.length + 1
               <LinkRow
                 href={getLogEntryUrl(entry)}
                 title={entry.data.title}
+                index={`${getLogEntryNumber(entry)}.`}
                 meta={formatWordCount(entry.data.wordCount)}
+                strong={false}
               />
             </li>
           ))

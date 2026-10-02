@@ -9,11 +9,15 @@ interface Props {
   description?: string
   meta?: string
   icon?: IconName
+  /** Muted prefix before the title, e.g. "001." */
+  index?: string
+  /** Medium-weight title (default) or regular weight. */
+  strong?: boolean
   /** Opens in a new tab and shows an outbound arrow instead of a chevron. */
   external?: boolean
 }
 
-const { href, title, description, meta, icon, external = false } = Astro.props
+const { href, title, description, meta, icon, index, strong = true, external = false } = Astro.props
 ---
 
 <a
@@ -30,7 +34,10 @@ const { href, title, description, meta, icon, external = false } = Astro.props
     )
   }
   <span class="body">
-    <span class="title">{title}</span>
+    <span class:list={['title', { strong }]}>
+      {index && <span class="index">{index}</span>}
+      {title}
+    </span>
     {description && <span class="description">{description}</span>}
   </span>
   {meta && <span class="meta">{meta}</span>}
@@ -65,9 +72,18 @@ const { href, title, description, meta, icon, external = false } = Astro.props
   }
 
   .title {
-    font-weight: 500;
     color: var(--color-heading);
     text-wrap: pretty;
+  }
+
+  .strong {
+    font-weight: 500;
+  }
+
+  .index {
+    margin-right: 0.5rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-muted);
   }
 
   .description {
