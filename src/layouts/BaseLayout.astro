@@ -17,7 +17,9 @@ const defaultDescription =
 
 const { title = defaultTitle, description = defaultDescription, type = 'website' } = Astro.props
 
-const canonical = new URL(Astro.url.pathname, Astro.site)
+// Pages build to .html files; canonical URLs use the clean path (/, /log/slug).
+const cleanPath = Astro.url.pathname.replace(/(index)?\.html$/, '')
+const canonical = new URL(cleanPath, Astro.site)
 const ogImage = new URL('/og-image.png', Astro.site)
 
 const person = {

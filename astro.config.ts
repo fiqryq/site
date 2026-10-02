@@ -3,10 +3,12 @@ import { defineConfig, fontProviders } from 'astro/config'
 import { figureCaption, plainCodeBlock } from './src/lib/shiki-transformers'
 
 export default defineConfig({
-  site: 'https://www.fiqry.dev',
+  site: 'https://fiqry.dev',
   trailingSlash: 'never',
   build: {
     format: 'file',
+    // Inline all CSS: no render-blocking stylesheet request before first paint.
+    inlineStylesheets: 'always',
   },
   // Keep in sync with public/_redirects (used by Cloudflare for real 301s).
   redirects: {

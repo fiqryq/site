@@ -114,8 +114,9 @@ ol[role="list"] {
  */
 @media (prefers-reduced-motion: no-preference) {
   .animate-enter {
-    animation: enter 800ms var(--ease-out) backwards;
-    animation-delay: calc(var(--delay, 100ms) * var(--stagger, 0));
+    /* Kept short and capped so the whole page is visible within ~1s. */
+    animation: enter 600ms var(--ease-out) backwards;
+    animation-delay: calc(var(--delay, 60ms) * min(var(--stagger, 0), 8));
   }
 
   @keyframes enter {

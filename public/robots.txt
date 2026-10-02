@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.fiqry.dev/sitemap.xml
+Sitemap: https://fiqry.dev/sitemap.xml
