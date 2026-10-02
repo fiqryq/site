@@ -16,7 +16,7 @@ Before any of this, the actual machine has to exist. I stopped hand-editing `.zs
 
 The structure is just profiles built out of composable modules:
 
-```
+```text caption="The dotfiles repo: profiles composed from modules, app configs symlinked into ~/.config."
 dot-config/
 ├── flake.nix           # entry point — defines all profiles
 ├── config/              # app configs (symlinked into ~/.config/)
@@ -39,13 +39,13 @@ dot-config/
 
 Switching my whole setup — every module, every package version — is one command:
 
-```bash
+```bash caption="One command rebuilds the whole machine from a profile."
 hms personal   # core + shell + git + node + php + nginx + extras + ssh
 ```
 
 Secrets never touch the repo. Anything sensitive goes in `~/.env.local` (git-ignored, seeded from a template on a fresh machine) or gets pulled live through the 1Password CLI:
 
-```bash
+```bash caption="Secrets stay out of the repo and are read live from 1Password."
 # ~/.env.local
 export GITHUB_TOKEN=$(op read "op://Personal/GitHub Token/credential")
 ```
@@ -56,7 +56,7 @@ I care about this part more than people expect from a "terminal setup" post, bec
 
 Daily driver is <b>Ghostty</b>, kanso-ink theme, Berkeley Mono, with a cursor-smear shader because i like the way it looks when it moves:
 
-```ini
+```ini caption="Ghostty config: theme, font, and the cursor-smear shader."
 theme = "kanso-ink"
 font-family = "Berkeley Mono Variable"
 font-size = 14
@@ -77,7 +77,7 @@ Before i fixed this, running Claude Code, OpenCode, and Codex side by side meant
 
 So i wrote <a href="https://github.com/fiqryq/opentmux">opentmux</a> — a tmux plugin whose whole job is running AI coding agents as first-class tmux sessions instead of stray panes.
 
-```bash
+```bash caption="Installing opentmux, which runs each agent as its own tmux session."
 # ~/.config/tmux/tmux.conf
 set -g @plugin 'https://github.com/fiqryq/opentmux'
 ```
@@ -94,7 +94,7 @@ The other recurring annoyance: agents spin up dev servers, and dev servers leave
 
 I wrote <a href="https://github.com/fiqryq/port">tmux-port</a> for this — an fzf-driven popup over every listening TCP port on the machine.
 
-```bash
+```bash caption="Binding tmux-port to prefix + p."
 # port — t is already taken above (resize-pane 80%), so p ("port")
 set -g @port_bind 'p'
 bind-key p run-shell ~/.tmux/plugins/port/scripts/popup.sh

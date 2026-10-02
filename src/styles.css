@@ -57,9 +57,25 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/newsreader/Newsreader-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/newsreader/Newsreader-Italic-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme static {
   --font-sans: "Geist Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", sans-serif;
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-serif: "Newsreader", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", "Roboto Mono", "Menlo", "Monaco", "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace;
   --font-pixel-square: "Geist Pixel Square", monospace;
   --font-pixel-grid: "Geist Pixel Grid", monospace;
@@ -125,9 +141,11 @@ body {
 }
 
 .prose-writing {
+  counter-reset: section figure;
   font-family: var(--font-serif);
-  font-size: 0.875rem;
-  line-height: 1.8;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  font-optical-sizing: auto;
   color: var(--color-foreground);
 }
 
@@ -136,33 +154,76 @@ body {
 }
 
 .prose-writing p {
-  text-align: justify;
-  hyphens: manual;
+  text-wrap: pretty;
 }
 
+@media (min-width: 640px) {
+  .prose-writing p {
+    text-align: justify;
+    hyphens: auto;
+  }
+}
+
+/* Paper-style numbered sections: a small mono index above a serif heading. */
 .prose-writing h2 {
+  counter-increment: section;
+  counter-reset: subsection;
   font-family: var(--font-serif);
-  font-size: 0.875rem;
-  line-height: 1.5625;
-  font-weight: 600;
-  letter-spacing: -0.025em;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
   color: var(--color-foreground);
-  margin-top: 5rem;
+  margin-top: 4.5rem;
+  scroll-margin-top: 5rem;
+}
+
+.prose-writing h2::before {
+  content: counter(section, decimal-leading-zero);
+  display: block;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
 }
 
 .prose-writing h3 {
+  counter-increment: subsection;
   font-family: var(--font-serif);
-  font-size: 0.875rem;
-  line-height: 1.5625;
-  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 400;
+  font-style: italic;
   color: var(--color-foreground);
-  margin-top: 4rem;
+  margin-top: 3rem;
+  scroll-margin-top: 5rem;
+}
+
+.prose-writing h3::before {
+  content: counter(section) "." counter(subsection) "\2002";
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-style: normal;
+  color: var(--color-muted);
+}
+
+.prose-writing h2 + *,
+.prose-writing h3 + * {
+  margin-top: 1rem;
 }
 
 .prose-writing a {
   color: var(--color-accent);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.prose-writing b,
+.prose-writing strong {
+  font-weight: 600;
 }
 
 .prose-writing ul,
@@ -170,22 +231,41 @@ body {
   padding-left: 1.25rem;
 }
 
+.prose-writing ul {
+  list-style: disc;
+}
+
+.prose-writing ol {
+  list-style: decimal;
+}
+
+.prose-writing li::marker {
+  color: var(--color-muted);
+}
+
 .prose-writing li + li {
   margin-top: 0.5rem;
 }
 
+.prose-writing blockquote {
+  border-left: 2px solid var(--color-accent);
+  padding-left: 1.25rem;
+  font-style: italic;
+  color: var(--color-muted);
+}
+
 .prose-writing :not(pre) > code {
   font-family: var(--font-mono);
-  font-size: 0.875em;
+  font-size: 0.8em;
   background-color: var(--color-surface);
   padding: 0.15em 0.4em;
-  border-radius: 0.25rem;
 }
 
 .prose-writing pre {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   line-height: 1.6;
+  text-align: left;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   padding: 1rem 1.25rem;
@@ -197,3 +277,35 @@ body {
   padding: 0;
 }
 
+/* Figures: numbered automatically, captioned like a paper ("FIG. 1  …"). */
+.prose-writing figure {
+  counter-increment: figure;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.prose-writing figure > :not(figcaption) {
+  margin: 0;
+}
+
+.prose-writing figcaption {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-top: 0.875rem;
+  font-family: var(--font-serif);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--color-foreground);
+}
+
+.prose-writing figcaption::before {
+  content: "Fig. " counter(figure);
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}

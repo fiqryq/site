@@ -152,55 +152,58 @@ function WritingPage() {
         </div>
       </aside>
 
-      <div className="mx-auto max-w-2xl">
-        <div className="sticky top-0 z-10 flex items-center gap-2 bg-background py-4">
+      <div className="mx-auto max-w-4xl">
+        <div className="sticky top-0 z-10 mx-auto flex max-w-2xl items-center gap-2 bg-background py-4">
           <Link to="/" className="fig-label hover:text-accent">
             ‹
           </Link>
-          <span className="fig-label">
-            writings / {writing.title}
-          </span>
+          <span className="fig-label truncate">writings / {writing.title}</span>
         </div>
 
-        <div className="divider-dotted my-8" />
+        <div className="divider-dotted mx-auto my-8 max-w-2xl" />
 
-        <div className="text-center">
-          <p className="fig-label">
-            {writing.words} · FIQRY CHOERUDIN
-          </p>
-          <h1 className="mt-3 font-serif text-4xl tracking-tight text-foreground">
+        <header className="pt-8 text-center sm:pt-16">
+          <p className="fig-label">Fiqry Choerudin · {writing.words}</p>
+          <h1 className="mx-auto mt-6 max-w-3xl text-balance font-serif text-4xl leading-[1.1] tracking-tight text-foreground sm:text-6xl">
             {writing.title}
           </h1>
           {writing.description && (
-            <p className="mt-3 font-serif text-sm leading-5 text-muted">{writing.description}</p>
+            <p className="mx-auto mt-8 max-w-2xl text-pretty font-serif text-lg leading-relaxed text-muted sm:text-xl">
+              {writing.description}
+            </p>
           )}
-        </div>
+          <div aria-hidden="true" className="mt-12 font-mono text-sm tracking-[-0.1em] text-muted">
+            ———
+          </div>
+        </header>
 
-        <div className="prose-writing mt-12">{Content && <Content />}</div>
+        <div className="mx-auto max-w-2xl">
+          <div className="prose-writing mt-16">{Content && <Content />}</div>
 
-        <div className="mt-6 flex justify-between gap-4">
-          {prevWriting ? (
-            <Link
-              to="/writing/$slug"
-              params={{ slug: prevWriting.slug }}
-              className="fig-label hover:text-accent"
-            >
-              ‹ {prevWriting.title}
-            </Link>
-          ) : (
-            <span />
-          )}
-          {nextWriting ? (
-            <Link
-              to="/writing/$slug"
-              params={{ slug: nextWriting.slug }}
-              className="fig-label hover:text-accent"
-            >
-              {nextWriting.title} ›
-            </Link>
-          ) : (
-            <span />
-          )}
+          <div className="mt-20 mb-12 flex justify-between gap-4">
+            {prevWriting ? (
+              <Link
+                to="/writing/$slug"
+                params={{ slug: prevWriting.slug }}
+                className="fig-label hover:text-accent"
+              >
+                ‹ {prevWriting.title}
+              </Link>
+            ) : (
+              <span />
+            )}
+            {nextWriting ? (
+              <Link
+                to="/writing/$slug"
+                params={{ slug: nextWriting.slug }}
+                className="fig-label hover:text-accent"
+              >
+                {nextWriting.title} ›
+              </Link>
+            ) : (
+              <span />
+            )}
+          </div>
         </div>
       </div>
     </div>
