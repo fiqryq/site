@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets'
+
+import avatar from '@/assets/images/avatar.jpg'
 import Icon from '@/components/Icon.astro'
 import LinkRow from '@/components/LinkRow.astro'
 import SectionHeading from '@/components/SectionHeading.astro'
@@ -13,8 +16,9 @@ const [works, skills, entries] = await Promise.all([
 ])
 
 const nameWords = ['Fiqry', 'Choerudin']
-// Staggered entrance: the name word by word, then each block in reading order.
-const introStart = nameWords.length
+// Staggered entrance: avatar, the name word by word, then each block in reading order.
+const nameStart = 1
+const introStart = nameStart + nameWords.length
 const worksStart = introStart + 3
 const skillsStart = worksStart + works.length + 1
 const logStart = skillsStart + skills.length + 1
@@ -28,12 +32,23 @@ const showcases = [
 <BaseLayout>
   <div class="container page">
     <header>
+      <div class="avatar animate-enter" style="--stagger: 0">
+        <Image
+          src={avatar}
+          alt="Fiqry Choerudin"
+          width={48}
+          height={48}
+          densities={[1, 2]}
+          quality={90}
+          loading="eager"
+        />
+      </div>
       <h1>
         {
           nameWords.map((word, i) => (
             <>
               {i > 0 && ' '}
-              <span class="word animate-enter" style={`--stagger: ${i}; --delay: 80ms`}>
+              <span class="word animate-enter" style={`--stagger: ${nameStart + i}; --delay: 80ms`}>
                 {word}
               </span>
             </>
@@ -114,6 +129,18 @@ const showcases = [
 <style>
   .page {
     padding-block: 3rem;
+  }
+
+  /* Concentric-friendly rounded square with a faint inset outline. */
+  .avatar {
+    width: 3rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .avatar :global(img) {
+    border-radius: 0.75rem;
+    outline: 1px solid rgb(0 0 0 / 0.1);
+    outline-offset: -1px;
   }
 
   h1 {
