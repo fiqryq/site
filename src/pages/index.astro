@@ -135,12 +135,11 @@ const showcases = [
     padding-block: 3rem;
   }
 
-  /* Concentric-friendly rounded square with a faint inset outline. */
   /* Photo on the left, name and role stacked beside it. */
   .identity {
     display: flex;
     align-items: center;
-    gap: 0.875rem;
+    gap: 0.75rem;
   }
 
   .avatar {
@@ -148,6 +147,7 @@ const showcases = [
     width: 3rem;
   }
 
+  /* Rounded square with a faint inset outline. */
   .avatar :global(img) {
     border-radius: 0.75rem;
     outline: 1px solid rgb(0 0 0 / 0.1);
@@ -156,8 +156,8 @@ const showcases = [
 
   h1 {
     font-size: 1rem;
-    font-weight: 550;
-    line-height: 1.625;
+    font-weight: 500;
+    line-height: 1.375;
     color: var(--color-heading);
     text-wrap: balance;
   }
@@ -168,23 +168,27 @@ const showcases = [
   }
 
   .role {
+    font-weight: 450;
+    line-height: 1.375;
     color: var(--color-muted);
   }
 
+  /* Intro copy sits back in grey so names and links lead. */
   .bio {
-    margin-top: 1.25rem;
-    color: var(--color-body);
+    margin-top: 1.5rem;
+    color: var(--color-muted);
     text-wrap: pretty;
   }
 
   .contact {
-    margin-top: 1.625rem;
-    color: var(--color-body);
+    margin-top: 1rem;
+    color: var(--color-muted);
     text-wrap: pretty;
   }
 
   /* Same subtle underline as article links. */
   .contact a {
+    font-weight: 450;
     color: var(--color-heading);
     text-decoration: underline;
     text-decoration-color: var(--color-underline);
@@ -204,7 +208,7 @@ const showcases = [
   }
 
   section {
-    margin-top: 4rem;
+    margin-top: 5rem;
   }
 
   /* Hairline between rows, like the interfaces.dev issue list. */
