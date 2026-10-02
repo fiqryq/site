@@ -8,7 +8,7 @@ Personal site and writing for Fiqry Choerudin.
 - **Plain CSS**: global design tokens are in `src/styles/global.css`, and each component has its own scoped `<style>`.
 - **Content collections**: log entries are Markdown files in `src/content/log/`, validated by the schema in `src/content.config.ts`.
 - **Shiki**: Astro's built-in syntax highlighting. Custom transformers live in `src/lib/shiki-transformers.ts`.
-- **Astro Fonts API**: self-hosted fonts in `src/assets/fonts/` (Inter, Geist Mono, Geist Pixel, Newsreader), configured in `astro.config.ts`.
+- **Astro Fonts API**: self-hosted fonts in `src/assets/fonts/` (Inter, plus Geist Mono for code), configured in `astro.config.ts`.
 - **Biome**: linting and formatting.
 - **Cloudflare Workers**: deployment as static assets, via `wrangler`.
 
@@ -57,14 +57,14 @@ hms personal
 
 ## Adding a project
 
-Projects on the home page come from `src/content/projects.json`. Add an object with a unique `id` and the next `order`:
+Projects on the home page come from `src/content/projects.json`. Add an object with a unique `id` and the next `order`. `icon` must be a name from `src/lib/icons.ts`:
 
 ```json
 {
   "id": "my-project",
   "name": "my-project",
-  "kind": "cli tool",
-  "description": "One or two sentences about what it does.",
+  "description": "One short line about what it does.",
+  "icon": "terminal",
   "url": "https://github.com/fiqryq/my-project",
   "order": 3
 }
@@ -94,7 +94,7 @@ src/
 ├── layouts/BaseLayout.astro # <head>, SEO meta, fonts, footer
 ├── components/             # toolbar, table of contents, prose styles, icons
 ├── content/log/            # log entries (log-001.md, log-002.md, …)
-├── content/projects.json   # project cards on the home page
+├── content/projects.json   # projects listed on the home page
 ├── content.config.ts       # content collection schema
 ├── lib/                    # log helpers, Shiki transformers
 ├── assets/fonts/           # self-hosted fonts (served via the Fonts API)

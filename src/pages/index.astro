@@ -1,154 +1,99 @@
 ---
-import ProjectCard from '@/components/ProjectCard.astro'
+import LinkRow from '@/components/LinkRow.astro'
+import SectionHeading from '@/components/SectionHeading.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { formatWordCount, getLogEntries, getLogEntryUrl } from '@/lib/log'
 import { getProjects } from '@/lib/projects'
 
 const [projects, entries] = await Promise.all([getProjects(), getLogEntries()])
-const pad = (n: number) => n.toString().padStart(2, '0')
 
 const nameWords = ['Fiqry', 'Choerudin']
-// Blocks after the name start once its words have animated in.
-const afterName = nameWords.length
-const projectsStart = afterName + 2
+// Staggered entrance: the name word by word, then each block in reading order.
+const introStart = nameWords.length
+const projectsStart = introStart + 2
 const logStart = projectsStart + projects.length + 1
 ---
 
 <BaseLayout>
-  <section class="container intro">
-    <h1>
-      {
-        nameWords.map((word, i) => (
-          <>
-            {i > 0 && ' '}
-            <span class="word animate-enter" style={`--stagger: ${i}; --delay: 80ms`}>
-              {word}
-            </span>
-          </>
-        ))
-      }
-    </h1>
-    <p class="label role animate-enter" style={`--stagger: ${afterName}`}>Frontend Engineer</p>
-    <p class="bio animate-enter" style={`--stagger: ${afterName + 1}`}>
-      Software Engineer based in Indonesia, currently at Kitabisa. I mainly work with React and
-      enjoy building web applications. I spend my free time experimenting with side projects on
-      GitHub and fine-tuning my Neovim setup.
-    </p>
-    <div class="divider-dotted"></div>
-  </section>
+  <div class="container page">
+    <header>
+      <h1>
+        {
+          nameWords.map((word, i) => (
+            <>
+              {i > 0 && ' '}
+              <span class="word animate-enter" style={`--stagger: ${i}; --delay: 80ms`}>
+                {word}
+              </span>
+            </>
+          ))
+        }
+      </h1>
+      <p class="role animate-enter" style={`--stagger: ${introStart}`}>Frontend Engineer</p>
+      <p class="bio animate-enter" style={`--stagger: ${introStart + 1}`}>
+        Software Engineer based in Indonesia, currently at Kitabisa. I mainly work with React and
+        enjoy building web applications. I spend my free time experimenting with side projects on
+        GitHub and fine-tuning my Neovim setup.
+      </p>
+    </header>
 
-  <section class="container section" aria-labelledby="projects-heading">
-    <div class="section-header animate-enter" style={`--stagger: ${projectsStart}`}>
-      <div>
-        <span class="label">v1.0</span>
-        <h2 id="projects-heading">projects.</h2>
-      </div>
-      <span class="leader-dots" aria-hidden="true"></span>
-      <span class="label count">{`${pad(projects.length)} ${projects.length === 1 ? 'project' : 'projects'}`}</span>
-    </div>
+    <section aria-labelledby="projects-heading">
+      <SectionHeading
+        id="projects-heading"
+        class="animate-enter"
+        style={`--stagger: ${projectsStart}`}
+      >
+        projects.
+      </SectionHeading>
+      <ul role="list" class="rows">
+        {
+          projects.map((project, i) => (
+            <li class="animate-enter" style={`--stagger: ${projectsStart + 1 + i}`}>
+              <LinkRow
+                href={project.data.url}
+                title={project.data.name}
+                description={project.data.description}
+                icon={project.data.icon}
+                external
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
 
-    <ul role="list" class="projects">
-      {
-        projects.map((project, i) => (
-          <li>
-            <ProjectCard
-              project={project}
-              class="animate-enter"
-              style={`--stagger: ${projectsStart + 1 + i}`}
-            />
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-
-  <section class="container section" aria-labelledby="log-heading">
-    <div class="section-header animate-enter" style={`--stagger: ${logStart}`}>
-      <div>
-        <span class="label">v1.0</span>
-        <h2 id="log-heading">log.</h2>
-      </div>
-      <span class="leader-dots" aria-hidden="true"></span>
-      <span class="label count">{`${pad(entries.length)} ${entries.length === 1 ? 'entry' : 'entries'}`}</span>
-    </div>
-
-    <ol role="list" class="entries">
-      {
-        entries.map((entry, i) => (
-          <li class="animate-enter" style={`--stagger: ${logStart + 1 + i}`}>
-            <span class="label">{pad(i + 1)}</span>
-            <a href={getLogEntryUrl(entry)}>{entry.data.title}</a>
-            <span class="leader-dots" aria-hidden="true" />
-            <span class="label">{formatWordCount(entry.data.wordCount)}</span>
-          </li>
-        ))
-      }
-    </ol>
-  </section>
+    <section aria-labelledby="log-heading">
+      <SectionHeading id="log-heading" class="animate-enter" style={`--stagger: ${logStart}`}>
+        log.
+      </SectionHeading>
+      <ol role="list" class="rows">
+        {
+          entries.map((entry, i) => (
+            <li class="animate-enter" style={`--stagger: ${logStart + 1 + i}`}>
+              <LinkRow
+                href={getLogEntryUrl(entry)}
+                title={entry.data.title}
+                meta={formatWordCount(entry.data.wordCount)}
+              />
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+  </div>
 </BaseLayout>
 
 <style>
-  .intro {
-    padding-block: 3rem 4rem;
+  .page {
+    padding-block: 3rem;
   }
 
   h1 {
+    font-size: 1rem;
+    font-weight: 550;
+    line-height: 1.625;
+    color: var(--color-heading);
     text-wrap: balance;
-    font-family: var(--font-pixel);
-    font-size: 2.25rem;
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: 0.025em;
-    color: var(--color-accent);
-  }
-
-  .role {
-    margin-block: 0.75rem 1rem;
-  }
-
-  .bio {
-    max-width: 42rem;
-    text-wrap: pretty;
-    font-family: var(--font-serif);
-    line-height: 2;
-    letter-spacing: 0.025em;
-  }
-
-  .intro .divider-dotted {
-    margin-top: 2rem;
-  }
-
-  .section {
-    padding-bottom: 4rem;
-  }
-
-  .projects {
-    display: grid;
-    gap: 0.75rem;
-    margin-top: 2rem;
-  }
-
-  .projects li {
-    display: grid;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: flex-end;
-    gap: 1rem;
-  }
-
-  .section-header .label {
-    display: block;
-    white-space: nowrap;
-  }
-
-  .section-header .leader-dots {
-    display: none;
-  }
-
-  .count {
-    margin-left: auto;
   }
 
   /* Words animate individually, so each needs its own box to transform. */
@@ -156,56 +101,28 @@ const logStart = projectsStart + projects.length + 1
     display: inline-block;
   }
 
-  h2 {
-    text-wrap: balance;
-    font-family: var(--font-serif);
-    font-size: 1.25rem;
-    font-weight: 400;
+  .role {
+    color: var(--color-muted);
   }
 
-  .entries {
-    display: grid;
-    gap: 0.5rem;
-    margin-top: 2rem;
-  }
-
-  .entries li {
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    padding-block: 0.75rem;
-  }
-
-  .entries a {
+  .bio {
+    margin-top: 1.25rem;
+    color: var(--color-body);
     text-wrap: pretty;
-    font-family: var(--font-serif);
-    font-size: 0.875rem;
-    transition: color 150ms;
   }
 
-  .entries a:hover {
-    color: var(--color-accent);
+  section {
+    margin-top: 4rem;
   }
 
-  .entries .label {
-    white-space: nowrap;
+  /* Hairline between rows, like the interfaces.dev issue list. */
+  .rows > li + li {
+    border-top: 1px solid var(--color-surface);
   }
 
   @media (min-width: 640px) {
-    .intro {
-      padding-top: 6rem;
-    }
-
-    h1 {
-      font-size: 3rem;
-    }
-
-    .section-header .leader-dots {
-      display: block;
-    }
-
-    .projects {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .page {
+      padding-block: 6rem;
     }
   }
 </style>

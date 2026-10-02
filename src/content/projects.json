@@ -2,16 +2,16 @@
   {
     "id": "opentmux",
     "name": "opentmux",
-    "kind": "tmux plugin",
-    "description": "Runs AI coding agents as first-class tmux sessions, with a picker that shows which ones are waiting on you.",
+    "description": "Runs AI coding agents as tmux sessions.",
+    "icon": "terminal",
     "url": "https://github.com/fiqryq/opentmux",
     "order": 1
   },
   {
     "id": "tmux-port",
     "name": "tmux-port",
-    "kind": "tmux plugin",
-    "description": "An fzf popup over every listening port: kill the process or share it through a Cloudflare tunnel in one key.",
+    "description": "Find, kill, or tunnel any listening port.",
+    "icon": "plug",
     "url": "https://github.com/fiqryq/port",
     "order": 2
   }

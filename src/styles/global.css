@@ -48,7 +48,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: var(--font-sans);
-  line-height: 1.5;
+  line-height: 1.625;
   background-color: var(--color-background);
   color: var(--color-foreground);
   -webkit-font-smoothing: antialiased;
@@ -94,36 +94,6 @@ ol[role="list"] {
   max-width: var(--column-max);
   margin-inline: auto;
   padding-inline: var(--column-padding);
-}
-
-/* Small uppercase mono label used across the site. */
-.label {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-variant-numeric: tabular-nums;
-  color: var(--color-muted);
-}
-
-a.label:hover {
-  color: var(--color-accent);
-}
-
-.divider-dotted {
-  height: 2px;
-  background-image: repeating-linear-gradient(
-    to right,
-    var(--color-border) 0 2px,
-    transparent 2px 8px
-  );
-}
-
-.leader-dots {
-  flex: 1 1 auto;
-  min-width: 1rem;
-  margin-bottom: 0.35em;
-  border-bottom: 1px dotted var(--color-border);
 }
 
 .visually-hidden {

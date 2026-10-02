@@ -41,34 +41,5 @@ export default defineConfig({
         variants: [{ src: ['./src/assets/fonts/geist-mono-variable.woff2'], weight: '100 900' }],
       },
     },
-    {
-      provider: fontProviders.local(),
-      name: 'Geist Pixel Square',
-      cssVariable: '--font-pixel',
-      fallbacks: ['monospace'],
-      options: {
-        variants: [{ src: ['./src/assets/fonts/geist-pixel-square.woff2'], weight: 500 }],
-      },
-    },
-    {
-      provider: fontProviders.local(),
-      name: 'Newsreader',
-      cssVariable: '--font-serif',
-      fallbacks: ['ui-serif', 'Georgia', 'serif'],
-      options: {
-        variants: [
-          {
-            src: ['./src/assets/fonts/newsreader-variable.woff2'],
-            weight: '200 800',
-            style: 'normal',
-          },
-          {
-            src: ['./src/assets/fonts/newsreader-italic-variable.woff2'],
-            weight: '200 800',
-            style: 'italic',
-          },
-        ],
-      },
-    },
   ],
 })

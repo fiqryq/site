@@ -3,22 +3,42 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 ---
 
 <BaseLayout title="Not found — Fiqry Choerudin">
-  <section class="container">
-    <span class="label">404</span>
+  <section class="container page">
     <h1>Page not found.</h1>
-    <a href="/" class="label">‹ Back home</a>
+    <p>The page you’re looking for doesn’t exist or has moved.</p>
+    <a href="/">← Back home</a>
   </section>
 </BaseLayout>
 
 <style>
-  section {
-    padding-block: 4rem;
+  .page {
+    padding-block: 3rem;
   }
 
   h1 {
-    margin-block: 0.75rem 1rem;
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-size: 1rem;
+    font-weight: 550;
+    color: var(--color-heading);
+  }
+
+  p {
+    color: var(--color-body);
+  }
+
+  a {
+    display: inline-block;
+    margin-top: 1.25rem;
+    color: var(--color-muted);
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--color-heading);
+  }
+
+  @media (min-width: 640px) {
+    .page {
+      padding-block: 6rem;
+    }
   }
 </style>
