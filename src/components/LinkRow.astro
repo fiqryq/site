@@ -1,0 +1,96 @@
+---
+import Icon from './Icon.astro'
+
+interface Props {
+  href: string
+  title: string
+  description?: string | undefined
+  meta?: string | undefined
+  /** Muted prefix before the title, e.g. "001." */
+  index?: string | undefined
+  /** Medium-weight title (default) or regular weight. */
+  strong?: boolean
+  /** Opens in a new tab and shows an outbound arrow instead of a chevron. */
+  external?: boolean
+}
+
+const { href, title, description, meta, index, strong = true, external = false } = Astro.props
+---
+
+<a
+  href={href}
+  class="row"
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noreferrer' : undefined}
+>
+  <span class="body">
+    <span class:list={['title', { strong }]}>
+      {index && <span class="index">{index}</span>}
+      {title}
+    </span>
+    {description && <span class="description">{description}</span>}
+  </span>
+  {meta && <span class="meta">{meta}</span>}
+  <Icon name={external ? 'arrow-up-right' : 'chevron-right'} size={16} class="indicator" />
+</a>
+
+<style>
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 0.75rem;
+  }
+
+  .body {
+    display: grid;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .title {
+    color: var(--color-heading);
+    text-wrap: pretty;
+  }
+
+  .strong {
+    font-weight: 500;
+  }
+
+  .index {
+    margin-right: 0.5rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-muted);
+  }
+
+  .description {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-muted);
+    text-wrap: pretty;
+  }
+
+  .meta {
+    flex: none;
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-muted);
+  }
+
+  .row :global(.indicator) {
+    flex: none;
+    color: var(--color-subtle);
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .row:hover :global(.indicator) {
+    color: var(--color-heading);
+    transform: translateX(2px);
+  }
+
+  .row[target]:hover :global(.indicator) {
+    transform: translate(1px, -1px);
+  }
+</style>

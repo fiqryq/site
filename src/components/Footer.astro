@@ -1,0 +1,30 @@
+---
+const year = new Date().getFullYear()
+---
+
+<footer class="container">
+  <div class="row">
+    <span>© {year} Fiqry Choerudin</span>
+    <a href="https://github.com/fiqryq" target="_blank" rel="noreferrer">GitHub</a>
+  </div>
+</footer>
+
+<style>
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    border-top: 1px solid var(--color-surface);
+  }
+
+  a {
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--color-heading);
+  }
+</style>

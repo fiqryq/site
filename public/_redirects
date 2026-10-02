@@ -1,0 +1,2 @@
+# Old post URLs → current ones (301 on Cloudflare; astro.config.ts covers dev/preview)
+/writing/how-i-setup-my-terminal /log/ai-coding-agents-from-the-terminal 301

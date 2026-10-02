@@ -1,0 +1,74 @@
+---
+import { Font } from 'astro:assets'
+
+import Footer from '@/components/Footer.astro'
+import '@/styles/global.css'
+
+interface Props {
+  title?: string
+  description?: string
+  type?: 'website' | 'article'
+}
+
+const siteName = 'Fiqry Choerudin'
+const defaultTitle = 'Fiqry Choerudin — Software Engineer'
+const defaultDescription =
+  'Digital garden of Fiqry Choerudin. I do web development and sometimes write about it. I use Vim, btw.'
+
+const { title = defaultTitle, description = defaultDescription, type = 'website' } = Astro.props
+
+const canonical = new URL(Astro.url.pathname, Astro.site)
+const ogImage = new URL('/og-image.png', Astro.site)
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteName,
+  jobTitle: 'Software Engineer',
+  url: Astro.site,
+  worksFor: { '@type': 'Organization', name: 'Kitabisa' },
+  sameAs: ['https://github.com/fiqryq', 'https://x.com/0xfiqry'],
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#103dff" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/logo-192.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap.xml" />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(person)} is:inline />
+
+    <Font cssVariable="--font-sans" preload />
+    <Font cssVariable="--font-mono" />
+  </head>
+  <body>
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

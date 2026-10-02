@@ -1,0 +1,150 @@
+---
+import { render } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
+
+import Icon from '@/components/Icon.astro'
+import PostToolbar from '@/components/PostToolbar.astro'
+import Prose from '@/components/Prose.astro'
+import TableOfContents from '@/components/TableOfContents.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { formatWordCount, getLogEntries, getLogEntryUrl, type LogEntry } from '@/lib/log'
+
+export const getStaticPaths = (async () => {
+  const entries = await getLogEntries()
+  return entries.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: {
+      entry,
+      number: i + 1,
+      prev: entries[i - 1],
+      next: entries[i + 1],
+    },
+  }))
+}) satisfies GetStaticPaths
+
+interface Props {
+  entry: LogEntry
+  number: number
+  prev: LogEntry | undefined
+  next: LogEntry | undefined
+}
+
+const { entry, number, prev, next } = Astro.props
+const { title, description, wordCount } = entry.data
+const { Content, headings } = await render(entry)
+---
+
+<BaseLayout title={`${title} — Fiqry Choerudin`} description={description} type="article">
+  <div class="container page">
+    <PostToolbar />
+
+    <article id="top">
+      <div class="chips animate-enter" style="--stagger: 1">
+        <span class="chip">
+          Log
+          <span class="badge">{number}</span>
+        </span>
+        <span class="chip">
+          <Icon name="file-text" size={12} class="muted" />
+          {formatWordCount(wordCount)}
+        </span>
+      </div>
+
+      <div data-article>
+        <h1 class="animate-enter" style="--stagger: 2">{title}</h1>
+
+        <Prose class="animate-enter" style="--stagger: 3">
+          <p>{description}</p>
+          <Content />
+        </Prose>
+      </div>
+
+      {
+        (prev || next) && (
+          <nav class="pager" aria-label="More from the log">
+            {prev ? <a href={getLogEntryUrl(prev)}>← {prev.data.title}</a> : <span />}
+            {next ? <a href={getLogEntryUrl(next)}>{next.data.title} →</a> : <span />}
+          </nav>
+        )
+      }
+    </article>
+  </div>
+
+  <TableOfContents title={title} headings={headings} />
+</BaseLayout>
+
+<style>
+  .page {
+    padding-block: 3rem;
+  }
+
+  @media (min-width: 640px) {
+    .page {
+      padding-block: 6rem;
+    }
+  }
+
+  article {
+    margin-top: 6rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    font-size: 0.75rem;
+    background: #fff;
+    border-radius: 999px;
+    box-shadow: var(--shadow-border);
+  }
+
+  .badge {
+    padding-inline: 0.375rem;
+    font-size: 0.6875rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    border-radius: 999px;
+  }
+
+  .chip :global(.muted) {
+    color: var(--color-muted);
+  }
+
+  h1 {
+    margin-block: 1.25rem;
+    font-size: 1rem;
+    font-weight: 550;
+    line-height: 1.625;
+    color: var(--color-heading);
+    text-wrap: balance;
+  }
+
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    font-size: 0.875rem;
+    border-top: 1px solid var(--color-surface);
+  }
+
+  .pager a {
+    color: var(--color-muted);
+    transition: color 150ms;
+  }
+
+  .pager a:hover {
+    color: var(--color-foreground);
+  }
+</style>

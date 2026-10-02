@@ -1,0 +1,125 @@
+---
+import Icon from './Icon.astro'
+---
+
+<div class="toolbar">
+  <a href="/" class="button has-leading-icon">
+    <Icon name="chevron-left" />
+    Back
+  </a>
+  <div class="actions">
+    <button type="button" class="button has-leading-icon" data-copy="page">
+      <span class="icon-swap" aria-hidden="true">
+        <Icon name="copy" class="icon-idle" />
+        <Icon name="check" class="icon-done" />
+      </span>
+      Copy page
+    </button>
+    <button type="button" class="button icon-only" data-copy="link" aria-label="Copy link">
+      <span class="icon-swap" aria-hidden="true">
+        <Icon name="link" class="icon-idle" />
+        <Icon name="check" class="icon-done" />
+      </span>
+    </button>
+  </div>
+  <span class="visually-hidden" aria-live="polite" data-copy-status></span>
+</div>
+
+<style>
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    height: 2rem;
+    padding-inline: 0.75rem;
+    font-size: 0.8125rem;
+    color: var(--color-foreground);
+    background: #fff;
+    border: 0;
+    border-radius: 999px;
+    box-shadow: var(--shadow-border);
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .button:hover {
+    box-shadow: var(--shadow-border-hover);
+  }
+
+  /* Optical alignment: an icon reads as lighter than text, so trim its side. */
+  .has-leading-icon {
+    padding-left: 0.625rem;
+  }
+
+  .icon-only {
+    width: 2rem;
+    justify-content: center;
+    padding: 0;
+  }
+
+  /* Icons cross-fade in place (opacity + scale + blur); transitions stay interruptible. */
+  .icon-swap {
+    display: grid;
+  }
+
+  .icon-swap > :global(svg) {
+    grid-area: 1 / 1;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      filter 0.2s ease;
+  }
+
+  .icon-swap > :global(.icon-done),
+  [data-copied] .icon-swap > :global(.icon-idle) {
+    opacity: 0;
+    transform: scale(0.25);
+    filter: blur(4px);
+  }
+
+  [data-copied] .icon-swap > :global(.icon-done) {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+</style>
+
+<script>
+  const article = document.querySelector<HTMLElement>('[data-article]')
+  const status = document.querySelector<HTMLElement>('[data-copy-status]')
+
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy]')) {
+    let timeout: number | undefined
+
+    button.addEventListener('click', async () => {
+      const isLink = button.dataset.copy === 'link'
+      const text = isLink ? window.location.href : (article?.innerText ?? '')
+
+      try {
+        await navigator.clipboard.writeText(text)
+      } catch {
+        return
+      }
+
+      button.dataset.copied = ''
+      if (status) status.textContent = isLink ? 'Link copied' : 'Page copied'
+      window.clearTimeout(timeout)
+      timeout = window.setTimeout(() => {
+        delete button.dataset.copied
+        if (status) status.textContent = ''
+      }, 1500)
+    })
+  }
+</script>

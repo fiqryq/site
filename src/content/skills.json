@@ -1,0 +1,9 @@
+[
+  {
+    "id": "snap",
+    "name": "snap",
+    "description": "Figma to SwiftUI and Compose, refined on the simulator.",
+    "url": "https://github.com/fiqryq/snap",
+    "order": 1
+  }
+]

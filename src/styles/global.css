@@ -1,0 +1,125 @@
+:root {
+  --color-background: #fcfcfc;
+  --color-foreground: #171717;
+  --color-heading: #202020;
+  --color-body: #424242;
+  --color-muted: #6b6b6b;
+  --color-subtle: #a3a3a3;
+  --color-border: #e4e4e4;
+  --color-surface: #f0f0f0;
+  --color-code: #ffffff;
+  --color-line: #e8e8e8;
+  --color-underline: #d9d9d9;
+  --color-underline-hover: #6f6f6f;
+  --color-accent: oklch(0.5058 0.2886 264.84);
+
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  /* Soft edge used instead of borders on raised surfaces. */
+  --shadow-border:
+    0 0 0 1px rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06), 0 2px 4px 0 rgb(0 0 0 / 0.04);
+  --shadow-border-hover:
+    0 0 0 1px rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08), 0 2px 4px 0 rgb(0 0 0 / 0.06);
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* One reading column for every page: 644px of content + 24px side padding. */
+  --column-max: 43.25rem;
+  --column-padding: 1.5rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-sans);
+  line-height: 1.625;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Inter character variants (alternate 1, rounded punctuation). */
+  font-feature-settings: "cv01", "ss03";
+}
+
+main {
+  flex: 1;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--column-max);
+  margin-inline: auto;
+  padding-inline: var(--column-padding);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/*
+ * Staggered entrance: set --stagger (1, 2, 3…) on each block so they rise in
+ * one after another. Skipped entirely for people who prefer reduced motion.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-enter {
+    animation: enter 800ms var(--ease-out) both;
+    animation-delay: calc(var(--delay, 100ms) * var(--stagger, 0));
+  }
+
+  @keyframes enter {
+    from {
+      opacity: 0;
+      filter: blur(8px);
+      transform: translateY(8px);
+    }
+  }
+}

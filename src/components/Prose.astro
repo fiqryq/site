@@ -1,0 +1,185 @@
+---
+// Typography for rendered Markdown. Markdown output isn't scoped, so every
+// rule targets descendants with :global().
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = HTMLAttributes<'div'>
+
+const { class: className, ...attrs } = Astro.props
+---
+
+<div class:list={['prose', className]} {...attrs}><slot /></div>
+
+<style>
+  .prose {
+    counter-reset: figure;
+    font-size: 1rem;
+    line-height: 1.625;
+    color: var(--color-body);
+  }
+
+  .prose > :global(* + *) {
+    margin-top: 1.625rem;
+  }
+
+  .prose :global(p) {
+    text-wrap: pretty;
+  }
+
+  .prose :global(h2),
+  .prose :global(h3) {
+    font-size: 1rem;
+    font-weight: 550;
+    line-height: 1.625;
+    color: var(--color-heading);
+    scroll-margin-top: 5rem;
+  }
+
+  /* Section headings trail off into a hairline rule. */
+  .prose :global(h2) {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 5rem;
+    text-wrap: balance;
+  }
+
+  .prose :global(h2::after) {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: var(--color-line);
+  }
+
+  .prose :global(h3) {
+    margin-top: 3rem;
+    text-wrap: balance;
+  }
+
+  .prose :global(h2 + *) {
+    margin-top: 1.25rem;
+  }
+
+  .prose :global(h3 + *) {
+    margin-top: 0.75rem;
+  }
+
+  .prose :global(a) {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--color-underline);
+    text-underline-offset: 3px;
+    transition:
+      color 0.2s ease,
+      text-decoration-color 0.2s ease;
+  }
+
+  .prose :global(a:hover) {
+    color: var(--color-heading);
+    text-decoration-color: var(--color-underline-hover);
+  }
+
+  .prose :global(:is(b, strong)) {
+    font-weight: 550;
+    color: var(--color-heading);
+  }
+
+  .prose :global(ul) {
+    display: grid;
+    gap: 1rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .prose :global(ul > li) {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .prose :global(ul > li::before) {
+    content: "-";
+    position: absolute;
+    left: 0;
+    color: var(--color-subtle);
+  }
+
+  .prose :global(ol) {
+    display: grid;
+    gap: 0.75rem;
+    padding-left: 1.25rem;
+  }
+
+  .prose :global(ol > li::marker) {
+    color: var(--color-subtle);
+  }
+
+  .prose :global(blockquote) {
+    padding-left: 1rem;
+    border-left: 2px solid var(--color-line);
+  }
+
+  .prose :global(:not(pre) > code) {
+    padding: 2px 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-body);
+    background-color: var(--color-code);
+    border: 1px solid var(--color-line);
+    border-radius: 0.375rem;
+  }
+
+  .prose :global(pre) {
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #24292e;
+    background-color: var(--color-code);
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-border);
+  }
+
+  /* A faint inset outline gives images a consistent edge on any background. */
+  .prose :global(img) {
+    border-radius: 0.75rem;
+    outline: 1px solid rgb(0 0 0 / 0.1);
+    outline-offset: -1px;
+  }
+
+  /* Media and code blocks get extra breathing room. */
+  .prose > :global(:is(pre, figure, img)) {
+    margin-block: 2rem;
+  }
+
+  .prose > :global(:is(pre, figure, img) + *) {
+    margin-top: 2rem;
+  }
+
+  /* Captioned code blocks render as numbered figures (see src/lib/shiki-transformers.ts). */
+  .prose :global(figure) {
+    counter-increment: figure;
+  }
+
+  .prose :global(figure > pre) {
+    margin: 0;
+  }
+
+  .prose :global(figcaption) {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-subtle);
+  }
+
+  .prose :global(figcaption::before) {
+    content: "Fig. " counter(figure);
+    font-variant-numeric: tabular-nums;
+    flex: none;
+    font-weight: 550;
+    color: var(--color-heading);
+  }
+</style>

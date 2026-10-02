@@ -1,0 +1,182 @@
+---
+import Icon from '@/components/Icon.astro'
+import LinkRow from '@/components/LinkRow.astro'
+import SectionHeading from '@/components/SectionHeading.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { formatWordCount, getLogEntries, getLogEntryNumber, getLogEntryUrl } from '@/lib/log'
+import { getShowcase } from '@/lib/showcase'
+
+const [works, skills, entries] = await Promise.all([
+  getShowcase('works'),
+  getShowcase('skills'),
+  getLogEntries(),
+])
+
+const nameWords = ['Fiqry', 'Choerudin']
+// Staggered entrance: the name word by word, then each block in reading order.
+const introStart = nameWords.length
+const worksStart = introStart + 3
+const skillsStart = worksStart + works.length + 1
+const logStart = skillsStart + skills.length + 1
+
+const showcases = [
+  { id: 'works', title: '/works', items: works, start: worksStart },
+  { id: 'skills', title: '/skills', items: skills, start: skillsStart },
+]
+---
+
+<BaseLayout>
+  <div class="container page">
+    <header>
+      <h1>
+        {
+          nameWords.map((word, i) => (
+            <>
+              {i > 0 && ' '}
+              <span class="word animate-enter" style={`--stagger: ${i}; --delay: 80ms`}>
+                {word}
+              </span>
+            </>
+          ))
+        }
+      </h1>
+      <p class="role animate-enter" style={`--stagger: ${introStart}`}>Software Engineer</p>
+      <p class="bio animate-enter" style={`--stagger: ${introStart + 1}`}>
+        I build web products at Kitabisa, based in Indonesia. I mainly work with React and enjoy
+        building web applications. I spend my free time experimenting with side projects on
+        GitHub and fine-tuning my Neovim setup.
+      </p>
+      <p class="contact animate-enter" style={`--stagger: ${introStart + 2}`}>
+        You can reach me at{' '}
+        <a href="https://x.com/0xfiqry" target="_blank" rel="noreferrer">
+          @0xfiqry<span class="visually-hidden"> (opens in a new tab)</span>
+        </a>{' '}
+        and via{' '}
+        <a href="mailto:fiqrychoerudin48@gmail.com">
+          <Icon name="mail" class="inline-icon" />email
+        </a>{' '}
+        or see my code on{' '}
+        <a href="https://github.com/fiqryq" target="_blank" rel="noreferrer">
+          <Icon name="github" class="inline-icon" />GitHub<span class="visually-hidden"> (opens in a new tab)</span>
+        </a>.
+      </p>
+    </header>
+
+    {
+      showcases.map((showcase) => (
+        <section aria-labelledby={`${showcase.id}-heading`}>
+          <SectionHeading
+            id={`${showcase.id}-heading`}
+            class="animate-enter"
+            style={`--stagger: ${showcase.start}`}
+          >
+            {showcase.title}
+          </SectionHeading>
+          <ul role="list" class="rows">
+            {showcase.items.map((item, i) => (
+              <li class="animate-enter" style={`--stagger: ${showcase.start + 1 + i}`}>
+                <LinkRow
+                  href={item.data.url}
+                  title={item.data.name}
+                  description={item.data.description}
+                  external
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+
+    <section aria-labelledby="log-heading">
+      <SectionHeading id="log-heading" class="animate-enter" style={`--stagger: ${logStart}`}>
+        /log
+      </SectionHeading>
+      <ol role="list" class="rows">
+        {
+          entries.map((entry, i) => (
+            <li class="animate-enter" style={`--stagger: ${logStart + 1 + i}`}>
+              <LinkRow
+                href={getLogEntryUrl(entry)}
+                title={entry.data.title}
+                index={`${getLogEntryNumber(entry)}.`}
+                meta={formatWordCount(entry.data.wordCount)}
+                strong={false}
+              />
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    padding-block: 3rem;
+  }
+
+  h1 {
+    font-size: 1rem;
+    font-weight: 550;
+    line-height: 1.625;
+    color: var(--color-heading);
+    text-wrap: balance;
+  }
+
+  /* Words animate individually, so each needs its own box to transform. */
+  .word {
+    display: inline-block;
+  }
+
+  .role {
+    color: var(--color-muted);
+  }
+
+  .bio {
+    margin-top: 1.25rem;
+    color: var(--color-body);
+    text-wrap: pretty;
+  }
+
+  .contact {
+    margin-top: 1.625rem;
+    color: var(--color-body);
+    text-wrap: pretty;
+  }
+
+  /* Same subtle underline as article links. */
+  .contact a {
+    color: var(--color-heading);
+    text-decoration: underline;
+    text-decoration-color: var(--color-underline);
+    text-underline-offset: 3px;
+    white-space: nowrap; /* keep each icon on the same line as its word */
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .contact a:hover {
+    text-decoration-color: var(--color-underline-hover);
+  }
+
+  .contact :global(.inline-icon) {
+    display: inline;
+    margin-right: 0.25rem;
+    vertical-align: -0.125em;
+  }
+
+  section {
+    margin-top: 4rem;
+  }
+
+  /* Hairline between rows, like the interfaces.dev issue list. */
+  .rows > li + li {
+    border-top: 1px solid var(--color-surface);
+  }
+
+  @media (min-width: 640px) {
+    .page {
+      padding-block: 6rem;
+    }
+  }
+</style>

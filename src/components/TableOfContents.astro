@@ -1,0 +1,148 @@
+---
+import type { MarkdownHeading } from 'astro'
+
+import Icon from './Icon.astro'
+
+interface Props {
+  title: string
+  headings: MarkdownHeading[]
+}
+
+const { title, headings } = Astro.props
+const items = [
+  { slug: 'top', text: title },
+  ...headings.filter((h) => h.depth === 2 || h.depth === 3),
+]
+---
+
+<nav class="toc" aria-label="On this page">
+  <p class="heading">
+    <Icon name="align-left" />
+    On this page
+  </p>
+  <ul role="list">
+    {
+      items.map((item, i) => (
+        <li>
+          <a href={`#${item.slug}`} data-toc-link={item.slug} aria-current={i === 0 ? 'true' : undefined}>
+            <span class="marker" aria-hidden="true" />
+            <span class="text">{item.text}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: none;
+    width: 16rem;
+    max-height: 100dvh;
+    overflow-y: auto;
+    /* Line up with the page header: same top offset as the toolbar row. */
+    padding: 6rem 1.5rem 2rem 0;
+    /* Icon (14px) + gap (8px): item text starts where the heading text does. */
+    --indent: 1.375rem;
+  }
+
+  @media (min-width: 1280px) {
+    .toc {
+      display: block;
+    }
+  }
+
+  /* Same height as the toolbar buttons, so both rows share a centre line. */
+  .heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 2rem;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.625rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Marker sits in a fixed slot, so text never shifts when it grows. */
+  a {
+    display: grid;
+    grid-template-columns: var(--indent) minmax(0, 1fr);
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    transition: color 150ms;
+  }
+
+  a:hover,
+  a[aria-current] {
+    color: var(--color-foreground);
+  }
+
+  .marker {
+    width: 0.5rem;
+    height: 1px;
+    background-color: var(--color-border);
+    transition:
+      width 150ms,
+      background-color 150ms;
+  }
+
+  a[aria-current] .marker {
+    width: 1rem;
+    background-color: var(--color-foreground);
+  }
+
+  .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+  // Highlight the last heading scrolled past (or the final one at page bottom).
+  const OFFSET = 96
+
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]')]
+  const targets = links
+    .map((link) => document.getElementById(link.dataset.tocLink ?? ''))
+    .filter((el): el is HTMLElement => el !== null)
+
+  function update() {
+    let current = targets[0]
+    for (const target of targets) {
+      if (target.getBoundingClientRect().top > OFFSET) break
+      current = target
+    }
+
+    const atBottom =
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
+    if (atBottom) current = targets.at(-1)
+
+    for (const link of links) {
+      if (link.dataset.tocLink === current?.id) link.setAttribute('aria-current', 'true')
+      else link.removeAttribute('aria-current')
+    }
+  }
+
+  let frame = 0
+  function schedule() {
+    cancelAnimationFrame(frame)
+    frame = requestAnimationFrame(update)
+  }
+
+  if (targets.length > 0) {
+    update()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+  }
+</script>
