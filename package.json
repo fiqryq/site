@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "node api.js && astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "check": "astro check",
@@ -12,7 +12,9 @@
     "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
-    "astro": "^7.3.5"
+    "astro": "^7.3.5",
+    "dotenv": "^8.2.0",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
