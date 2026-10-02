@@ -14,11 +14,12 @@ const log = defineCollection({
   }),
 })
 
-// Link rows on the home page (projects, agent skills), shown in `order`.
+// Link rows on the home page (projects, skills), shown in `order`.
 const showcaseSchema = z.object({
   name: z.string(),
   description: z.string(),
-  icon: z.enum(iconNames),
+  // Optional: rows without an icon render as plain text.
+  icon: z.enum(iconNames).optional(),
   url: z.url(),
   order: z.number().int(),
 })

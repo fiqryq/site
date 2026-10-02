@@ -6,11 +6,11 @@ import Icon from './Icon.astro'
 interface Props {
   href: string
   title: string
-  description?: string
-  meta?: string
-  icon?: IconName
+  description?: string | undefined
+  meta?: string | undefined
+  icon?: IconName | undefined
   /** Muted prefix before the title, e.g. "001." */
-  index?: string
+  index?: string | undefined
   /** Medium-weight title (default) or regular weight. */
   strong?: boolean
   /** Opens in a new tab and shows an outbound arrow instead of a chevron. */
