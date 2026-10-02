@@ -1,0 +1,78 @@
+---
+import type { Project } from '@/lib/projects'
+
+import Icon from './Icon.astro'
+
+interface Props {
+  project: Project
+  class?: string
+  style?: string
+}
+
+const { project, class: className, style } = Astro.props
+const { name, kind, description, url } = project.data
+---
+
+<a href={url} class:list={['card', className]} style={style} target="_blank" rel="noreferrer">
+  <span class="top">
+    <span class="name">{name}</span>
+    <Icon name="arrow-up-right" size={14} class="arrow" />
+  </span>
+  <span class="description">{description}</span>
+  <span class="label">{kind}</span>
+</a>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 1.125rem;
+    background: #fff;
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-border);
+    transition: box-shadow 0.2s ease;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-border-hover);
+  }
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .name {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--color-heading);
+  }
+
+  .card :global(.arrow) {
+    color: var(--color-subtle);
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .card:hover :global(.arrow) {
+    color: var(--color-heading);
+    transform: translate(1px, -1px);
+  }
+
+  .description {
+    flex: 1;
+    font-family: var(--font-serif);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    text-wrap: pretty;
+    color: var(--color-body);
+  }
+
+  .label {
+    margin-top: 0.25rem;
+  }
+</style>

@@ -1,5 +1,5 @@
 import { defineCollection } from 'astro:content'
-import { glob } from 'astro/loaders'
+import { file, glob } from 'astro/loaders'
 import { z } from 'astro/zod'
 
 const log = defineCollection({
@@ -12,4 +12,16 @@ const log = defineCollection({
   }),
 })
 
-export const collections = { log }
+// Projects shown as cards on the home page, in `order`.
+const projects = defineCollection({
+  loader: file('./src/content/projects.json'),
+  schema: z.object({
+    name: z.string(),
+    kind: z.string(),
+    description: z.string(),
+    url: z.url(),
+    order: z.number().int(),
+  }),
+})
+
+export const collections = { log, projects }

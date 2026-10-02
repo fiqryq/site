@@ -55,6 +55,21 @@ hms personal
 ```
 ````
 
+## Adding a project
+
+Projects on the home page come from `src/content/projects.json`. Add an object with a unique `id` and the next `order`:
+
+```json
+{
+  "id": "my-project",
+  "name": "my-project",
+  "kind": "cli tool",
+  "description": "One or two sentences about what it does.",
+  "url": "https://github.com/fiqryq/my-project",
+  "order": 3
+}
+```
+
 ## Naming conventions
 
 | What | Convention | Example |
@@ -79,6 +94,7 @@ src/
 ├── layouts/BaseLayout.astro # <head>, SEO meta, fonts, footer
 ├── components/             # toolbar, table of contents, prose styles, icons
 ├── content/log/            # log entries (log-001.md, log-002.md, …)
+├── content/projects.json   # project cards on the home page
 ├── content.config.ts       # content collection schema
 ├── lib/                    # log helpers, Shiki transformers
 ├── assets/fonts/           # self-hosted fonts (served via the Fonts API)
