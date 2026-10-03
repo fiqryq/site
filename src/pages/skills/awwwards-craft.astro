@@ -1,0 +1,550 @@
+---
+import { getImage, Image } from 'astro:assets'
+import { getCollection, getEntry } from 'astro:content'
+
+import BrandIcon from '@/components/BrandIcon.astro'
+import Icon from '@/components/Icon.astro'
+import SectionHeading from '@/components/SectionHeading.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+const skill = await getEntry('skills', 'awwwards-craft')
+if (!skill) throw new Error('Missing "awwwards-craft" in src/content/skills.json')
+
+const entries = (await getCollection('awwwardsExamples')).sort(
+  (a, b) => a.data.order - b.data.order,
+)
+
+// A video's poster is its image, resized for the card; it shows until the video plays.
+const examples = await Promise.all(
+  entries.map(async ({ id, data }) => ({
+    id,
+    ...data,
+    poster:
+      data.video && data.image
+        ? (await getImage({ src: data.image, width: 720, format: 'webp', quality: 80 })).src
+        : undefined,
+  })),
+)
+
+const { name, description, url: repoUrl } = skill.data
+
+// From the skill's README.
+const install = {
+  cli: ['npx skills add fiqryq/awwwards-craft'],
+  plugin: [
+    '/plugin marketplace add fiqryq/awwwards-craft',
+    '/plugin install awwwards-craft@awwwards-craft',
+  ],
+  prompt: 'Build an award-winning portfolio site for an architecture studio.',
+}
+---
+
+<BaseLayout
+  title={`${name} — Fiqry Choerudin`}
+  description={`Sites built with ${name}, an Agent Skill for Awwwards-level websites.`}
+>
+  <div class="page">
+    <div class="container">
+      <a href="/" class="back animate-enter" style="--stagger: 0">
+        <Icon name="chevron-left" />
+        Back
+      </a>
+
+      <header>
+        <h1 class="animate-enter" style="--stagger: 1">{name}</h1>
+        <p class="lede animate-enter" style="--stagger: 2">{description}</p>
+        <p class="intro animate-enter" style="--stagger: 3">
+          An Agent Skill for building award-level sites with Astro, hand-written CSS, GSAP and
+          Lenis. Everything below was built with it.
+        </p>
+        <p class="links animate-enter" style="--stagger: 4">
+          <a href={repoUrl} target="_blank" rel="noreferrer">
+            <BrandIcon name="github" class="inline-icon" />Source on GitHub<span class="visually-hidden">
+              (opens in a new tab)</span
+            >
+          </a>
+        </p>
+      </header>
+    </div>
+
+    <section aria-labelledby="examples-heading" data-carousel>
+      <div class="container">
+        <SectionHeading id="examples-heading" class="animate-enter" style="--stagger: 5">
+          /examples
+        </SectionHeading>
+      </div>
+
+      {
+        examples.length === 0 ? (
+          <p class="container empty animate-enter" style="--stagger: 6">
+            Examples are on their way.
+          </p>
+        ) : (
+          <>
+            {/* Starts on the column's left edge and runs off the right side of the viewport. */}
+            <ul role="list" class="track animate-enter" style="--stagger: 6" data-track>
+              {examples.map((example, i) => {
+                // Cards without a live URL yet still show, just not as links.
+                const Card = example.url ? 'a' : 'div'
+                return (
+                  <li class="card">
+                    <Card
+                      class="card-body"
+                      href={example.url}
+                      target={example.url ? '_blank' : undefined}
+                      rel={example.url ? 'noreferrer' : undefined}
+                    >
+                      <span class="tile">
+                        {example.video ? (
+                          <video
+                            class="screen"
+                            src={example.video}
+                            poster={example.poster}
+                            muted
+                            loop
+                            playsinline
+                            preload="none"
+                            aria-hidden="true"
+                            data-autoplay
+                          />
+                        ) : (
+                          example.image && (
+                            <Image
+                              src={example.image}
+                              alt=""
+                              widths={[440, 880]}
+                              sizes="(min-width: 640px) 27rem, 84vw"
+                              quality={85}
+                              loading={i < 2 ? 'eager' : 'lazy'}
+                            />
+                          )
+                        )}
+                      </span>
+                      <span class="name">
+                        {example.name}
+                        {example.url && <span class="visually-hidden"> (opens in a new tab)</span>}
+                      </span>
+                    </Card>
+                  </li>
+                )
+              })}
+            </ul>
+
+            <div class="container controls animate-enter" style="--stagger: 7" data-controls>
+              <button type="button" class="arrow" data-step="-1" aria-label="Previous examples">
+                <Icon name="arrow-left" />
+              </button>
+              <button type="button" class="arrow" data-step="1" aria-label="Next examples">
+                <Icon name="arrow-right" />
+              </button>
+            </div>
+          </>
+        )
+      }
+    </section>
+
+    <section aria-labelledby="install-heading" class="container">
+      <SectionHeading id="install-heading" class="animate-enter" style="--stagger: 8">
+        /install
+      </SectionHeading>
+
+      <div class="install animate-enter" style="--stagger: 8">
+        <p>
+          Add it with the skills CLI. Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI,
+          OpenCode and more.
+        </p>
+        <div class="command">
+          <pre><code>{install.cli.map((line) => (
+            <span class="line">{line}</span>
+          ))}</code></pre>
+          <button
+            type="button"
+            class="copy"
+            data-copy-text={install.cli.join('\n')}
+            aria-label="Copy install command"
+          >
+            <span class="icon-swap" aria-hidden="true">
+              <Icon name="copy" class="icon-idle" />
+              <Icon name="check" class="icon-done" />
+            </span>
+          </button>
+        </div>
+
+        <p>Or install it as a Claude Code plugin:</p>
+        <div class="command">
+          <pre><code>{install.plugin.map((line) => (
+            <span class="line">{line}</span>
+          ))}</code></pre>
+          <button
+            type="button"
+            class="copy"
+            data-copy-text={install.plugin.join('\n')}
+            aria-label="Copy plugin commands"
+          >
+            <span class="icon-swap" aria-hidden="true">
+              <Icon name="copy" class="icon-idle" />
+              <Icon name="check" class="icon-done" />
+            </span>
+          </button>
+        </div>
+
+        <p>Then just ask your agent:</p>
+        <blockquote>{install.prompt}</blockquote>
+      </div>
+      <span class="visually-hidden" aria-live="polite" data-copy-status></span>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    padding-block: 3rem;
+  }
+
+  /* Same pill as the log toolbar's Back button. */
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    height: 2rem;
+    padding-inline: 0.625rem 0.75rem;
+    font-size: 0.8125rem;
+    color: var(--color-foreground);
+    background: #fff;
+    border-radius: 999px;
+    box-shadow: var(--shadow-border);
+    transition: box-shadow 0.2s ease;
+  }
+
+  .back:hover {
+    box-shadow: var(--shadow-border-hover);
+  }
+
+  header {
+    margin-top: 6rem;
+  }
+
+  h1 {
+    font-size: 1rem;
+    font-weight: 550;
+    line-height: 1.625;
+    color: var(--color-heading);
+  }
+
+  .lede {
+    font-weight: 450;
+    color: var(--color-muted);
+    text-wrap: pretty;
+  }
+
+  .intro,
+  .links {
+    margin-top: 1rem;
+    color: var(--color-muted);
+    text-wrap: pretty;
+  }
+
+  .links a {
+    font-weight: 450;
+    color: var(--color-heading);
+    text-decoration: underline;
+    text-decoration-color: var(--color-underline);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .links a:hover {
+    text-decoration-color: var(--color-underline-hover);
+  }
+
+  .links :global(.inline-icon) {
+    display: inline;
+    margin-right: 0.25rem;
+    vertical-align: -0.125em;
+  }
+
+  section {
+    margin-top: 5rem;
+  }
+
+  .empty {
+    padding-block: 0.75rem;
+    color: var(--color-muted);
+  }
+
+  /*
+   * Full-bleed scroller whose first card lines up with the reading column.
+   * --inset is the distance from the viewport edge to the column's text.
+   */
+  .track {
+    --inset: max(var(--column-padding), (100% - var(--column-max)) / 2 + var(--column-padding));
+
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    padding-inline: var(--inset);
+    padding-bottom: 0.25rem; /* room for focus rings */
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--inset);
+    scrollbar-width: none;
+  }
+
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex: none;
+    width: min(27rem, 84vw);
+    scroll-snap-align: start;
+  }
+
+  .card-body {
+    display: block;
+  }
+
+  .tile {
+    display: block;
+    aspect-ratio: 12 / 11;
+    overflow: hidden;
+    background: var(--color-surface);
+  }
+
+  /* Images and recordings fill the whole tile. */
+  .tile :global(img),
+  .screen {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  /* Site recordings are wide; keep the left side, where the headline usually sits. */
+  .screen {
+    object-position: left center;
+  }
+
+  .name {
+    display: block;
+    margin-top: 0.75rem;
+    padding-inline: 0.125rem;
+    font-weight: 450;
+    color: var(--color-heading);
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    a.card-body:hover .tile :global(img),
+    a.card-body:hover .screen {
+      transform: scale(1.02);
+    }
+  }
+
+  .controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Hidden until the script confirms there is something to scroll to. */
+  .controls:not([data-scrollable]) {
+    display: none;
+  }
+
+  .arrow {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    border: 0;
+    border-radius: 0.625rem;
+    cursor: pointer;
+    transition:
+      color 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .arrow:hover:not(:disabled) {
+    color: var(--color-heading);
+  }
+
+  .arrow:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  /* Install steps: muted copy, white code blocks like the log's, copy button inside. */
+  .install {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    color: var(--color-muted);
+    text-wrap: pretty;
+  }
+
+  .install p + .command {
+    margin-bottom: 0.75rem;
+  }
+
+  .command {
+    position: relative;
+  }
+
+  .command pre {
+    padding: 0.875rem 3.5rem 0.875rem 1.25rem;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #24292e;
+    background-color: var(--color-code);
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-border);
+  }
+
+  .line {
+    display: block;
+  }
+
+  .copy {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    color: var(--color-subtle);
+    background: var(--color-code);
+    border: 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .copy:hover,
+  .copy[data-copied] {
+    color: var(--color-heading);
+  }
+
+  /* Same cross-fade as the log toolbar's copy buttons. */
+  .icon-swap {
+    display: grid;
+  }
+
+  .icon-swap > :global(svg) {
+    grid-area: 1 / 1;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      filter 0.2s ease;
+  }
+
+  .icon-swap > :global(.icon-done),
+  [data-copied] .icon-swap > :global(.icon-idle) {
+    opacity: 0;
+    transform: scale(0.25);
+    filter: blur(4px);
+  }
+
+  [data-copied] .icon-swap > :global(.icon-done) {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  blockquote {
+    padding-left: 1rem;
+    color: var(--color-body);
+    border-left: 2px solid var(--color-line);
+  }
+
+  @media (min-width: 640px) {
+    .page {
+      padding-block: 6rem;
+    }
+  }
+</style>
+
+<script>
+  // Card videos play only while on screen, and never for reduced motion (the poster stays).
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)')
+  const videos = document.querySelectorAll<HTMLVideoElement>('video[data-autoplay]')
+
+  if (videos.length > 0 && !reduceMotion.matches) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const { target, isIntersecting } of entries) {
+          const video = target as HTMLVideoElement
+          if (isIntersecting) video.play().catch(() => {})
+          else video.pause()
+        }
+      },
+      { threshold: 0.25 },
+    )
+    for (const video of videos) observer.observe(video)
+  }
+
+  for (const carousel of document.querySelectorAll<HTMLElement>('[data-carousel]')) {
+    const track = carousel.querySelector<HTMLElement>('[data-track]')
+    const controls = carousel.querySelector<HTMLElement>('[data-controls]')
+    if (!track || !controls) continue
+
+    const buttons = controls.querySelectorAll<HTMLButtonElement>('[data-step]')
+
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth
+      controls.toggleAttribute('data-scrollable', max > 1)
+      for (const button of buttons) {
+        const back = button.dataset.step === '-1'
+        button.disabled = back ? track.scrollLeft <= 1 : track.scrollLeft >= max - 1
+      }
+    }
+
+    for (const button of buttons) {
+      button.addEventListener('click', () => {
+        // Move by one card plus the gap; snapping lands it on the column edge.
+        const card = track.firstElementChild as HTMLElement | null
+        const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0
+        const step = (card?.offsetWidth ?? track.clientWidth) + gap
+        const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
+        track.scrollBy({
+          left: step * Number(button.dataset.step),
+          behavior: reduce ? 'auto' : 'smooth',
+        })
+      })
+    }
+
+    track.addEventListener('scroll', update, { passive: true })
+    new ResizeObserver(update).observe(track)
+    update()
+  }
+  // Copy buttons on the install commands.
+  const copyStatus = document.querySelector<HTMLElement>('[data-copy-status]')
+
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy-text]')) {
+    let timeout: number | undefined
+
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(button.dataset.copyText ?? '')
+      } catch {
+        return
+      }
+
+      button.dataset.copied = ''
+      if (copyStatus) copyStatus.textContent = 'Copied'
+      window.clearTimeout(timeout)
+      timeout = window.setTimeout(() => {
+        delete button.dataset.copied
+        if (copyStatus) copyStatus.textContent = ''
+      }, 1500)
+    })
+  }
+</script>

@@ -1,0 +1,31 @@
+[
+  {
+    "id": "firstcrack",
+    "name": "Firstcrack",
+    "url": "https://awwwards-craft-examples.fiqry.dev/example-001",
+    "image": "../../assets/images/examples/firstcrack.jpg",
+    "video": "https://cdn.fiqry.dev/video/awwwards-craft/firstcrack.mp4",
+    "order": 1
+  },
+  {
+    "id": "bayang",
+    "name": "Bayang",
+    "url": "https://awwwards-craft-examples.fiqry.dev/example-002",
+    "video": "https://cdn.fiqry.dev/video/awwwards-craft/bayang.mp4",
+    "order": 2
+  },
+  {
+    "id": "lengkung",
+    "name": "Lengkung",
+    "url": "https://awwwards-craft-examples.fiqry.dev/example-003",
+    "video": "https://cdn.fiqry.dev/video/awwwards-craft/lengkung.mp4",
+    "order": 3
+  },
+  {
+    "id": "sinyal",
+    "name": "Sinyal",
+    "url": "https://awwwards-craft-examples.fiqry.dev/example-004",
+    "video": "https://cdn.fiqry.dev/video/awwwards-craft/sinyal.mp4",
+    "order": 4
+  }
+]

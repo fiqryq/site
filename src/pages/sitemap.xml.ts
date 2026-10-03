@@ -4,7 +4,7 @@ import { getLogEntries, getLogEntryUrl } from '@/lib/log'
 
 export const GET: APIRoute = async ({ site }) => {
   const entries = await getLogEntries()
-  const paths = ['/', ...entries.map(getLogEntryUrl)]
+  const paths = ['/', '/skills/awwwards-craft', ...entries.map(getLogEntryUrl)]
 
   const urls = paths
     .map((path) => `  <url>\n    <loc>${new URL(path, site)}</loc>\n  </url>`)

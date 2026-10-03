@@ -1,16 +1,17 @@
 [
   {
-    "id": "snap",
-    "name": "snap",
-    "description": "Figma to SwiftUI and Compose, refined on the simulator.",
-    "url": "https://github.com/fiqryq/snap",
-    "order": 1
-  },
-  {
     "id": "awwwards-craft",
     "name": "awwwards-craft",
     "description": "Awwwards-level sites: art direction, GSAP and Lenis motion, built-in QA.",
     "url": "https://github.com/fiqryq/awwwards-craft",
+    "page": "/skills/awwwards-craft",
+    "order": 1
+  },
+  {
+    "id": "snap",
+    "name": "snap",
+    "description": "Figma to SwiftUI and Compose, refined on the simulator.",
+    "url": "https://github.com/fiqryq/snap",
     "order": 2
   }
 ]

@@ -17,6 +17,8 @@ const showcaseSchema = z.object({
   name: z.string(),
   description: z.string(),
   url: z.url(),
+  /** Internal page to link to instead of `url`, e.g. /skills/awwwards-craft. */
+  page: z.string().startsWith('/').optional(),
   order: z.number().int(),
 })
 
@@ -30,4 +32,19 @@ const skills = defineCollection({
   schema: showcaseSchema,
 })
 
-export const collections = { log, works, skills }
+// Sites built with the awwwards-craft skill, shown on /skills/awwwards-craft in `order`.
+// Images are paths relative to the JSON file, e.g. "../../assets/images/examples/foo.png".
+// With a `video`, the image becomes its poster frame.
+const awwwardsExamples = defineCollection({
+  loader: file('./src/content/examples/awwwards-craft.json'),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      url: z.url().optional(),
+      image: image().optional(),
+      video: z.url().optional(),
+      order: z.number().int(),
+    }),
+})
+
+export const collections = { log, works, skills, awwwardsExamples }

@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets'
 
 import avatar from '@/assets/images/avatar.jpg'
-import Icon from '@/components/Icon.astro'
+import BrandIcon from '@/components/BrandIcon.astro'
 import LinkRow from '@/components/LinkRow.astro'
 import SectionHeading from '@/components/SectionHeading.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
@@ -72,11 +72,11 @@ const showcases = [
         </a>{' '}
         and via{' '}
         <a href="mailto:fiqrychoerudin48@gmail.com">
-          <Icon name="mail" class="inline-icon" />email
+          <BrandIcon name="gmail" class="inline-icon" />email
         </a>{' '}
         or see my code on{' '}
         <a href="https://github.com/fiqryq" target="_blank" rel="noreferrer">
-          <Icon name="github" class="inline-icon" />GitHub<span class="visually-hidden"> (opens in a new tab)</span>
+          <BrandIcon name="github" class="inline-icon" />GitHub<span class="visually-hidden"> (opens in a new tab)</span>
         </a>.
       </p>
     </header>
@@ -95,10 +95,10 @@ const showcases = [
             {showcase.items.map((item, i) => (
               <li class="animate-enter" style={`--stagger: ${showcase.start + 1 + i}`}>
                 <LinkRow
-                  href={item.data.url}
+                  href={item.data.page ?? item.data.url}
                   title={item.data.name}
                   description={item.data.description}
-                  external
+                  external={!item.data.page}
                 />
               </li>
             ))}
