@@ -13,9 +13,14 @@ interface Props {
 const siteName = 'Fiqry Choerudin'
 const defaultTitle = 'Fiqry Choerudin — Software Engineer'
 const defaultDescription =
-  'Digital garden of Fiqry Choerudin. I do web development and sometimes write about it. I use Vim, btw.'
+  'Software engineer based in Indonesia, building web products at Kitabisa. Notes, side projects and agent skills for crafting better web experiences.'
 
 const { title = defaultTitle, description = defaultDescription, type = 'website' } = Astro.props
+// Share cards leave out the employer; search results keep the full description.
+const shareDescription =
+  description === defaultDescription
+    ? 'Software engineer based in Indonesia, building web products.'
+    : description
 
 // Pages build to .html files; canonical URLs use the clean path (/, /log/slug).
 const cleanPath = Astro.url.pathname.replace(/(index)?\.html$/, '')
@@ -53,7 +58,7 @@ const person = {
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={shareDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
@@ -62,7 +67,7 @@ const person = {
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={shareDescription} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={ogImageAlt} />
 

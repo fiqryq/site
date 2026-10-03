@@ -279,6 +279,9 @@ const install = {
   .track {
     --inset: max(var(--column-padding), (100% - var(--column-max)) / 2 + var(--column-padding));
 
+    /* Contains the cards' absolutely positioned screen-reader text, which would otherwise
+       escape the scroller and widen the page on phones. */
+    position: relative;
     display: flex;
     gap: 1.25rem;
     margin-top: 1.25rem;
@@ -381,6 +384,8 @@ const install = {
   /* Install steps: muted copy, white code blocks like the log's, copy button inside. */
   .install {
     display: grid;
+    /* minmax(0, …) lets long commands scroll inside their block instead of widening the page. */
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.75rem;
     margin-top: 1rem;
     color: var(--color-muted);
@@ -397,7 +402,9 @@ const install = {
 
   .command pre {
     padding: 0.875rem 3.5rem 0.875rem 1.25rem;
-    overflow-x: auto;
+    /* Wrap long commands on narrow screens; the copy button copies the original lines. */
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
     font-family: var(--font-mono);
     font-size: 0.875rem;
     line-height: 1.6;
