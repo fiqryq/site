@@ -5,6 +5,24 @@
     "description": "Awwwards-level sites: art direction, GSAP and Lenis motion, built-in QA.",
     "url": "https://github.com/fiqryq/awwwards-craft",
     "page": "/skills/awwwards-craft",
+    "intro": "An Agent Skill for building award-level sites with Astro, hand-written CSS, GSAP and Lenis. Everything below was built with it.",
+    "guide": [
+      {
+        "text": "Add it with the skills CLI. Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI, OpenCode and more.",
+        "commands": ["npx skills add fiqryq/awwwards-craft"]
+      },
+      {
+        "text": "Or install it as a Claude Code plugin:",
+        "commands": [
+          "/plugin marketplace add fiqryq/awwwards-craft",
+          "/plugin install awwwards-craft@awwwards-craft"
+        ]
+      },
+      {
+        "text": "Then just ask your agent:",
+        "quote": "Build an award-winning portfolio site for an architecture studio."
+      }
+    ],
     "order": 1
   },
   {
@@ -12,6 +30,26 @@
     "name": "snap",
     "description": "Figma to SwiftUI and Compose, refined on the simulator.",
     "url": "https://github.com/fiqryq/snap",
+    "page": "/skills/snap",
+    "intro": "A Claude Code plugin that builds native mobile UI from Figma. It reads the design, builds it with your project’s own components, then runs it on the iOS Simulator or Android Emulator and fixes mismatches until nothing is off.",
+    "guide": [
+      {
+        "text": "Install it as a Claude Code plugin:",
+        "commands": ["/plugin marketplace add fiqryq/snap", "/plugin install snap@snap"]
+      },
+      {
+        "text": "Open Claude Code in your project and run the skill for your platform. For SwiftUI on the iOS Simulator:",
+        "commands": ["/snap:snap-swiftui"]
+      },
+      {
+        "text": "For Jetpack Compose on the Android Emulator:",
+        "commands": ["/snap:snap-compose"]
+      },
+      {
+        "text": "Then paste a Figma “Link to Selection”. It needs the Figma MCP, plus Xcode or the Android SDK."
+      }
+    ],
+    "examplesLayout": "screenshots",
     "order": 2
   }
 ]

@@ -1,16 +1,26 @@
 ---
 import { getImage, Image } from 'astro:assets'
-import { getCollection, getEntry } from 'astro:content'
+import { type CollectionEntry, getCollection } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
 
 import BrandIcon from '@/components/BrandIcon.astro'
 import Icon from '@/components/Icon.astro'
 import SectionHeading from '@/components/SectionHeading.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 
-const skill = await getEntry('skills', 'awwwards-craft')
-if (!skill) throw new Error('Missing "awwwards-craft" in src/content/skills.json')
+export const getStaticPaths = (async () => {
+  const skills = await getCollection('skills', ({ id, data }) => data.page === `/skills/${id}`)
+  return skills.map((skill) => ({ params: { skill: skill.id }, props: { skill } }))
+}) satisfies GetStaticPaths
 
-const entries = (await getCollection('awwwardsExamples')).sort(
+interface Props {
+  skill: CollectionEntry<'skills'>
+}
+
+const { skill } = Astro.props
+const { name, description, intro, guide, examplesLayout, url: repoUrl } = skill.data
+
+const entries = (await getCollection('examples', ({ data }) => data.skill.id === skill.id)).sort(
   (a, b) => a.data.order - b.data.order,
 )
 
@@ -25,23 +35,11 @@ const examples = await Promise.all(
         : undefined,
   })),
 )
-
-const { name, description, url: repoUrl } = skill.data
-
-// From the skill's README.
-const install = {
-  cli: ['npx skills add fiqryq/awwwards-craft'],
-  plugin: [
-    '/plugin marketplace add fiqryq/awwwards-craft',
-    '/plugin install awwwards-craft@awwwards-craft',
-  ],
-  prompt: 'Build an award-winning portfolio site for an architecture studio.',
-}
 ---
 
 <BaseLayout
   title={`${name} — Fiqry Choerudin`}
-  description={`Sites built with ${name}, an Agent Skill for Awwwards-level websites.`}
+  description={intro ?? description}
 >
   <div class="page">
     <div class="container">
@@ -53,10 +51,13 @@ const install = {
       <header>
         <h1 class="animate-enter" style="--stagger: 1">{name}</h1>
         <p class="lede animate-enter" style="--stagger: 2">{description}</p>
-        <p class="intro animate-enter" style="--stagger: 3">
-          An Agent Skill for building award-level sites with Astro, hand-written CSS, GSAP and
-          Lenis. Everything below was built with it.
-        </p>
+        {
+          intro && (
+            <p class="intro animate-enter" style="--stagger: 3">
+              {intro}
+            </p>
+          )
+        }
         <p class="links animate-enter" style="--stagger: 4">
           <a href={repoUrl} target="_blank" rel="noreferrer">
             <BrandIcon name="github" class="inline-icon" />Source on GitHub<span class="visually-hidden">
@@ -79,6 +80,23 @@ const install = {
           <p class="container empty animate-enter" style="--stagger: 6">
             Examples are on their way.
           </p>
+        ) : examplesLayout === 'screenshots' ? (
+          <div class="container shots">
+            {examples.map((example, i) =>
+              example.image ? (
+                <Image
+                  src={example.image}
+                  alt={example.name}
+                  widths={[644, 1288, 1932]}
+                  sizes="(min-width: 692px) 644px, calc(100vw - 48px)"
+                  quality={85}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  class="shot animate-enter"
+                  style={`--stagger: ${6 + i}`}
+                />
+              ) : null,
+            )}
+          </div>
         ) : (
           <>
             {/* Starts on the column's left edge and runs off the right side of the viewport. */}
@@ -144,58 +162,48 @@ const install = {
       }
     </section>
 
-    <section aria-labelledby="install-heading" class="container">
-      <SectionHeading id="install-heading" class="animate-enter" style="--stagger: 8">
-        /install
-      </SectionHeading>
+    {
+      guide.length > 0 && (
+        <section aria-labelledby="install-heading" class="container">
+          <SectionHeading id="install-heading" class="animate-enter" style="--stagger: 8">
+            /install
+          </SectionHeading>
 
-      <div class="install animate-enter" style="--stagger: 8">
-        <p>
-          Add it with the skills CLI. Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI,
-          OpenCode and more.
-        </p>
-        <div class="command">
-          <pre><code>{install.cli.map((line) => (
-            <span class="line">{line}</span>
-          ))}</code></pre>
-          <button
-            type="button"
-            class="copy"
-            data-sound="none"
-            data-copy-text={install.cli.join('\n')}
-            aria-label="Copy install command"
-          >
-            <span class="icon-swap" aria-hidden="true">
-              <Icon name="copy" class="icon-idle" />
-              <Icon name="check" class="icon-done" />
-            </span>
-          </button>
-        </div>
-
-        <p>Or install it as a Claude Code plugin:</p>
-        <div class="command">
-          <pre><code>{install.plugin.map((line) => (
-            <span class="line">{line}</span>
-          ))}</code></pre>
-          <button
-            type="button"
-            class="copy"
-            data-sound="none"
-            data-copy-text={install.plugin.join('\n')}
-            aria-label="Copy plugin commands"
-          >
-            <span class="icon-swap" aria-hidden="true">
-              <Icon name="copy" class="icon-idle" />
-              <Icon name="check" class="icon-done" />
-            </span>
-          </button>
-        </div>
-
-        <p>Then just ask your agent:</p>
-        <blockquote>{install.prompt}</blockquote>
-      </div>
-      <span class="visually-hidden" aria-live="polite" data-copy-status></span>
-    </section>
+          <div class="install animate-enter" style="--stagger: 8">
+            {guide.map((step) => (
+              <>
+                <p>{step.text}</p>
+                {step.commands && (
+                  <div class="command">
+                    <pre>
+                      <code>
+                        {step.commands.map((line) => (
+                          <span class="line">{line}</span>
+                        ))}
+                      </code>
+                    </pre>
+                    <button
+                      type="button"
+                      class="copy"
+                      data-sound="none"
+                      data-copy-text={step.commands.join('\n')}
+                      aria-label={step.commands.length > 1 ? 'Copy commands' : 'Copy command'}
+                    >
+                      <span class="icon-swap" aria-hidden="true">
+                        <Icon name="copy" class="icon-idle" />
+                        <Icon name="check" class="icon-done" />
+                      </span>
+                    </button>
+                  </div>
+                )}
+                {step.quote && <blockquote>{step.quote}</blockquote>}
+              </>
+            ))}
+          </div>
+          <span class="visually-hidden" aria-live="polite" data-copy-status></span>
+        </section>
+      )
+    }
   </div>
 </BaseLayout>
 
@@ -224,7 +232,7 @@ const install = {
   }
 
   header {
-    margin-top: 6rem;
+    margin-top: 4rem;
   }
 
   h1 {
@@ -268,6 +276,20 @@ const install = {
 
   section {
     margin-top: 5rem;
+  }
+
+  /* Screenshots layout: whole images at column width, one after another. */
+  .shots {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .shot {
+    width: 100%;
+    height: auto;
+    outline: 1px solid rgb(0 0 0 / 0.08);
+    outline-offset: -1px;
   }
 
   .empty {
@@ -405,8 +427,8 @@ const install = {
 
   .command pre {
     padding: 0.875rem 3.5rem 0.875rem 1.25rem;
-    /* Wrap long commands on narrow screens; the copy button copies the original lines. */
-    white-space: pre-wrap;
+    /* Whitespace between the line spans (from formatting) is ignored; each line keeps its own. */
+    white-space: normal;
     overflow-wrap: anywhere;
     font-family: var(--font-mono);
     font-size: 0.875rem;
@@ -417,8 +439,10 @@ const install = {
     box-shadow: var(--shadow-border);
   }
 
+  /* Wrap long commands on narrow screens; the copy button copies the original lines. */
   .line {
     display: block;
+    white-space: pre-wrap;
   }
 
   .copy {

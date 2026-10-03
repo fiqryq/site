@@ -53,8 +53,6 @@ body {
   color: var(--color-foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Inter character variants (alternate 1, rounded punctuation). */
-  font-feature-settings: "cv01", "ss03";
 }
 
 main {

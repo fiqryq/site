@@ -1,10 +1,13 @@
 import type { APIRoute } from 'astro'
 
+import { getCollection } from 'astro:content'
+
 import { getLogEntries, getLogEntryUrl } from '@/lib/log'
 
 export const GET: APIRoute = async ({ site }) => {
-  const entries = await getLogEntries()
-  const paths = ['/', '/skills/awwwards-craft', ...entries.map(getLogEntryUrl)]
+  const [entries, skills] = await Promise.all([getLogEntries(), getCollection('skills')])
+  const skillPages = skills.flatMap((skill) => (skill.data.page ? [skill.data.page] : []))
+  const paths = ['/', ...skillPages, ...entries.map(getLogEntryUrl)]
 
   const urls = paths
     .map((path) => `  <url>\n    <loc>${new URL(path, site)}</loc>\n  </url>`)
