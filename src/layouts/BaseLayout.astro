@@ -21,6 +21,7 @@ const { title = defaultTitle, description = defaultDescription, type = 'website'
 const cleanPath = Astro.url.pathname.replace(/(index)?\.html$/, '')
 const canonical = new URL(cleanPath, Astro.site)
 const ogImage = new URL('/og-image.png', Astro.site)
+const ogImageAlt = 'Fiqry Choerudin, Software Engineer — fiqry.dev'
 
 const person = {
   '@context': 'https://schema.org',
@@ -57,11 +58,13 @@ const person = {
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <script type="application/ld+json" set:html={JSON.stringify(person)} is:inline />
 
