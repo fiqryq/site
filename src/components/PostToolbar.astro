@@ -8,14 +8,14 @@ import Icon from './Icon.astro'
     Back
   </a>
   <div class="actions">
-    <button type="button" class="button has-leading-icon" data-copy="page">
+    <button type="button" class="button has-leading-icon" data-copy="page" data-sound="none">
       <span class="icon-swap" aria-hidden="true">
         <Icon name="copy" class="icon-idle" />
         <Icon name="check" class="icon-done" />
       </span>
       Copy page
     </button>
-    <button type="button" class="button icon-only" data-copy="link" aria-label="Copy link">
+    <button type="button" class="button icon-only" data-copy="link" data-sound="none" aria-label="Copy link">
       <span class="icon-swap" aria-hidden="true">
         <Icon name="link" class="icon-idle" />
         <Icon name="check" class="icon-done" />
@@ -97,6 +97,8 @@ import Icon from './Icon.astro'
 </style>
 
 <script>
+  import { playSound } from '@/lib/sound'
+
   const article = document.querySelector<HTMLElement>('[data-article]')
   const status = document.querySelector<HTMLElement>('[data-copy-status]')
 
@@ -112,6 +114,8 @@ import Icon from './Icon.astro'
       } catch {
         return
       }
+
+      playSound('pop')
 
       button.dataset.copied = ''
       if (status) status.textContent = isLink ? 'Link copied' : 'Page copied'

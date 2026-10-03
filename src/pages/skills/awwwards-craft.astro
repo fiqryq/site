@@ -90,6 +90,7 @@ const install = {
                   <li class="card">
                     <Card
                       class="card-body"
+                      data-hover-sound
                       href={example.url}
                       target={example.url ? '_blank' : undefined}
                       rel={example.url ? 'noreferrer' : undefined}
@@ -131,10 +132,10 @@ const install = {
             </ul>
 
             <div class="container controls animate-enter" style="--stagger: 7" data-controls>
-              <button type="button" class="arrow" data-step="-1" aria-label="Previous examples">
+              <button type="button" class="arrow" data-step="-1" data-sound="whisk" aria-label="Previous examples">
                 <Icon name="arrow-left" />
               </button>
-              <button type="button" class="arrow" data-step="1" aria-label="Next examples">
+              <button type="button" class="arrow" data-step="1" data-sound="whisk" aria-label="Next examples">
                 <Icon name="arrow-right" />
               </button>
             </div>
@@ -160,6 +161,7 @@ const install = {
           <button
             type="button"
             class="copy"
+            data-sound="none"
             data-copy-text={install.cli.join('\n')}
             aria-label="Copy install command"
           >
@@ -178,6 +180,7 @@ const install = {
           <button
             type="button"
             class="copy"
+            data-sound="none"
             data-copy-text={install.plugin.join('\n')}
             aria-label="Copy plugin commands"
           >
@@ -480,6 +483,8 @@ const install = {
 </style>
 
 <script>
+  import { playSound } from '@/lib/sound'
+
   // Card videos play only while on screen, and never for reduced motion (the poster stays).
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)')
   const videos = document.querySelectorAll<HTMLVideoElement>('video[data-autoplay]')
@@ -544,6 +549,8 @@ const install = {
       } catch {
         return
       }
+
+      playSound('pop')
 
       button.dataset.copied = ''
       if (copyStatus) copyStatus.textContent = 'Copied'

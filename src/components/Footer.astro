@@ -28,3 +28,35 @@ const year = new Date().getFullYear()
     color: var(--color-heading);
   }
 </style>
+
+<script>
+  // Site-wide interface sounds (see src/lib/sound.ts). The footer is on every page.
+  import { playSound, type SoundName } from '@/lib/sound'
+
+  // Links and buttons sound on press. data-sound picks another sound, or "none" to opt out
+  // (copy buttons play their own sound once the copy succeeds).
+  const press = (target: EventTarget | null) => {
+    const el = (target as Element | null)?.closest<HTMLElement>('a[href], button')
+    if (!el || (el instanceof HTMLButtonElement && el.disabled)) return
+    const name = el.dataset.sound ?? 'tap'
+    if (name !== 'none') playSound(name as SoundName)
+  }
+
+  // pointerdown rather than click, so the sound starts before a link navigates away.
+  document.addEventListener('pointerdown', (event) => {
+    if (event.button === 0) press(event.target)
+  })
+
+  // Keyboard activation (Enter/Space) arrives as a click with no pointer detail.
+  document.addEventListener('click', (event) => {
+    if (event.detail === 0) press(event.target)
+  })
+
+  // Rows and cards tick quietly as a mouse moves onto them.
+  document.addEventListener('pointerover', (event) => {
+    if (event.pointerType !== 'mouse') return
+    const el = (event.target as Element).closest('[data-hover-sound]')
+    if (!el || el.contains(event.relatedTarget as Node | null)) return
+    playSound('tick')
+  })
+</script>
